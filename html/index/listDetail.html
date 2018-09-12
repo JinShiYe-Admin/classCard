@@ -11,6 +11,8 @@
 				height: 25%;
 				background: #58B0BA;
 				padding: 22px;
+				border-radius: 25px;
+				margin: 5px;
 			}
 			
 			.div1 {
@@ -26,24 +28,28 @@
 			.bottomDiv {
 				height: 75%;
 				width: 100%;
-				background: #58B222;
 				float: left;
+				
 			}
 			
 			.div2 {
 				height: 100%;
-				width: 30%;
-				background: burlywood;
+				width: 28%;
+				background: #25747d;
 				float: left;
 				padding: 20px;
+				border-radius: 25px;
+				margin: 5px;
 			}
 			
 			.div3 {
+				margin: 5px;
 				height: 100%;
 				width: 70%;
-				background: beige;
+				background: #26aba5;
 				float: left;
 				padding: 20px;
+				border-radius: 25px;
 			}
 			
 			.div4 {
@@ -91,26 +97,30 @@
 				margin-left: 20px;
 				margin-top: 20px;
 			}
+			.mui-table-view li:first-child{
+				background: #F0981C;
+			}
 		</style>
 	</head>
 
-	<body style="background: #007c8f;height: 100%;width: 100%;">
+	<body style="background: #124D7B;height: 100%;width: 100%;">
 		<div id="classCardMsg" style="height: 100%;width: 100%;">
 			<div class="topDiv">
 				<div class="div1">
 					<div class="" style="float: left;width: 40%;height: 100%;">
-						<img src="../../img/cbd.jpg" class="div1Img" />
+						<p style="color: #fff;font-size: 2.0em;font-weight: 600;height: 50%;padding: 9% 0;letter-spacing:5px">{{cardMsgList1.schname}}{{cardMsgList1.gradename}}{{cardMsgList1.chname}}</p>
 					</div>
 					<div id="" style="height: 100%;width: 60%;float: left;">
-						<ul class="mui-table-view mui-grid-view mui-grid-9" style="height: 100%;background: #007c8f;padding: 22px;border: 0px;">
-							<li v-if="timeModel" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 150px;height: 100%;float: right;border: 0px;">
+						<ul class="mui-table-view mui-grid-view mui-grid-9" style="height: 100%;background: transparent;padding: 22px;border: 0px;">
+							<li v-if="timeModel" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 200px;height: 100%;float: right;border: 0px;">
+								<p class="pSty">时间</p>
 								<p class="pSty">{{timeModel.hoursStr}}</p>
 							</li>
-							<li v-if="timeModel" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 150px;height: 100%;float: right;border: 0px;">
-								<p class="pSty">{{timeModel.yearStr}}</p>
+							<li v-if="timeModel" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 200px;height: 100%;float: right;border: 0px;">
 								<p class="pSty">{{timeModel.weekStr}}</p>
+								<p class="pSty">{{timeModel.yearStr}}</p>
 							</li>
-							<li v-if="weatherModel.forecast" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 150px;height: 100%;float: right;border: 0px;">
+							<li v-if="weatherModel.forecast" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 200px;height: 100%;float: right;border: 0px;">
 								<p class="pSty">{{weatherModel.forecast.weather[0].day.type}}</p>
 								<p class="pSty" style="margin-top: 20px;">{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
 							</li>
@@ -122,7 +132,7 @@
 				<div class="div2">
 					<div class="div4">
 						<ul class="mui-table-view" v-if="cardMsgList1.newslist">
-							<li @click="clickLi(detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
+							<li @click="clickLi($event,detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
 								<a class="mui-navigate-right">
 									{{detailModel.topic}}
 								</a>
@@ -172,7 +182,7 @@
 					}
 				});
 				setInterval("getTime()", 1000);
-				getlist(2, 1, 5, 1);
+				getlist(2, 5, 5, 1);
 			}
 			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
 			//chncode,栏目代码，后台栏目定义的代码
@@ -228,7 +238,14 @@
 					currentModel: {}
 				},
 				methods: {
-					clickLi: function(model) {
+					clickLi: function(event,model) {
+						var obj =event.target;
+						$(obj).parent().parent().find('li').each(function(){
+							console.log($(this).html());
+							$(this).css("background","#fff");
+//							$(this).css("background","#fff");
+						});
+						$(obj).parent().css("background","#F0981C");
 						classCardMsg.currentModel = model;
 //						this.$refs.tempFlag2.innerHTML = classCardMsg.currentModel.content;
 					}
