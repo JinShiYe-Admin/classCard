@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootstrap表单组件金视野系统模板</title>
+		<meta name="keywords" content="金视野,教育,平台" />
+		<meta name="description" content="金视野开发部,模板,2017" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.css" />
+		<link rel="stylesheet" href="assets/css/datepicker.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="assets/css/colorpicker.css" />
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			.widgetbg{
+				border: none;
+				padding: 0 !important;
+			}
+			.textareabg{
+				
+				padding:6px !important ;
+			}
+			.modalfooterbg{
+				background: none;
+				text-align: center;
+				margin-top: 100px;
+				border: none;
+			}
+			label{
+				font-weight: normal !important;
+				font-weight: bold !important;
+			}
+			.page-header h4{
+				font-weight: bold;
+				text-align: center;margin-top: 40px;
+				font-size: 20px;
+			}
+			.btnbg{
+				margin: 10px;
+			    padding:10px 20px;
+				border:none;
+				border-radius: 4px;
+				background: dodgerblue !important;
+			}
+			.quxiao{
+				margin: 10px!important;
+				padding:10px 20px;
+				border-radius: 4px;
+				border:none;
+			}
+		</style>
+	</head>
+
+	<body>	
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+
+				<div class="main-content" style="margin-left:0px">
+					<div class="breadcrumbs" id="breadcrumbs"">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb ">
+							<li>
+								<i class=" icon-home home-icon"" ></i>
+								<a href="jsystudent.html">学生及家长信息</a>
+							</li>
+
+							<li>学生基本信息</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<ul class="breadcrumb pull-right navright" >
+							<li>
+								<i class="icon-share-alt icon-color blue"></i>
+								<a href="jsystudent.html">返回</a>
+							</li>
+						</ul><!-- .breadcrumb -->
+						</div><!-- #nav-search -->
+					</div>
+					<div class="row">
+							
+								<!-- PAGE CONTENT BEGINS -->
+
+									<div class="col-xs-12 col-sm-12" >
+										
+										<div class="input-group float-right col-xs-2"  style="margin-top: 20px;float: right;">
+								    
+										<span class="input-group-btn modal-table1">
+												<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="font-size: 14px !important; -webkit-border-radius:2px; background: #34A8EA !important;border:1px solid #34A8EA !important;padding-left: 20px;padding-right: 20px;margin-right: 10px;" " type="button">保存</button>
+											</span>
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-primary btn-lg" class="btn btn-default" style="font-size: 14px !important; -webkit-border-radius:2px; color: #34A8EA !important; background: #FFFFFF !important;border:1px solid #34A8EA !important;padding-left: 20px;padding-right: 20px;" " type="button">取消</button>
+											</span>
+											</div>
+									</div>
+								</div>
+						<div class="page-header" style="border: none;">
+							<h4>学生基本信息</h4>
+						</div><!-- /.page-header -->
+
+						<div class="row" style="margin-left: 0px !important;margin-right: 0px !important;">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<form class="form-horizontal" role="form">
+								    <div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" >年级： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="11234644" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class=" control-label no-padding-right" style="font-size: 14px;color: #777777;font-weight: normal !important;margin-left: 10px;">年级领导：冯琦、司徒紫芸 </label>
+
+									</div>
+									  <div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" >班级： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="11234644" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class=" control-label no-padding-right" style="font-size: 14px;color: #777777;font-weight: normal !important;margin-left: 10px;">班主任：孙丽丽（语文） &nbsp;&nbsp;&nbsp;&nbsp;任课老师：李倩（数学） 、冯琦（英语）、司徒紫芸（物理） </label>
+
+									</div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 学（考）号： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="请输入考号">
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 姓名： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="请输入姓名">
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 性别： </label>
+
+										<div class="col-sm-3">
+											<div class="radio">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 男</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 女</span>
+													</label>
+												</div>
+											
+										</div>
+									</div>
+
+									
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" >职务： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="请输入职务">
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 是否走读： </label>
+
+										<div class="col-sm-3">
+											<div class="radio">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 是</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 否</span>
+													</label>
+												</div>
+										
+										</div>
+										<label class="col-sm-1 control-label no-padding-right">学生卡地址： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="只能读取" readonly  style="cursor:pointer"/>
+											
+										</div>
+									</div>
+                                     
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 电话： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="请输入电话">
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 地址： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="请输入地址">
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 原班级： </label>
+
+										<div class="col-sm-3">
+											<label class=" control-label no-padding-right" style="font-size: 14px;color: #777777;font-weight: normal !important;">1061班 </label>
+											
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 账号： </label>
+
+										<div class="col-sm-3"> 
+											<div class="input-group">
+                                            <input type="text" class="form-control" placeholder="请输入账号">
+                                               <span class="input-group-btn">
+                                                 <button class="btn btn-default" style="background: #34A8EA !important;border:1px solid #34A8EA !important;" " type="button">自动生成</button>
+                                                  </span>
+                                              </div><!-- /input-group -->
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 密码： </label>
+
+										<div class="col-sm-3">
+											<div class="input-group">
+											<input type="text"  class="form-control"  placeholder="请输入密码">
+											<span class="input-group-btn">
+												<button class="btn btn-default" style="-webkit-border-radius:2px; background: #34A8EA !important;border:1px solid #34A8EA !important;margin-left: 10px;" " type="button">重置账号密码</button>
+											</span>
+										</div>
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 账号状态： </label>
+
+										<div class="col-sm-3">
+											<div class="radio">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl">正常</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 停用</span>
+													</label>
+											</div>
+										</div>
+										</div>
+										<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" style="font-size: 12px;color: #f96161;font-weight: normal !important;margin-left: 10px;">备注：点击自动生成后获取电话为账号，电话后六位为密码 </label>
+										</div>
+										<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" >家长信息： </label>
+										</div>
+										<div id="main">
+											<div class="col-xs-1">
+												
+											</div>
+										<div class="table-responsive col-xs-9" style="padding-left: 0px;padding-right: 0px;">
+											<table  class="table table-striped table-bordered table-hover" >
+												<thead>
+													<tr>
+														<th>姓名</th>
+														<th>关系</th>
+														<th>电话</th>
+														<th>账号</th>
+														<th>密码</th>
+														<th>账号状态</th>
+												</thead>
+
+												<tbody > 
+													<tr  >
+														<td></td>
+														<td></td>
+														<td></td>
+														<td>
+															<div class="input-group">
+                                               <span class="input-group-btn">
+                                                 <button class="btn btn-default" style="float: right;-webkit-border-radius:200px; color: #34A8EA !important; background: #FFFFFF !important;border:1px solid #34A8EA !important;" " type="button">自动生成</button>
+                                                  </span>
+                                              </div><!-- /input-group -->
+                                              </td>
+														<td></td>
+														<td><div class="radio" style="padding-left: 0px !important;padding-top: 0px !important;padding-right: 20px !important;">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl">正常</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 停用</span>
+													</label>
+											</div></td>
+														
+													</tr>
+													<tr  >
+														<td></td>
+														<td></td>
+														<td></td>
+														<td>
+															<div class="input-group">
+                                               <span class="input-group-btn">
+                                                 <button class="btn btn-default" style="float: right;-webkit-border-radius:200px; color: #34A8EA !important; background: #FFFFFF !important;border:1px solid #34A8EA !important;" " type="button">自动生成</button>
+                                                  </span>
+                                              </div><!-- /input-group -->
+														</td>
+														<td></td>
+														<td><div class="radio" style="padding-left: 0px !important;padding-top: 0px !important;">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl">正常</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 停用</span>
+													</label>
+											</div></td>
+													</tr>
+													</div>
+													</div>
+													
+											
+								</form>
+                                  </div>
+									</div>
+			
+			                      </div><!-- /.main-container-inner -->
+		                             </div><!-- /.main-container -->
+			
+                                    
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+
+<![endif]-->
+
+		<!--[if !IE]> -->
+<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<script src="assets/js/fuelux/data/fuelux.tree-sampledata.js"></script>
+		<script src="assets/js/fuelux/fuelux.tree.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			jQuery(function($){
+
+		$('#tree1').ace_tree({
+			dataSource: treeDataSource ,
+			multiSelect:true,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-minus',
+			'close-icon' : 'icon-plus',
+			'selectable' : true,
+			'selected-icon' : 'icon-ok',
+			'unselected-icon' : 'icon-remove'
+		});
+
+		$('#tree2').ace_tree({
+			dataSource: treeDataSource2 ,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-folder-open',
+			'close-icon' : 'icon-folder-close',
+			'selectable' : false,
+			'selected-icon' : null,
+			'unselected-icon' : null
+		});
+
+
+
+		/**
+		$('#tree1').on('loaded', function (evt, data) {
+		});
+
+		$('#tree1').on('opened', function (evt, data) {
+		});
+
+		$('#tree1').on('closed', function (evt, data) {
+		});
+
+		$('#tree1').on('selected', function (evt, data) {
+		});
+		*/
+});
+		</script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!--[if lte IE 8]>
+		  <script src="assets/js/excanvas.min.js"></script>
+		<![endif]-->
+
+		<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="assets/js/chosen.jquery.min.js"></script>
+		<script src="assets/js/fuelux/fuelux.spinner.min.js"></script>
+		<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+		<script src="assets/js/date-time/bootstrap-timepicker.min.js"></script>
+		<script src="assets/js/date-time/moment.min.js"></script>
+		<script src="assets/js/date-time/daterangepicker.min.js"></script>
+		<script src="assets/js/bootstrap-colorpicker.min.js"></script>
+		<script src="assets/js/jquery.knob.min.js"></script>
+		<script src="assets/js/jquery.autosize.min.js"></script>
+		<script src="assets/js/jquery.inputlimiter.1.3.1.min.js"></script>
+		<script src="assets/js/jquery.maskedinput.min.js"></script>
+		<script src="assets/js/bootstrap-tag.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>

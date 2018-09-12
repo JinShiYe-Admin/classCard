@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootstrap表格插件金视野系统模板</title>
+		<meta name="keywords" content="金视野,教育,平台" />
+		<meta name="description" content="金视野开发部,模板,2017" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+		<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+        <link rel="stylesheet" href="assets/css/chosen.css" />
+		<link rel="stylesheet" href="assets/css/datepicker.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="assets/css/colorpicker.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		
+		<![endif]-->
+		<style>
+			
+			
+		    .page-header{
+				    border-bottom: none !important;
+				    margin-bottom: 0px !important;
+				    padding-bottom: 7px !important;
+			}
+			.table-responsive table tr{
+			
+				text-align: center;
+			}
+			.table-responsive table tr th{
+				border-bottom: 1px !important;
+				text-align: center;
+				
+			}
+		
+			.yemabg{
+				
+			    border-top-width: 0px;
+			    margin-top: 20px !important;
+			    padding-right:0 ;
+				background: none;
+			}
+			.float-left{
+				float: left;
+			}
+			.float-right{
+				float:right;
+			}
+			.jianju{
+				margin: 5px;
+			}
+			.jianju span{
+				line-height: 30px;
+			}
+			.btn-bg{
+				background: dodgerblue !important;
+				/*height: 30px !important;*/
+				border: 0;
+				border-radius: 2px !important;
+				padding: 5px 10px !important;
+			}
+			.input-group-addon, .input-group-btn{
+				width: auto !important;
+			}
+			.navright{
+				line-height: inherit;
+				margin-right: 0px;
+				display: inline-block !important;
+				
+			}
+			.smalletitle{
+				text-align:left;
+				text-indent:1em;
+				color:#000000;
+				font-size: 16px;
+				padding-top:8px;
+				height: 40px;
+				background: #f2f2f2;
+				width: 96%;
+				margin-left: 2%;
+				margin-top: 8px;
+			}
+			.yidu p, .weidu p{
+				color: #333333;
+				font-size: 14px;
+				text-align:left;
+				text-indent:2em;
+				background: #FFFFFF;
+				
+				min-height: 40px !important;
+                padding: 10px !important;
+			}
+			.blue{
+				color: dodgerblue !important;
+			}
+			
+			.icon-color{
+				color: #428bca;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">			
+
+				<div class="main-content" style="margin-left:0px;">
+					<div class="breadcrumbs " id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb ">
+							<li class="active">
+								<i class="icon-home home-icon" ></i>
+								学生及家长信息
+							</li>
+						</ul><!-- .breadcrumb -->
+						<ul class="breadcrumb pull-right navright" >
+							<li>
+								<i class="icon-share-alt icon-color"></i>
+								<a href="jsywebindex.html">返回</a>
+							</li>
+						</ul><!-- .breadcrumb -->
+
+						
+					</div>
+
+					<div class="page-content" style="padding-top: 20px;">
+						<div class="page-header" style="border-bottom: none;">
+							<div>
+							<!--搜索-->
+							<div class="widget-box" style="border-bottom: none;">
+								
+												
+								<form class="form-search">
+									<div class="row">
+										
+										    <div class="input-group  jianju" >
+												<span class="float-left ">年级：</span>
+												<div class="input-group input-group-sm float-left">
+													<select type="text"  class="form-control"  >
+														<option>教务处</option>
+														<option>学生处</option>
+														<option>后勤部</option>
+														<option>开发部</option>
+														<option>战略部</option>
+													</select>
+												</div>
+												<label class="grey" style="margin-left: 10px;">年级领导：冯琦、司徒紫芸</label>
+											</div>
+											<div class="input-group  jianju">
+												<span class="float-left">班级：</span>
+												<div class="input-group input-group-sm float-left">
+													<select type="text"  class="form-control"  >
+														<option>1061班</option>
+														<option>1062班</option>
+														<option>1063班</option>
+														<option>1064班</option>
+														<option>1065班</option>
+													</select>
+												</div>
+												<label class="grey" style="margin-left: 10px;">班主任：孙丽丽（语文） &nbsp;&nbsp;&nbsp;&nbsp;任课老师：李倩（数学） 、冯琦（英语）、司徒紫芸（物理）、张磊（语文）、苏珊（化学）、王丽（生物）、赵凯（地理）</label>
+											</div>
+											
+											<div class="input-group float-left jianju" >
+												<span class="float-left">姓名：</span>
+												<div class="input-group input-group-sm float-left">
+													<input type="text"  class="form-control"  placeholder="请输入名字">
+												</div>
+											
+											</div>
+											<div class="input-group float-left jianju " >
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-info btn-xs">
+													查询
+													
+													</button>
+												</span>
+											</div>
+											
+										<div class="input-group float-right jianju "  >
+												<a href="jsyxinjianstudent.html" class="input-group-btn">
+													<button type="button" class="btn btn-info btn-xs">
+													<i class=" icon-edit icon-on-right bigger-110" ></i>
+													新建信息
+													</button>
+												</a>
+										</div>
+										</div>
+		
+
+									</div>
+								</form>
+							</div>
+											
+										
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div class="row">
+									<div class="col-xs-12" >
+										<div id="main">
+										<div class="table-responsive ">
+											<table id="sample-table-1" class="table table-striped table-bordered table-hover" >
+												<thead>
+													<tr>
+														
+														<th>学（考号）</th>
+														<th>姓名</th>
+														<th>性别</th>
+														<th>学生卡号</th>
+														<th class="hidden-480">职务</th>
+														<th class="hidden-480">电话</th>
+														<th class="hidden-480">是否走读</th>
+														<th class="hidden-480">账号</th>
+														<th class="hidden-480">家长姓名</th>
+														<th class="hidden-480">家长电话</th>
+														<th class="hidden-480">家长账号</th>
+														<th class="hidden-480">家长姓名</th>
+														<th class="hidden-480">家长电话</th>
+														<th class="hidden-480">家长账号</th>
+														<th>操作</th>
+														
+													</tr>
+												</thead>
+
+												<tbody id="mainbody"> 
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>司徒紫云</td>
+														<td>男</td>
+														<td>1***</td>
+														<td class="hidden-480">班长</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>慕容晓晓</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>李丹</td>
+														<td>男</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>杨芸</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>李玉恒</td>
+														<td>男</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>冰糖馨儿</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>华志强</td>
+														<td>男</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>徐尚清</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+																
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>华成宇</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+																
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>李晓东</td>
+														<td>男</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr><tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr><tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr><tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr><tr  id="delCell">
+														<td>00000001</td>
+														<td>李宏</td>
+														<td>女</td>
+														<td>1***</td>
+														<td class="hidden-480">学生</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">是</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">刘彻</td>
+														<td class="hidden-480">1***</td>
+														<td class="hidden-480">1***</td>
+														<td class=" ">
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="green" href="jsynewstudent.html">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+																<a class="red" href="#modal-table1" role="button" data-toggle="modal">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+														    </div>
+														    <!--手机下的方式-->
+														    <div class="visible-xs visible-sm hidden-md hidden-lg ">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle morebtn" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close modalclume">
+																		<li>
+																			<a href="jsynewstudent.html" class="tooltip-info" data-rel="tooltip" title="" data-original-title="修改">
+																				<span class="blue">
+																					<i class="icon-pencil bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+									
+																		<li>
+																			<a href="#modal-table1" role="button"   data-toggle="modal" class="tooltip-success" data-rel="tooltip" title="" data-original-title="删除">
+																				<span class="red">
+																					<i class="icon-trash bigger-130"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										    
+										</div><!-- /.table-responsive -->
+										<div class="modal-footer no-margin-top yemabg" >
+
+												<ul class="pagination pull-right no-margin">
+													<li class="prev disabled">
+														<a href="#">
+															<i class="icon-double-angle-left"></i>
+														</a>
+													</li>
+
+													<li class="active">
+														<a href="#">1</a>
+													</li>
+
+													<li>
+														<a href="#">2</a>
+													</li>
+
+													<li>
+														<a href="#">3</a>
+													</li>
+													<li>
+														<a href="#">4</a>
+													</li>
+													<li>
+														<a href="#">5</a>
+													</li>
+													
+													<li>
+														<a href="#">...</a>
+													</li>
+													<li>
+														<a href="#">30</a>
+													</li>
+
+													<li class="next">
+														<a href="#">
+															<i class="icon-double-angle-right"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div><!-- /span -->
+								</div><!-- /row -->
+
+								
+                                  <div id="modal-table1" class="modal fade1" tabindex="-1">
+									<div class="modal-dialog" style="margin-top: 80px;">
+										<div class="modal-content">
+											<div class="modal-header no-padding">
+												<div class="table-header" style="padding: 10px 10px;font-size: 20px;background: #F8F8F8;color: #000000;text-align: center;">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span style="font-size: 24px;" >&times;</span>
+													</button>
+													删除
+												</div>
+											</div>
+											<div>
+													<p style="font-size: 16px;text-align: left;text-indent: 2em;margin-top: 20px;margin-bottom: 20px;">是否确认删除？</p>
+												</div>
+												
+
+											
+											<div class="modal-footer no-margin-top" style="text-align: center;background: #FFFFFF;border: 0px;">
+												<button id="del_btn" class="btn btn-app btn-danger btn-sm" onClick="delrow();" style="font-size: 14px;text-align:center;padding:0px;vertical-align:middle ;line-height:20px; margin:0px; Height:40px;Width:90px;border:none;border-radius:2px;" data-dismiss="modal">
+													删除
+												</button>
+												<button class="btn btn-sm  " style="font-size: 14px;text-align:center;padding:0px;vertical-align:middle ;line-height:20px; margin:0px; Height:40px;Width:90px;border:none;border-radius:2px;" data-dismiss="modal">
+													取消
+												</button>
+	
+											</div>
+										</div><!-- /.modal-content -->
+									</div><!-- /.modal-dialog -->
+								</div><!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+
+								
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+				<!-- /#ace-settings-container -->
+			</div><!-- /.main-container-inner -->
+		            
+                        
+                    </div> 
+				</div><!-- /.main-container -->
+
+
+		<script type="text/javascript">
+	window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+	
+	
+</script>
+<!--弹出框、table选项卡-->
+<script src="assets/js/bootstrap.min.js"></script>
+
+	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>

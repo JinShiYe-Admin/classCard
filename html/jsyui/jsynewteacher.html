@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootstrap表单组件金视野系统模板</title>
+		<meta name="keywords" content="金视野,教育,平台" />
+		<meta name="description" content="金视野开发部,模板,2017" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.css" />
+		<link rel="stylesheet" href="assets/css/datepicker.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="assets/css/colorpicker.css" />
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			.widgetbg{
+				border: none;
+				padding: 0 !important;
+			}
+			.textareabg{
+				
+				padding:6px !important ;
+			}
+			.modalfooterbg{
+				background: none;
+				text-align: center;
+				margin-top: 100px;
+				border: none;
+			}
+			label{
+				font-weight: normal !important;
+				font-weight: bold !important;
+			}
+			.page-header h4{
+				font-weight: bold;
+				text-align: center;margin-top: 40px;
+				font-size: 20px;
+			}
+			.btnbg{
+				margin: 10px;
+			    padding:10px 20px;
+				border:none;
+				border-radius: 4px;
+				background: dodgerblue !important;
+			}
+			.quxiao{
+				margin: 10px!important;
+				padding:10px 20px;
+				border-radius: 4px;
+				border:none;
+			}
+			@media only screen and (max-width: 766px) {
+				.bumen{
+					margin-top: 10px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>	
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+
+				<div class="main-content" style="margin-left:0px">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i  class=" icon-home home-icon" ></i>
+								<a href="jsyteacher.html">教师基本信息</a>
+							</li>
+							<li class="active">教师基本信息详情</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<ul class="breadcrumb pull-right navright" >
+							<li>
+								<i class="icon-share-alt icon-color blue"></i>
+								<a href="jsyteacher.html">返回</a>
+							</li>
+						</ul><!-- .breadcrumb -->
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header" style="border: none;">
+							<h4>教师基本信息</h4>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<form class="form-horizontal" role="form">
+								    <div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 编号： </label>
+
+										<div class="col-sm-2">
+											<input type="text" class="form-control"  placeholder="11234644" readonly  style="cursor:pointer"/>
+											
+										</div>
+										
+										<label class="col-sm-1 control-label no-padding-right" > 姓名： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="王菲菲" readonly  style="cursor:pointer"/>
+											
+										</div>
+										 
+										<label class="col-sm-1 control-label no-padding-right" > 性别： </label>
+
+										<div class="col-sm-2">
+											<div class="radio" style="padding-top:2px ;">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 男</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 女</span>
+													</label>
+												</div>
+											
+										</div>
+									
+										<label class="col-sm-1 control-label no-padding-right" > 部门： </label>
+
+										<div class="col-sm-1">
+											<input type="text"  class="form-control"  placeholder="学生处" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<div class="col-sm-1 bumen">
+											<input type="text"  class="form-control "  placeholder="教导处" readonly  style="cursor:pointer"/>
+											
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right"> 职务： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="级部主任" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 职称： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="教师" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 任教科目： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="语文" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" > 电话： </label>
+
+										<div class="col-sm-2">
+											<input type="text"  class="form-control"  placeholder="18356496652" readonly  style="cursor:pointer"/>
+											
+										</div>
+									</div>
+
+									
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 账号： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="5621478226941365" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 密码： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="***********" readonly  style="cursor:pointer"/>
+											
+										</div>
+										<label class="col-sm-1 control-label no-padding-right"> 账号状态： </label>
+
+										<div class="col-sm-3">
+											<div class="radio" style="padding-top: 2px;">
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 正常</span>
+													</label>
+													<label>
+														<input name="form-field-radio" type="radio" class="ace" />
+														<span class="lbl"> 停用</span>
+													</label>
+												</div>
+											
+										</div>
+									</div>
+                                     
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" > 账号权限： </label>
+
+										<div class="col-sm-3">
+											<input type="text"  class="form-control"  placeholder="权限E权限E" readonly  style="cursor:pointer"/>
+											
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-xs-1">
+											</div>
+											 
+											<div class=" col-xs-9">
+												<div class="widget-box">
+													<div class="widget-header widget-header-flat" style="padding-left:0;background: #FFFFFF;border-left: 0;border-right: 0;border-bottom: 0;">
+														<div class="col-xs-4 smaller" style="font-size: 13px;color: #333333;font-weight: bold;">权限名称</div>
+														<div class="col-xs-8 widget-toolbar">
+																
+																	<b style="font-size: 13px;color: #333333;">权限说明</b>
+																
+
+														</div>
+													</div>
+
+													
+														<div class="widget-main col-xs-4">
+															
+													<div class="checkbox"style="padding-left: 0 !important;">
+													<label>
+														<input name="form-field-checkbox" type="checkbox" class="ace" />
+														<span class="lbl"style="font-size: 13px;"> 权限A</span>
+													</label>
+												</div>
+
+												<div class="checkbox" style="padding-left: 0 !important;">
+													<label>
+														<input name="form-field-checkbox" type="checkbox" class="ace" />
+														<span class="lbl" style="font-size: 13px;"> 权限B</span>
+													</label>
+												</div>
+
+												<div class="checkbox" style="padding-left: 0 !important;">
+													<label>
+														<input name="form-field-checkbox" type="checkbox" class="ace" />
+														<span class="lbl" style="font-size: 13px;"> 权限C</span>
+													</label>
+												</div>
+
+												<div class="checkbox" style="padding-left: 0 !important;">
+													<label>
+														<input name="form-field-checkbox" type="checkbox" class="ace" />
+														<span class="lbl" style="font-size: 13px;"> 权限D</span>
+													</label>
+												</div>	
+													</div>
+									    <div class="widget-main col-xs-8" style="border-left: solid 1px #E4E4E4;">
+												<div class="control-group">
+                                                <label class="control-label bolder "style="padding-left: 6px; font-size: 13px;">权限名称：<span style="color: #34A8EA;font-size: 13px;">权限E权限E</span></label>
+												<div class="widget-body" style="border: 0;">
+												<div class="widget-main padding-8">
+													<div id="tree1" class="tree tree-selectable"><div class="tree-folder" style="display:none;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name"></div>				</div>				<div class="tree-folder-content"></div>				<div class="tree-loader" style="display: none;"></div>			</div>			<div class="tree-item" style="display:none;">				<i class="icon-remove"></i>				<div class="tree-item-name"></div>			</div><div class="tree-folder" style="display: block;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name">For Sale</div>				</div>				<div class="tree-folder-content" style="display: none;"><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Appliances</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Arts &amp; Crafts</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Clothing</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Computers</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Jewelry</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Office &amp; Business</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Sports &amp; Fitness</div>			</div></div>				<div class="tree-loader" style="display: none;"><div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div></div>			</div><div class="tree-folder" style="display: block;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name">Vehicles</div>				</div>				<div class="tree-folder-content"></div>				<div class="tree-loader" style="display: none;"><div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div></div>			</div><div class="tree-folder" style="display: block;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name">Rentals</div>				</div>				<div class="tree-folder-content"></div>				<div class="tree-loader" style="display: none;"><div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div></div>			</div><div class="tree-folder" style="display: block;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name">Real Estate</div>				</div>				<div class="tree-folder-content"></div>				<div class="tree-loader" style="display: none;"><div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div></div>			</div><div class="tree-folder" style="display: block;">				<div class="tree-folder-header">					<i class="icon-plus"></i>					<div class="tree-folder-name">Pets</div>				</div>				<div class="tree-folder-content" style="display: none;"><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Cats</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Dogs</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Horses</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Reptiles</div>			</div></div>				<div class="tree-loader" style="display: none;"><div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div></div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Tickets</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Services</div>			</div><div class="tree-item" style="display: block;">				<i class="icon-remove"></i>				<div class="tree-item-name">Personals</div>			</div></div>
+												</div>
+											
+											</div>
+										</div>
+										</div>
+										</div>
+													</div>
+													</div>
+											</div>
+										</div>
+								</div>
+									</div>
+							</form>
+									</div>
+			
+			</div><!-- /.main-container-inner -->
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+
+<![endif]-->
+
+		<!--[if !IE]> -->
+<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<script src="assets/js/fuelux/data/fuelux.tree-sampledata.js"></script>
+		<script src="assets/js/fuelux/fuelux.tree.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			jQuery(function($){
+
+		$('#tree1').ace_tree({
+			dataSource: treeDataSource ,
+			multiSelect:true,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-minus',
+			'close-icon' : 'icon-plus',
+			'selectable' : true,
+			'selected-icon' : 'icon-ok',
+			'unselected-icon' : 'icon-remove'
+		});
+
+		$('#tree2').ace_tree({
+			dataSource: treeDataSource2 ,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-folder-open',
+			'close-icon' : 'icon-folder-close',
+			'selectable' : false,
+			'selected-icon' : null,
+			'unselected-icon' : null
+		});
+
+		/**
+		$('#tree1').on('loaded', function (evt, data) {
+		});
+
+		$('#tree1').on('opened', function (evt, data) {
+		});
+
+		$('#tree1').on('closed', function (evt, data) {
+		});
+
+		$('#tree1').on('selected', function (evt, data) {
+		});
+		*/
+});
+		</script>
+		<script src="assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="assets/js/chosen.jquery.min.js"></script>
+		<script src="assets/js/fuelux/fuelux.spinner.min.js"></script>
+		<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+		<script src="assets/js/date-time/bootstrap-timepicker.min.js"></script>
+		<script src="assets/js/date-time/moment.min.js"></script>
+		<script src="assets/js/date-time/daterangepicker.min.js"></script>
+		<script src="assets/js/bootstrap-colorpicker.min.js"></script>
+		<script src="assets/js/jquery.knob.min.js"></script>
+		<script src="assets/js/jquery.autosize.min.js"></script>
+		<script src="assets/js/jquery.inputlimiter.1.3.1.min.js"></script>
+		<script src="assets/js/jquery.maskedinput.min.js"></script>
+		<script src="assets/js/bootstrap-tag.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+		
+	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
