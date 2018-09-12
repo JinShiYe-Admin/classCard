@@ -12,6 +12,7 @@
 				background: #58B0BA;
 				padding: 22px;
 				border-radius: 25px;
+				margin: 0 1%;
 			}
 			
 			.div1 {
@@ -33,20 +34,22 @@
 			
 			.div2 {
 				height: 100%;
-				width: 30%;
+				width: 28%;
 				background: #25747d;
 				float: left;
 				padding: 20px;
 				border-radius: 25px;
+				margin: 0  1% 0 1%;
 			}
 			
 			.div3 {
 				height: 100%;
-				width: 70%;
+				width: 68%;
 				background: #26aba5;
 				float: left;
 				padding: 20px;
 				border-radius: 25px;
+				margin: 0 1% 0 1%;
 			}
 			
 			.div4 {
@@ -138,9 +141,9 @@
 					</div>
 				</div>
 				<div class="div3">
-					<div class="div5" v-if="currentModel.content">
+					<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
 						<p class="div6">{{currentModel.topic}}</p>
-						<div class="div7">{{currentModel.content}}</div>
+						<div class="div7" v-html="currentModel.content"></div>
 						<!--<div class="div7" ref="tempFlag2"></div>-->
 					</div>
 				</div>
@@ -239,7 +242,6 @@
 					clickLi: function(event,model) {
 						var obj =event.target;
 						$(obj).parent().parent().find('li').each(function(){
-							console.log($(this).html());
 							$(this).css("background","#fff");
 //							$(this).css("background","#fff");
 						});
