@@ -30,10 +30,10 @@
 		var loginFlag = 0; //0自动登录，1不自动登录//判断上次有没有登录，如果登录，就不执行登录协议
 		//		mui.plusReady(function() {
 		window.onload = function() {
-//			store.set(window.storageKeyName.PUBLICPARAMETER, {});
+			//			store.set(window.storageKeyName.PUBLICPARAMETER, {});
 			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-			console.log('publicPar:'+JSON.stringify(publicPar));
-			if(publicPar&&publicPar.uuid) {
+			console.log('publicPar:' + JSON.stringify(publicPar));
+			if(publicPar && publicPar.uuid) {
 				console.log('1111');
 			} else {
 				console.log('1112');
@@ -47,6 +47,24 @@
 			}
 			setUUID();
 			document.addEventListener("netchange", wainshow, false);
+			//
+			var blandid = getUrlParam('blandid');
+			var blandlv = getUrlParam('blandlv');
+			var params = getUrlVars();
+			var cityName = decodeURI(params.cityName);
+			console.log('cityName:' + cityName + ',blandlv:' + blandlv + ',blandid:' + blandid);
+			if (blandid>=0) {
+				publicPar.blandid = blandid;
+			}
+			if (blandlv>=0) {
+				publicPar.blandlv = blandlv;
+			}
+			if (blandid!=null||blandid!=undefined) {
+				publicPar.cityName = cityName;
+			}
+			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
+			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+			console.log('publicPar2222222:' + JSON.stringify(publicPar));
 
 			function wainshow() {
 				if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
@@ -74,7 +92,7 @@
 				shaketype: 'login', //注册(reg),登录(login),修改密码(repw)
 				appid: publicPar.appid //系统所分配的应用ID
 			};
-//			events.showWaiting();
+			//			events.showWaiting();
 			//发送网络请求，data为网络返回值
 			postDataEncry('ShakeHand', enData0, comData0, 0, function(data) {
 				console.log('2121212');
@@ -92,10 +110,10 @@
 						schid: storageKeyName.SCHOOLID, //学校ID
 						utp: storageKeyName.USERTYPE //用户类型，0老师,1家长,2学生
 					}
-					console.log('comData1:'+JSON.stringify(comData1));
+					console.log('comData1:' + JSON.stringify(comData1));
 					//登录
 					postDataEncry('Login', enData1, comData1, 0, function(data1) {
-//						events.closeWaiting();
+						//						events.closeWaiting();
 						if(data1.RspCode == 0) {
 							loginFlag = 1;
 							if(data1.RspData.dpts == null) {
@@ -127,7 +145,7 @@
 							data1.RspData.uarea = model_area; //用户区域,省代码 市代码|省名称 市名称
 							console.log('data1.RspData:' + JSON.stringify(data1.RspData));
 							store.set(window.storageKeyName.PERSONALINFO, data1.RspData);
-							utils.mOpenWithData("../../html/index/testIndex.html?cityName=上海&classId=12", {});
+							utils.mOpenWithData("../../html/index/testIndex.html", {});
 						} else if(data1.RspCode == 5) { //用户名或密码不正确
 							store.set(window.storageKeyName.PERSONALINFO, {});
 							setUUID();
@@ -141,6 +159,26 @@
 				}
 			});
 
+		}
+
+		//获取url中的参数
+		function getUrlParam(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg); //匹配目标参数
+			if(r != null) return unescape(r[2]);
+			return null; //返回参数值
+		}
+
+		function getUrlVars() {
+			var vars = [],
+				hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
 		}
 
 		//从ios原生得到信息
