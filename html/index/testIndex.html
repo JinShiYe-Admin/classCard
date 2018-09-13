@@ -108,6 +108,8 @@
 				margin-right: 10px;
 				color: white;
 				font-size: 12px;
+				overflow: auto;
+				height: 400px;
 			}
 			
 			.div6Time {
@@ -118,12 +120,6 @@
 				text-align: right;
 			}
 			
-			.PDetail {
-				border: 0px solid #ccc;
-				overflow: hidden;
-				display: -webkit-box;
-				-webkit-line-clamp: 1 -webkit-box-orient: vertical;
-			}
 		</style>
 	</head>
 
@@ -139,10 +135,10 @@
 					</div>
 					<div id="" style="height: 69%;width: 100%;">
 						<ul class="mui-table-view mui-grid-view mui-grid-9" style="height: 100%;width: 100%;background: #007c8f;padding: 22px;border: 0px;">
-							<li @click="clickLi(cardModel)" v-if="cardMsgList1.chname" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 32%;height: 100%;margin-right: 2%;border: 0px;background: #58B0BA;">
+							<li @click="clickLi(cardModel)" v-if="cardMsgList1.chname" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 32%;height: 100%;margin-right: 2%;border: 0px;background: #58B0BA;overflow: auto;" v-for="(cardModel,index) in cardMsgList1.newslist">
 								<div class="" style="background-size: 100% 100%;">
 									<p style="font-size: 20px;text-align: center;color: white;">{{cardMsgList1.chname}}</p>
-									<p class="PDetail" ref="tempFlag3" style="font-size: 15px;text-align: left;color: white;"></p>
+									<div v-html="cardMsgList1.newslist[0].content" style="font-size: 15px;text-align: left;color: white;overflow: auto;"></div>
 								</div>
 							</li>
 							<li v-if="cardMsgList2.chname" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="width: 32%;height: 100%;margin-right: 2%;border: 0px;background: #58B0BA;">
@@ -230,15 +226,15 @@
 						<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
 							<div v-if="index==cardMsgList5.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList5.newslist">
 								<p class="pColor" style="margin-left: 10px;margin-top: 15px;font-size: 25px;">{{cardMsgList5.chname}}:</p>
-								<div class="div6Content" ref="tempFlag10"></div>
+								<div class="div6Content" v-html="newModel.content"></div>
 							</div>
 							<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList5.newslist">
 								<p class="pColor" style="margin-left: 10px;margin-top: 15px;font-size: 25px;">{{cardMsgList5.chname}}:</p>
-								<div class="div6Content" ref="tempFlag1"></div>
+								<div class="div6Content" v-html="newModel.content"></div>
 							</div>
 							<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList5.newslist">
 								<p class="pColor" style="margin-left: 10px;margin-top: 15px;font-size: 25px;">{{cardMsgList5.chname}}:</p>
-								<div class="div6Content" ref="tempFlag2"></div>
+								<div class="div6Content" v-html="newModel.content"></div>
 							</div>
 						</div>
 						<div class="mui-slider-indicator">
@@ -364,9 +360,6 @@
 							}, 300);
 						} else if(tempFlag == 1) {
 							classCardMsg.cardMsgList1 = data.RspData;
-							setTimeout(function() {
-								classCardMsg.modifyNotice1();
-							}, 300);
 						} else if(tempFlag == 2) {
 							classCardMsg.cardMsgList2 = data.RspData;
 						} else if(tempFlag == 3) {
@@ -392,23 +385,6 @@
 					timeModel: {}
 				},
 				methods: {
-					modifyNotice: function() {
-						for(var i = 0; i < classCardMsg.cardMsgList5.newslist.length; i++) {
-							var tempModel = classCardMsg.cardMsgList5.newslist[i];
-							this.$refs.tempFlag1[i].innerHTML = tempModel.content;
-							if(i == 0) {
-								this.$refs.tempFlag2.innerHTML = tempModel.content;
-							}
-							if(i == classCardMsg.cardMsgList5.newslist.length - 1) {
-								this.$refs.tempFlag10.innerHTML = tempModel.content;
-							}
-						}
-					},
-					modifyNotice1: function() {
-						if(classCardMsg.cardMsgList1.newslist.length > 0) {
-							this.$refs.tempFlag3.innerHTML = classCardMsg.cardMsgList1.newslist[0].content;
-						}
-					},
 					clickLi: function(model) {
 						model.grdId = grdId;
 						model.clsId = clsId;
