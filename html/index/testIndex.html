@@ -53,7 +53,7 @@
 				background: -webkit-linear-gradient(#0291CD, #F9AB65); /* Safari 5.1 - 6.0 */
 			    background: -o-linear-gradient(#0291CD, #F9AB65); /* Opera 11.1 - 12.0 */
 			    background: -moz-linear-gradient(#0291CD, #F9AB65); /* Firefox 3.6 - 15 */
-	   		    background: linear-gradient(#F9AB65, #F9AB65); /* 标准的语法 */
+	   		    background: linear-gradient(#0291CD, #F9AB65); /* 标准的语法 */
 			}
 			
 			.div7 {
@@ -144,7 +144,7 @@
 				font-size: 13px;
 			}
 			::-webkit-scrollbar{width:0;}
-			
+			img {max-width:50px;myimg:expression_r(onload=function(){this.style.width=(this.offsetWidth > 50)?"50px":"auto"});}
 			
 		</style>
 	</head>
@@ -195,7 +195,8 @@
 				<div style="float:left;height: 100%;width: 0.3%;">
 					<p style="background: #fff;"></p>
 				</div>
-				<div class="div3" style="float:left;background: url(../../img/tianqi.jpg);background-size: 100% 100%;">
+				<!--<div class="div3" style="float:left;background: url(../../img/tianqi.jpg);background-size: 100% 100%;">-->
+				<div class="div3" :style="{backgroundImage: 'url(' + weatherModel.backgroundImg+ ')'}" style="float:left;background-size: 100% 100%;">
 					<div style="height: 65%;width: 100%;" v-if="weatherModel.city">
 						<div class="div8" style="float:left;height: 100%;">
 							<div class="div12" style="float:left;height: 100%;">
@@ -316,6 +317,7 @@
 					dataType: "xml",
 					success: function(data) {
 						var json_obj = $.xml2json(data);
+						json_obj.backgroundImg = '../../img/tianqi.jpg';
 						console.log('json_obj:' + JSON.stringify(json_obj));
 						classCardMsg.weatherModel = json_obj;
 					}
