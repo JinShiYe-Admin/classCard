@@ -50,10 +50,10 @@
 				background: #bb7554;
 				height: 100%;
 				width: 30%;
-				background: -webkit-linear-gradient(#F9AB65, #FFCD98); /* Safari 5.1 - 6.0 */
-			    background: -o-linear-gradient(#F9AB65, #FFCD98); /* Opera 11.1 - 12.0 */
-			    background: -moz-linear-gradient(#F9AB65, #FFCD98); /* Firefox 3.6 - 15 */
-	   		    background: linear-gradient(#F9AB65, #FFCD98); /* 标准的语法 */
+				background: -webkit-linear-gradient(#0291CD, #F9AB65); /* Safari 5.1 - 6.0 */
+			    background: -o-linear-gradient(#0291CD, #F9AB65); /* Opera 11.1 - 12.0 */
+			    background: -moz-linear-gradient(#0291CD, #F9AB65); /* Firefox 3.6 - 15 */
+	   		    background: linear-gradient(#0291CD, #F9AB65); /* 标准的语法 */
 			}
 			
 			.div7 {
@@ -124,7 +124,7 @@
 				color: white;
 				font-size: 12px;
 				overflow: auto;
-				height: 400px;
+				height: 85%;
 			}
 			
 			.div6Time {
@@ -144,6 +144,8 @@
 				font-size: 13px;
 			}
 			::-webkit-scrollbar{width:0;}
+			
+			
 		</style>
 	</head>
 
@@ -170,7 +172,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" />
 											<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -181,7 +183,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" />
 											<div class="mui-media-body"  style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -229,18 +231,18 @@
 							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 							<div v-if="index==cardMsgList4.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img :src=newModel.imgurl style="height: 100%;">
+									<img :src=newModel.imgurl style="height: 100%;" >
 								</a>
 							</div>
 							<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img style="height: 100%;" :src=newModel.imgurl>
+									<img style="height: 100%;" :src=newModel.imgurl >
 								</a>
 							</div>
 							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 							<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img :src=newModel.imgurl style="height: 100%;">
+									<img :src=newModel.imgurl style="height: 100%;" >
 								</a>
 							</div>
 						</div>
