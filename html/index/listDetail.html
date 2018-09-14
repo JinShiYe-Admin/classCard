@@ -7,17 +7,24 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
-			body { font-family:STHeiti,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu }
+			body {
+				font-family: STHeiti, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+			}
+			
 			.topDiv {
 				height: 24%;
 				background: #58B0BA;
 				padding: 22px;
 				border-radius: 10px;
 				margin: 0 1%;
-				background: -webkit-linear-gradient(#0078bd, #08bdeb); /* Safari 5.1 - 6.0 */
-			    background: -o-linear-gradient(#0078bd, #08bdeb); /* Opera 11.1 - 12.0 */
-			    background: -moz-linear-gradient(#0078bd, #08bdeb); /* Firefox 3.6 - 15 */
-	   		    background: linear-gradient(#0078bd, #08bdeb); /* 标准的语法 */
+				background: -webkit-linear-gradient(#0078bd, #08bdeb);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#0078bd, #08bdeb);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#0078bd, #08bdeb);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(#0078bd, #08bdeb);
+				/* 标准的语法 */
 			}
 			
 			.div1 {
@@ -34,7 +41,6 @@
 				height: 75%;
 				width: 100%;
 				float: left;
-				
 			}
 			
 			.div2 {
@@ -44,11 +50,15 @@
 				float: left;
 				padding: 20px;
 				border-radius: 10px;
-				margin: 0  1% 0 1%; 
-				background: -webkit-linear-gradient(#08B9EA, #08B9EA); /* Safari 5.1 - 6.0 */
-			    background: -o-linear-gradient(#08B9EA, #08B9EA); /* Opera 11.1 - 12.0 */
-			    background: -moz-linear-gradient(#08B9EA, #08B9EA); /* Firefox 3.6 - 15 */
-	   		    background: linear-gradient(#08B9EA, #08B9EA); /* 标准的语法 */
+				margin: 0 1% 0 1%;
+				background: -webkit-linear-gradient(#08B9EA, #08B9EA);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#08B9EA, #08B9EA);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#08B9EA, #08B9EA);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(#08B9EA, #08B9EA);
+				/* 标准的语法 */
 			}
 			
 			.div3 {
@@ -107,16 +117,30 @@
 				margin-left: 20px;
 				margin-top: 20px;
 			}
-			.mui-table-view li:first-child{
+			
+			/*.mui-table-view li:first-child {
 				background: #F0981C;
+			}*/
+			
+			.picture {
+				text-align: center;
 			}
 			
-			.paragraph{
+			.paragraph {
 				color: #333333;
 				text-indent: 2em;
-    			letter-spacing: 3px;
+				letter-spacing: 3px;
 			}
-			::-webkit-scrollbar{width:0;}
+			
+			::-webkit-scrollbar {
+				width: 0;
+			}
+			.bg1{
+				background: #fff;
+			}
+			.bg2{
+				background: #F0981C;
+			}
 		</style>
 	</head>
 
@@ -126,7 +150,7 @@
 				<div class="div1">
 					<div class="" style="float: left;width: 40%;height: 100%;">
 						<ul class="mui-table-view mui-grid-view mui-grid-9" style="height: 100%;background: transparent;padding: 22px;border: 0px;">
-							<li class="mui-table-view-cell mui-media " style="height: 100%;top:30px;border: 0px;">
+							<li class="mui-table-view-cell mui-media" style="height: 100%;top:30px;border: 0px;">
 								<p style="color: #fff;font-size: 2.0em;font-weight: 600;letter-spacing:5px">{{cardMsgList1.schname}}{{cardMsgList1.gradename}}{{cardMsgList1.chname}}</p>
 							</li>
 						</ul>
@@ -154,13 +178,13 @@
 				<div class="div2">
 					<div class="div4">
 						<!--下拉刷新容器-->
-								<ul class="mui-table-view" v-if="cardMsgList1.newslist">
-									<li @click="clickLi($event,detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
-										<a class="mui-navigate-right">
-											{{detailModel.topic}}
-										</a>
-									</li>
-								</ul>
+						<ul class="mui-table-view" v-if="cardMsgList1.newslist">
+							<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
+								<a class="mui-navigate-right">
+									{{detailModel.topic}}
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div class="div3">
@@ -202,17 +226,17 @@
 					}
 				}
 			});
-			
+
 			var curPage;
 			//3分钟后返回上一级页面
-//			setTimeout(function(){
-//				window.location.href=document.referrer;
-//			},3*60*1000);
-			
+			//			setTimeout(function(){
+			//				window.location.href=document.referrer;
+			//			},3*60*1000);
+
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
 				console.log('curPage:' + JSON.stringify(curPage));
-				classCardMsg.currentModel = curPage
+//				classCardMsg.currentModel = curPage;
 				$('.div7').height($('.div3').height() - 70);
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				var tempUrl = 'http://wthrcdn.etouch.cn/WeatherApi?city=' + publicPar.cityName;
@@ -242,8 +266,8 @@
 					uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
-//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					blandid: 14, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
 					blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					psize: pageSize, //每页条数
@@ -258,18 +282,14 @@
 					console.log('2121212tempFlag:' + tempFlag);
 					if(data.RspCode == 0) {
 						if(tempFlag == 1) {
-							classCardMsg.cardMsgList1 = data.RspData;
-							for(var i = 0; i < classCardMsg.cardMsgList1.newslist.length; i++) {
-								var tempModel = classCardMsg.cardMsgList1.newslist[i];
-								console.log('111');
-								if(tempModel.newsid == classCardMsg.currentModel.newsid) {
-									console.log('112');
+							for(var i = 0; i < data.RspData.newslist.length; i++) {
+								var tempModel = data.RspData.newslist[i];
+								if(tempModel.newsid == curPage.newsid) {
 									classCardMsg.currentModel = tempModel;
-//									setTimeout(function() {
-//										this.$refs.tempFlag2.innerHTML = classCardMsg.currentModel.content;
-//									}, 1000);
+									break;
 								}
 							}
+							classCardMsg.cardMsgList1 = data.RspData;
 						}
 					} else {
 
@@ -285,15 +305,14 @@
 					currentModel: {}
 				},
 				methods: {
-					clickLi: function(event,model) {
-						var obj =event.target;
-						$(obj).parent().parent().find('li').each(function(){
-							$(this).css("background","#fff");
-//							$(this).css("background","#fff");
-						});
-						$(obj).parent().css("background","#F0981C");
+					clickLi: function(model) {
+//						var obj = event.target;
+//						$(obj).parent().parent().find('li').each(function() {
+//							$(this).css("background", "#fff");
+//						});
+//						$(obj).parent().css("background", "#F0981C");
 						classCardMsg.currentModel = model;
-//						this.$refs.tempFlag2.innerHTML = classCardMsg.currentModel.content;
+						//						this.$refs.tempFlag2.innerHTML = classCardMsg.currentModel.content;
 					}
 				}
 			});
