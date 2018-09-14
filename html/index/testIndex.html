@@ -144,7 +144,6 @@
 				font-size: 13px;
 			}
 			::-webkit-scrollbar{width:0;}
-			img {max-width:50px;myimg:expression_r(onload=function(){this.style.width=(this.offsetWidth > 50)?"50px":"auto"});}
 			
 		</style>
 	</head>
@@ -172,7 +171,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 											<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -183,7 +182,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 											<div class="mui-media-body"  style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -230,20 +229,20 @@
 					<div id="slider1" class="mui-slider" style="height: 100%;">
 						<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
 							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-							<div v-if="index==cardMsgList4.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
+							<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img :src=newModel.imgurl style="height: 100%;" >
+									<img :src=newModel.imgurl style="height: 100%;object-fit: cover;" >
 								</a>
 							</div>
 							<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img style="height: 100%;" :src=newModel.imgurl >
+									<img style="height: 100%;object-fit: cover;" :src=newModel.imgurl >
 								</a>
 							</div>
 							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 							<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 								<a href="#" style="height: 100%;">
-									<img :src=newModel.imgurl style="height: 100%;" >
+									<img :src=newModel.imgurl style="height: 100%;object-fit: cover;" >
 								</a>
 							</div>
 						</div>
