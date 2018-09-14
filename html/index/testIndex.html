@@ -171,7 +171,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 80px;height: 80px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 											<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -182,7 +182,7 @@
 								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 										<a href="#">
-											<img class="mui-icon" style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
+											<img class="mui-icon" style="width: 80px;height: 80px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 											<div class="mui-media-body"  style="color: #fff;">{{cardModel.topic}}</div>
 										</a>
 									</li>
@@ -316,7 +316,23 @@
 					dataType: "xml",
 					success: function(data) {
 						var json_obj = $.xml2json(data);
-						json_obj.backgroundImg = '../../img/tianqi.jpg';
+						var tempType = json_obj.forecast.weather[0].day.type;
+						json_obj.backgroundImg = '../../img/tianqi1.jpg';
+						if (tempType.indexOf("晴")>-1) {
+							json_obj.backgroundImg = '../../img/tianqi1.jpg';
+						}
+						if (tempType.indexOf("雨")>-1) {
+							json_obj.backgroundImg = '../../img/tianqi2.jpg';
+						}
+						if (tempType.indexOf("雪")>-1) {
+							json_obj.backgroundImg = '../../img/tianqi3.jpg';
+						}
+						if (tempType.indexOf("阴")>-1) {
+							json_obj.backgroundImg = '../../img/tianqi4.jpg';
+						}
+						if (tempType.indexOf("云")>-1) {
+							json_obj.backgroundImg = '../../img/tianqi5.jpg';
+						}
 						console.log('json_obj:' + JSON.stringify(json_obj));
 						classCardMsg.weatherModel = json_obj;
 					}
