@@ -137,10 +137,21 @@
 			
 			.bg1 {
 				background: #fff;
+				border-radius: 10px;
 			}
 			
 			.bg2 {
 				background: #F0981C;
+				border-radius: 10px;
+			}
+			.bg3 {
+				font-size: 14px;
+				color: #fff;
+			}
+			
+			.bg4 {
+				font-size: 14px;
+				color: black;
 			}
 		</style>
 	</head>
@@ -178,11 +189,11 @@
 			<div class="bottomDiv">
 				<div class="div2">
 					<div class="div4">
-						<!--下拉刷新容器-->
-						<ul class="mui-table-view" v-if="cardMsgList1.newslist">
-							<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
-								<a class="mui-navigate-right">
-									{{detailModel.topic}}
+						<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;" v-if="cardMsgList1.newslist">
+							<li @click="clickLi(detailModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;" v-for="(detailModel,index) in cardMsgList1.newslist">
+								<a href="#" :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'">
+									<img class="mui-icon" style="width: 80px;height: 80px;border-radius: 50%;object-fit: cover;" :src=detailModel.imgurl />
+									<div :class="(currentModel.newsid==detailModel.newsid)?'bg3':'bg4'">{{detailModel.topic}}</div>
 								</a>
 							</li>
 						</ul>
