@@ -203,7 +203,7 @@
                         </ul>
 					</div>
 					<div id="demo1" style="position: relative;bottom: 0;width: 100%;"></div>
-					<div id="demo2" style="text-align: center;margin-top: -40px;">第{{pageNum}}/{{totalPage}}页</div>
+					<div id="demo2" style="text-align: center;margin-top: -40px;color: white;">第{{pageNum}}/{{totalPage}}页</div>
 				</div>
 				<div class="div3">
 					<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
@@ -246,7 +246,8 @@
 				    ,layout: ['prev','next']
 				    ,jump: function(obj, first){
 				      if(!first){
-				      	classCardMsg.pageNum=obj.curr
+				      	classCardMsg.pageNum=obj.curr;
+				      	getlist(2, curPage.chncode, 5, 1);
 				      }
 				    }
 				  });
@@ -289,8 +290,8 @@
 //					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
 					blandlv: 1, //班牌类型
-					psize: pageSize, //每页条数
-					pindex: 1, //页码
+					psize: classCardMsg.pageLimit, //每页条数
+					pindex: classCardMsg.pageNum, //页码
 					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
 					utoken: personal.utoken, //用户令牌
 					appid: publicPar.appid //系统所分配的应用ID
@@ -308,6 +309,8 @@
 									break;
 								}
 							}
+							classCardMsg.totalCount = 66;
+							classCardMsg.totalPage = 7;
 							classCardMsg.cardMsgList1 = data.RspData;
 						}
 					} else {
@@ -324,8 +327,8 @@
 					currentModel: {},
 					pageNum:1,//当前页
 					pageLimit:10,//每页显示条数
-					totalCount:66,//总条数
-					totalPage:7 //总条数/每页显示条数 整数赋值，余数加一
+					totalCount:0,//总条数
+					totalPage:1 //总条数/每页显示条数 整数赋值，余数加一
 				},
 				methods: {
 					clickLi: function(model) {
