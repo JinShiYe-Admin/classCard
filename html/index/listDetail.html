@@ -232,26 +232,12 @@
 			mui.init();
 
 			var curPage;
+			var canInit=true;
 			//3分钟后返回上一级页面
 			//			setTimeout(function(){
 			//				window.location.href=document.referrer;
 			//			},3*60*1000);
 			
-			layui.use(['laypage', 'layer'], function(){
-				  var laypage = layui.laypage
-				  ,layer = layui.layer;
-				  laypage.render({
-				    elem: 'demo1'
-				    ,count: classCardMsg.totalCount //数据总数
-				    ,layout: ['prev','next']
-				    ,jump: function(obj, first){
-				      if(!first){
-				      	classCardMsg.pageNum=obj.curr;
-				      	getlist(2, curPage.chncode, 5, 1);
-				      }
-				    }
-				  });
-			});
 			
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
@@ -302,16 +288,24 @@
 					console.log('2121212tempFlag:' + tempFlag);
 					if(data.RspCode == 0) {
 						if(tempFlag == 1) {
-							for(var i = 0; i < data.RspData.newslist.length; i++) {
-								var tempModel = data.RspData.newslist[i];
-								if(tempModel.newsid == curPage.newsid) {
-									classCardMsg.currentModel = tempModel;
-									break;
+							var dataL= data.RspData.newslist;
+							if(dataL!=null){
+								for(var i = 0; i < data.RspData.newslist.length; i++) {
+									var tempModel = data.RspData.newslist[i];
+									if(tempModel.newsid == curPage.newsid) {
+										classCardMsg.currentModel = tempModel;
+										break;
+									}
+								}
+								console.log("******************我给VUE赋值了**********************")
+								classCardMsg.totalCount = data.RspData.pg.RowCount;
+								classCardMsg.totalPage = data.RspData.pg.PageCount;
+								classCardMsg.cardMsgList1 = data.RspData;
+								if(canInit){
+									canInit=false;
+									initLayuiPage()
 								}
 							}
-							classCardMsg.totalCount = 66;
-							classCardMsg.totalPage = 7;
-							classCardMsg.cardMsgList1 = data.RspData;
 						}
 					} else {
 
@@ -328,20 +322,33 @@
 					pageNum:1,//当前页
 					pageLimit:10,//每页显示条数
 					totalCount:0,//总条数
-					totalPage:1 //总条数/每页显示条数 整数赋值，余数加一
+					totalPage:1 //总页数
 				},
 				methods: {
 					clickLi: function(model) {
-						//						var obj = event.target;
-						//						$(obj).parent().parent().find('li').each(function() {
-						//							$(this).css("background", "#fff");
-						//						});
-						//						$(obj).parent().css("background", "#F0981C");
 						classCardMsg.currentModel = model;
-						//						this.$refs.tempFlag2.innerHTML = classCardMsg.currentModel.content;
 					}
 				}
 			});
+
+			function initLayuiPage(){
+				console.log("******************我初始化了**********************")
+				layui.use(['laypage', 'layer'], function(){
+						  var laypage = layui.laypage
+						  ,layer = layui.layer;
+						  laypage.render({
+						    elem: 'demo1'
+						    ,count: classCardMsg.totalCount //数据总数
+						    ,layout: ['prev','next']
+						    ,jump: function(obj, first){
+						      if(!first){
+						      	classCardMsg.pageNum=obj.curr;
+						      	getlist(2, curPage.chncode, 5, 1);
+						      }
+						    }
+						  });
+					});
+			}
 
 			function getDetail() {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
