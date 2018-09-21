@@ -18,70 +18,196 @@
 				border: 1px solid black;
 			}*/
 			
-			.center{
+			.center {
 				position: relative;
 				top: 50%;
 				/*left: 50%;*/
-				text-align:center;
+				text-align: center;
 				/*background:#393;
 				color:#fff;*/
 				transform: translate(-50%, -50%);
-				}
+			}
+			
+			.paragraph {
+				text-indent: 2em;
+				letter-spacing: 3px;
+				font-size: 13px;
+				font-size: 15px;
+				color: white;
+			}
+			
+			::-webkit-scrollbar {
+				width: 0;
+			}
+			
+			.picture {
+				text-align: center;
+			}
+			
+			#moocBox {
+				height: 80%;
+				width: 100%;
+				/*margin-left: 25px;
+				margin-top: 10px;*/
+				overflow: hidden;
+			}
+			
+			#moocBox1 {
+				height: 80%;
+				width: 100%;
+				/*margin-left: 25px;
+				margin-top: 10px;*/
+				overflow: hidden;
+			}
+			
+			h4 {
+				display: block;
+				-webkit-margin-before: 1.33em;
+				-webkit-margin-after: 1.33em;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+				font-weight: bold;
+				text-align: center;
+			}
 		</style>
 	</head>
 
 	<body style="height:100%;">
-		<div class="mui-content" style="height: 100%;">
+		<div class="mui-content" style="height: 100%;" id="classCardMsg">
 			<div style="background: red;height: 12%;width: 100%;">
+				<!--头像、学校、年级、班级信息-->
 				<div class="" style="float:left;height: 100%;width: 50%;background: gold;">
 					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 2%;float: left;">
-						<div class="mui-media-body center" style="left: 28%;float: left;">
-							<p class="mui-pull-left" style="font-size: 20px;color: #fff;font-weight: 600;">济南一中 | 三年级二班</p>
+						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 5%;float: left;">
+						<div v-if="cardMsgList1.chname" class="mui-media-body center" style="left: 13%;float: left;">
+							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
 						</div>
 					</li>
 				</div>
+				<!--时间-->
 				<div class="" style="float:left;height: 100%;width: 50%;background: green;">
 					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<div class="mui-media-body" style="height: 100%;">
-							<p class="mui-pull-right text1111" style="height: 80px;vertical-align:middle;">2018年9月18日 星期二 15：30</p>
+						<div class="mui-media-body center" style="height: 100%;">
+							<p class="mui-pull-right" style="">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 						</div>
 					</li>
 				</div>
 			</div>
 			<div style="background: grey;height: 85%;width: 100%;">
 				<div class="" style="float:left;height: 100%;width: 2%;background: blue;"></div>
+				<!--简介-->
 				<div class="" style="float:left;height: 100%;width: 24%;background: blue;">
-					<div style="background: red;height: 60%;width: 100%;border-radius: 10px;">
-
+					<div style="background: red;height: 60%;width: 100%;">
+						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList1.chname}}</p>
+						<!--<h3 v-if="cardMsgList1.newslist" style="font-size: 22px;color: white;height: 10%;background: blueviolet;text-align: left;padding-top: 10px;padding-left: 20px;">{{cardMsgList1.chname}}</h3>-->
+						<div v-if="cardMsgList1.newslist" id="moocBox1" style="height: 80%;">
+							<div id="con11">
+								<div @click="clickLi(cardMsgList1.newslist[0])" style="padding: 10px;" v-html="cardMsgList1.newslist[0].content"></div>
+							</div>
+							<div id="con21">
+							</div>
+						</div>
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<!--班委介绍-->
 					<div style="background: grey;height: 39%;width: 100%;">
-
+						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
+						<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
+							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
+								<a href="#">
+									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
+									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
 				<div class="" style="float:left;height: 100%;width: 47%;background: gold;">
+					<!--老师风采-->
 					<div style="background: red;height: 39%;width: 100%;">
-
+						<p v-if="cardMsgList2.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList2.chname}}</p>
+						<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
+							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
+								<a href="#">
+									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
+									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
+									<div class="mui-media-body" style="color: #fff;">班主任</div>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<!--荣誉-->
 					<div style="background: grey;height: 60%;width: 100%;">
-
+						<p v-if="cardMsgList6.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList6.chname}}</p>
+						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
+							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;" v-for="(cardModel,index) in cardMsgList6.newslist">
+								<a href="#">
+									<img class="mui-icon" style="width: 100%;height: 100%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
+									<!--<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>-->
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
 				<div class="" style="float:left;height: 100%;width: 24%;background: green;">
+					<!--天气情况-->
 					<div style="background: red;height: 20%;width: 100%;">
-
+						<img v-if="weatherModel.shidu" class="center mui-media-object mui-pull-left" :src=weatherModel.backgroundImg style="height: 80px;width: 80px;border-radius: 50%;object-fit: cover;margin-left: 15%;float: left;">
+						<div v-if="weatherModel.shidu" class="mui-media-body center" style="left: 13%;float: left;">
+							<p style="font-size: 20px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
+							<p style="font-size: 15px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
+							<p style="font-size: 15px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
+							<p style="font-size: 15px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
+						</div>
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<!--活动-->
 					<div style="background: grey;height: 39%;width: 100%;">
-
+						<div v-if="cardMsgList4.newslist" id="slider1" class="mui-slider" style="height: 100%;">
+							<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
+								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+								<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
+									<a href="#" style="height: 100%;">
+										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;">
+										<p class="mui-slider-title">{{newModel.topic}}</p>
+									</a>
+								</div>
+								<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist">
+									<a href="#" style="height: 100%;">
+										<img style="height: 100%;object-fit: cover;" :src=newModel.imgurl>
+										<p class="mui-slider-title">{{newModel.topic}}</p>
+									</a>
+								</div>
+								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+								<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
+									<a href="#" style="height: 100%;">
+										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;">
+										<p class="mui-slider-title">{{newModel.topic}}</p>
+									</a>
+								</div>
+							</div>
+							<div class="mui-slider-indicator">
+								<div :class="index==0?'mui-indicator mui-active':'mui-indicator'" v-for="(newModel,index) in cardMsgList4.newslist"></div>
+							</div>
+						</div>
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<!--通知通告-->
 					<div style="background: grey;height: 39%;width: 100%;">
-
+						<p v-if="cardMsgList5.chname" id="moocTitle" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList5.chname}}</p>
+						<div v-if="cardMsgList5.chname" id="moocBox">
+							<ul id="con1">
+								<li @click="clickLi(newModel)" v-for="(newModel,index) in cardMsgList5.newslist">
+									<h4 style="">{{newModel.topic}}</h4>
+									<div style="padding: 10px;" v-html="newModel.content"></div>
+								</li>
+							</ul>
+							<ul id="con2">
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="" style="float:left;height: 100%;width: 2%;background: blue;"></div>
@@ -102,7 +228,226 @@
 		<script src="../../js/lib/vconsole/vconsole.min.js"></script>
 		<script src="../../js/publicProtocol.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			var grdId = 20;
+			var clsId = 24;
+			var cityName = '';
+			var myScroll1;
+			var myScroll2;
+
+			function scrollUp() {
+				var area = document.getElementById('moocBox');
+				var con1 = document.getElementById('con1');
+				var con2 = document.getElementById('con2');
+				if(area.scrollTop >= con1.scrollHeight) {
+					area.scrollTop = 0;
+				} else {
+					area.scrollTop++; //向上滚动
+				}
+			}
+
+			function scrollUp1() {
+				var area = document.getElementById('moocBox1');
+				var con1 = document.getElementById('con11');
+				var con2 = document.getElementById('con21');
+				if(area.scrollTop >= con1.scrollHeight) {
+					area.scrollTop = 0;
+				} else {
+					area.scrollTop++; //向上滚动
+				}
+			}
+			window.onload = function() {
+				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				var tempUrl = 'http://wthrcdn.etouch.cn/WeatherApi?city=' + publicPar.cityName;
+				$.ajax({
+					url: tempUrl,
+					data: "",
+					dataType: "xml",
+					success: function(data) {
+						var json_obj = $.xml2json(data);
+						var tempType = json_obj.forecast.weather[0].day.type;
+						json_obj.backgroundImg = '../../img/tianqi1.jpg';
+						if(tempType.indexOf("晴") > -1) {
+							json_obj.backgroundImg = '../../img/tianqi1.jpg';
+						}
+						if(tempType.indexOf("雨") > -1) {
+							json_obj.backgroundImg = '../../img/tianqi2.jpg';
+						}
+						if(tempType.indexOf("雪") > -1) {
+							json_obj.backgroundImg = '../../img/tianqi3.jpg';
+						}
+						if(tempType.indexOf("阴") > -1) {
+							json_obj.backgroundImg = '../../img/tianqi4.jpg';
+						}
+						if(tempType.indexOf("云") > -1) {
+							json_obj.backgroundImg = '../../img/tianqi5.jpg';
+						}
+						console.log('json_obj:' + JSON.stringify(json_obj));
+						classCardMsg.weatherModel = json_obj;
+					}
+				});
+				setInterval("getTime()", 1000);
+				getlist(2, 1, 1, 1);
+				getlist(1, 2, 6, 2);
+				getlist(1, 3, 6, 3);
+				getlist(1, 4, 5, 4);
+				getlist(2, 5, 5, 5);
+				getlist(1, 6, 5, 6);
+				setInterval(function() {
+					getlist(2, 1, 1, 1);
+					getlist(1, 2, 6, 2);
+					getlist(1, 3, 6, 3);
+					getlist(1, 4, 5, 4);
+					getlist(2, 5, 5, 5);
+					getlist(0, 6, 5, 6);
+				}, 1000 * 60);
+			}
+			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
+			//chncode,栏目代码，后台栏目定义的代码
+			//pageSize,每页条数
+			function getlist(flag, chncode, pageSize, tempFlag) {
+				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				console.log('publicPar:' + JSON.stringify(publicPar));
+				var personal = store.get(window.storageKeyName.PERSONALINFO);
+				console.log('personal0002:' + JSON.stringify(personal));
+				//握手
+				var enData0 = {};
+				//不需要加密的数据
+				var comData0 = {
+					uuid: publicPar.uuid, //用户设备号
+					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
+					chncode: chncode, //栏目代码，后台栏目定义的代码
+					//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					psize: pageSize, //每页条数
+					pindex: 1, //页码
+					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
+					utoken: personal.utoken, //用户令牌
+					appid: publicPar.appid //系统所分配的应用ID
+				};
+				//			events.showWaiting();
+				//发送网络请求，data为网络返回值
+				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
+					console.log('2121212tempFlag:' + tempFlag);
+					if(data.RspCode == 0) {
+						if(tempFlag == 5) {
+							console.log('1111111111111111111');
+							classCardMsg.cardMsgList5 = data.RspData;
+							console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
+							setTimeout(function() {
+								var area = document.getElementById('moocBox');
+								var con1 = document.getElementById('con1');
+								var con2 = document.getElementById('con2');
+								var speed = 50;
+								area.scrollTop = 0;
+								con2.innerHTML = con1.innerHTML;
+								window.clearInterval(myScroll1);
+								myScroll1 = setInterval("scrollUp()", speed);
+							}, 300);
+						} else if(tempFlag == 4) {
+							for(var i = 0; i < data.RspData.newslist.length; i++) {
+								var tempModel = data.RspData.newslist[i];
+								tempModel.imgurl = tempModel.imgurl.split('?')[0];
+							}
+							classCardMsg.cardMsgList4 = data.RspData;
+							setTimeout(function() {
+								var slider1 = mui("#slider1");
+								slider1.slider({
+									interval: 5000
+								});
+							}, 300);
+						} else if(tempFlag == 1) {
+							classCardMsg.cardMsgList1 = data.RspData;
+							setTimeout(function() {
+								var area = document.getElementById('moocBox1');
+								var con1 = document.getElementById('con11');
+								var con2 = document.getElementById('con21');
+								var speed = 50;
+								area.scrollTop = 0;
+								con2.innerHTML = con1.innerHTML;
+								window.clearInterval(myScroll2);
+								myScroll2 = setInterval("scrollUp1()", speed);
+							}, 300);
+						} else if(tempFlag == 2) {
+							classCardMsg.cardMsgList2 = data.RspData;
+						} else if(tempFlag == 3) {
+							classCardMsg.cardMsgList3 = data.RspData;
+						} else if(tempFlag == 6) {
+							classCardMsg.cardMsgList6 = data.RspData;
+						}
+					} else {
+
+					}
+				});
+			}
+			var classCardMsg = new Vue({
+				el: "#classCardMsg",
+				data: {
+					cardMsgList1: {},
+					cardMsgList2: {},
+					cardMsgList3: {},
+					cardMsgList4: {},
+					cardMsgList5: {},
+					cardMsgList6: {},
+					weatherModel: {},
+					timeModel: {}
+				},
+				methods: {
+					clickLi: function(model) {
+						model.content = '';
+						console.log('model:' + JSON.stringify(model));
+						if(model.chncode == 2 || model.chncode == 3) {
+							utils.mOpenWithData("../../html/index/listDetailImg.html", model);
+						} else {
+							utils.mOpenWithData("../../html/index/listDetail.html", model);
+						}
+					}
+				}
+			});
+
+			function getTime() {
+				var date = new Date(); //创建对象  
+				var y = date.getFullYear(); //获取年份  
+				var m = date.getMonth() + 1; //获取月份  返回0-11  
+				var d = date.getDate(); // 获取日  
+				var w = date.getDay(); //获取星期几  返回0-6   (0=星期天) 
+				var ww = ' 星期' + '日一二三四五六'.charAt(new Date().getDay()); //星期几
+				var h = date.getHours(); //时
+				var minute = date.getMinutes() //分
+				var s = date.getSeconds(); //秒
+				var sss = date.getMilliseconds(); //毫秒
+				if(m < 10) {
+					m = "0" + m;
+				}
+				if(d < 10) {
+					d = "0" + d;
+				}
+				if(h < 10) {
+					h = "0" + h;
+				}
+
+				if(minute < 10) {
+					minute = "0" + minute;
+				}
+
+				if(s < 10) {
+					s = "0" + s;
+				}
+
+				if(sss < 10) {
+					sss = "00" + sss;
+				} else if(sss < 100) {
+					sss = "0" + sss;
+				}
+				var tmpModel = {
+					yearStr: y + "年" + m + "月" + d + "日",
+					weekStr: ww,
+					hoursStr: h + ":" + minute + ":" + s
+				}
+				classCardMsg.timeModel = tmpModel;
+			}
 		</script>
 	</body>
 

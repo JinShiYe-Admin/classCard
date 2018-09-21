@@ -535,30 +535,6 @@
 				}
 			});
 
-			function getDetail() {
-				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-				console.log('publicPar:' + JSON.stringify(publicPar));
-				var personal = store.get(window.storageKeyName.PERSONALINFO);
-				console.log('personal0002:' + JSON.stringify(personal));
-				//握手
-				var enData0 = {};
-				//不需要加密的数据
-				var comData0 = {
-					uuid: publicPar.uuid, //用户设备号
-					newsid: 1, //文章种类，0文章列表,1带图片的文章列表
-					utoken: personal.utoken, //用户令牌
-					appid: publicPar.appid //系统所分配的应用ID
-				};
-				//			events.showWaiting();
-				//发送网络请求，data为网络返回值
-				postDataEncry('ClassNews', enData0, comData0, 0, function(data) {
-					console.log('2121212');
-					if(data.RspCode == 0) {} else {
-
-					}
-				});
-			}
-
 			function getTime() {
 				var date = new Date(); //创建对象  
 				var y = date.getFullYear(); //获取年份  
