@@ -189,23 +189,23 @@
 					<!--班委介绍-->
 					<div style="background: grey;height: 39%;width: 100%;">
 						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
-						<!--<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
+						<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
 							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 								<a href="#">
 									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
 								</a>
 							</li>
-						</ul>-->
-						<div id="classCommittee" style="width: 100%;height: 100%;">
+						</ul>
+						<!--<div id="classCommittee" style="width: 100%;height: 100%;">
 							<ul class="" style="width: 100%;height: 100%;" v-if="cardMsgList3.newslist">
 								<li :data=cardModel onclick="classCardMsg.$options.methods.clickLi($(this).attr('data'));" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
 									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
 								</li>
-								<!--<div style="clear: none;"></div>-->
+								<div style="clear: none;"></div>
 							</ul>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
@@ -213,7 +213,7 @@
 					<!--老师风采-->
 					<div style="background: red;height: 39%;width: 100%;">
 						<p v-if="cardMsgList2.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList2.chname}}</p>
-						<!--<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
+						<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 								<a href="#">
 									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
@@ -221,8 +221,8 @@
 									<div class="mui-media-body" style="color: #fff;">班主任</div>
 								</a>
 							</li>
-						</ul>-->
-						<div id="teacherClass">
+						</ul>
+						<!--<div id="teacherClass">
 							<ul>
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
@@ -233,7 +233,7 @@
 								</li>
 								<div style="clear: none;"></div>
 							</ul>
-						</div>
+						</div>-->
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
 					<!--荣誉-->
@@ -542,11 +542,11 @@
 						console.log('model:' + model.content);
 						model.content = '';
 						console.log('model:' + JSON.stringify(model));
-//						if(model.chncode == 2 || model.chncode == 3) {
-//							utils.mOpenWithData("../../html/index/listDetailImg1.html", model);
-//						} else {
-//							utils.mOpenWithData("../../html/index/listDetail1.html", model);
-//						}
+						if(model.chncode == 2 || model.chncode == 3) {
+							utils.mOpenWithData("../../html/index/listDetailImg1.html", model);
+						} else {
+							utils.mOpenWithData("../../html/index/listDetail1.html", model);
+						}
 					}
 				}
 			});
