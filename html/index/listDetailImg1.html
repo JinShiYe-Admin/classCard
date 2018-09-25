@@ -204,8 +204,8 @@
 				<div class="" style="float:left;height: 100%;width: 50%;background: gold;">
 					<li class="mui-table-view-cell mui-media" style="height: 100%;">
 						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 5%;float: left;">
-						<div v-if="cardMsgList1.chname" class="mui-media-body center" style="left: 13%;float: left;">
-							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
+						<div v-if="cardMsgList.chname" class="mui-media-body center" style="left: 13%;float: left;">
+							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
 						</div>
 					</li>
 				</div>
@@ -233,9 +233,9 @@
 						        </a>
 						    </li>
 						</ul>
-						<div v-if="cardMsgList1.newslist" id="moocBox1" style="height: 80%;">
+						<div v-if="cardMsgList.newslist" id="moocBox1" style="height: 80%;">
 							<div id="con11">
-								<div @click="clickLi(cardMsgList1.newslist[0])" style="padding: 10px;" v-html="cardMsgList1.newslist[0].content"></div>
+								<div @click="clickLi(cardMsgList.newslist[0])" style="padding: 10px;" v-html="cardMsgList.newslist[0].content"></div>
 							</div>
 							<div id="con21">
 							</div>
@@ -244,11 +244,10 @@
 					<div id="demo1" style="position: relative;bottom: 0;width: 100%;"></div>
 				</div>
 				<div class="div3">
-					<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
+					<!--<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
 						<p class="div6">{{currentModel.topic}}</p>
 						<div class="div7" v-html="currentModel.content"></div>
-						<!--<div class="div7" ref="tempFlag2"></div>-->
-					</div>
+					</div>-->
 				</div>
 				</div>
 				
@@ -271,14 +270,16 @@
 		<script src="../../js/publicProtocol.js"></script>
 		<script type="text/javascript">
 			mui.init();
-
 			var curPage;
 
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
 				console.log('curPage:' + JSON.stringify(curPage));
 				setInterval("getTime()", 1000);
-				getlist(2, curPage.chncode, 5, 1);
+				// 班主任
+				getlist(2, curPage.chncode, 1, 1);
+				//任课老师
+				getlist(2, curPage.chncode, 100, 2);
 			}
 			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
 			//chncode,栏目代码，后台栏目定义的代码
@@ -297,8 +298,8 @@
 					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
 					blandlv: 1, //班牌类型
-					psize: classCardMsg.pageLimit, //每页条数
-					pindex: classCardMsg.pageNum, //页码
+					psize: pageSize, //每页条数
+					pindex: 1, //页码
 					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
 					utoken: personal.utoken, //用户令牌
 					appid: publicPar.appid //系统所分配的应用ID
@@ -309,20 +310,9 @@
 					console.log('2121212tempFlag:' + tempFlag);
 					if(data.RspCode == 0) {
 						if(tempFlag == 1) {
-							var dataL = data.RspData.newslist;
-							if(dataL != null) {
-								for(var i = 0; i < data.RspData.newslist.length; i++) {
-									var tempModel = data.RspData.newslist[i];
-									if(tempModel.newsid == curPage.newsid) {
-										classCardMsg.currentModel = tempModel;
-										break;
-									}
-								}
-								console.log("******************我给VUE赋值了**********************")
-								classCardMsg.totalCount = data.RspData.pg.RowCount;
-								classCardMsg.totalPage = data.RspData.pg.PageCount;
-								classCardMsg.cardMsgList1 = data.RspData;
-							}
+							classCardMsg.cardMsgList = data.RspData;
+						}else if (tempFlag == 2) {
+							classCardMsg.cardMsgListSum = data.RspData;
 						}
 					} else {
 
@@ -332,18 +322,13 @@
 			var classCardMsg = new Vue({
 				el: "#classCardMsg",
 				data: {
-					cardMsgList1: {},
-					weatherModel: {},
+					cardMsgList: {},
 					timeModel: {},
-					currentModel: {},
-					pageNum: 1, //当前页
-					pageLimit: 10, //每页显示条数
-					totalCount: 0, //总条数
-					totalPage: 1 //总页数
+					cardMsgListSum: {}
 				},
 				methods: {
 					clickLi: function(model) {
-						classCardMsg.currentModel = model;
+//						classCardMsg.currentModel = model;
 					}
 				}
 			});
