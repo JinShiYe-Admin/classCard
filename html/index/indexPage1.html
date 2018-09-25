@@ -69,6 +69,83 @@
 				font-weight: bold;
 				text-align: center;
 			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.mui-table-view-cell::after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 15px;
+				height: 0px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			#classCommittee {
+				position: relative;
+				width: 100%;
+				border: 0px solid #0ff;
+				width: 100%;
+				height: 230px;
+				margin: 10px auto 0;
+				overflow: hidden;
+			}
+			
+			#classCommittee ul {
+				width: 100%;
+				position: absolute;
+				left: 0;
+			}
+			
+			#classCommittee ul li {
+				list-style: none;
+				width: 200px;
+				float: left;
+				padding: 10px;
+				height: 160px;
+			}
+			
+			#classCommittee ul li img {
+				width: 100%;
+				align: center;
+				text-align: center；
+			}
+			
+			#teacherClass {
+				position: relative;
+				width: 100%;
+				border: 0px solid #0ff;
+				width: 100%;
+				height: 280px;
+				margin: 10px auto 0;
+				overflow: hidden;
+			}
+			
+			#teacherClass ul {
+				width: 100%;
+				position: absolute;
+				left: 0;
+			}
+			
+			#teacherClass ul li {
+				list-style: none;
+				width: 200px;
+				float: left;
+				padding: 10px;
+				height: 280px;
+			}
+			
+			#teacherClass ul li img {
+				width: 100%;
+				align: center;
+				text-align: center；
+			}
 		</style>
 	</head>
 
@@ -112,14 +189,23 @@
 					<!--班委介绍-->
 					<div style="background: grey;height: 39%;width: 100%;">
 						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
-						<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
+						<!--<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
 							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 								<a href="#">
 									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
 									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
 								</a>
 							</li>
-						</ul>
+						</ul>-->
+						<div id="classCommittee" style="width: 100%;height: 100%;">
+							<ul class="" style="width: 100%;height: 100%;" v-if="cardMsgList3.newslist">
+								<li :data=cardModel onclick="classCardMsg.$options.methods.clickLi($(this).attr('data'));" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
+									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
+									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
+								</li>
+								<!--<div style="clear: none;"></div>-->
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
@@ -127,7 +213,7 @@
 					<!--老师风采-->
 					<div style="background: red;height: 39%;width: 100%;">
 						<p v-if="cardMsgList2.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList2.chname}}</p>
-						<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
+						<!--<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
 							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 								<a href="#">
 									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
@@ -135,7 +221,19 @@
 									<div class="mui-media-body" style="color: #fff;">班主任</div>
 								</a>
 							</li>
-						</ul>
+						</ul>-->
+						<div id="teacherClass">
+							<ul>
+								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
+									<a href="#">
+									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
+									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
+									<div class="mui-media-body" style="color: #fff;text-align: center;">班主任</div>
+									</a>
+								</li>
+								<div style="clear: none;"></div>
+							</ul>
+						</div>
 					</div>
 					<div style="background: blue;height: 1%;width: 100%;"></div>
 					<!--荣誉-->
@@ -234,6 +332,8 @@
 			var cityName = '';
 			var myScroll1;
 			var myScroll2;
+			var myScroll3;
+			var myScroll4;
 
 			function scrollUp() {
 				var area = document.getElementById('moocBox');
@@ -256,6 +356,7 @@
 					area.scrollTop++; //向上滚动
 				}
 			}
+			
 			window.onload = function() {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				var tempUrl = 'http://wthrcdn.etouch.cn/WeatherApi?city=' + publicPar.cityName;
@@ -372,8 +473,50 @@
 							}, 300);
 						} else if(tempFlag == 2) {
 							classCardMsg.cardMsgList2 = data.RspData;
+							//							if(classCardMsg.cardMsgList2.newslist.length > 5) {
+							setTimeout(function() {
+								var oDiv = document.getElementById('teacherClass');
+								var oUl = oDiv.getElementsByTagName('ul')[0];
+								var aLi = oUl.getElementsByTagName('li');
+								var iSpeed = -3;
+								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
+								oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
+								function fnMove0() {
+									if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
+										oUl.style.left = 0;
+									} else if(oUl.offsetLeft > 0) {
+										oUl.style.left = -oUl.offsetWidth / 2 + 'px';
+									} //定义到边界的时候，实现无缝衔接
+									oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+									//定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
+								}
+								window.clearInterval(myScroll3);
+								myScroll3 = setInterval(fnMove0, 30);
+							}, 300);
+							//							}
 						} else if(tempFlag == 3) {
 							classCardMsg.cardMsgList3 = data.RspData;
+							//							if(classCardMsg.cardMsgList3.newslist.length > 2) {
+							setTimeout(function() {
+								var oDiv = document.getElementById('classCommittee');
+								var oUl = oDiv.getElementsByTagName('ul')[0];
+								var aLi = oUl.getElementsByTagName('li');
+								var iSpeed = -3;
+								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
+								oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
+								function fnMove1() {
+									if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
+										oUl.style.left = 0;
+									} else if(oUl.offsetLeft > 0) {
+										oUl.style.left = -oUl.offsetWidth / 2 + 'px';
+									} //定义到边界的时候，实现无缝衔接
+									oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+									//定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
+								}
+								window.clearInterval(myScroll4);
+								myScroll4 = setInterval(fnMove1, 30);
+							}, 300);
+							//							}
 						} else if(tempFlag == 6) {
 							classCardMsg.cardMsgList6 = data.RspData;
 						}
@@ -396,13 +539,14 @@
 				},
 				methods: {
 					clickLi: function(model) {
+						console.log('model:' + model.content);
 						model.content = '';
 						console.log('model:' + JSON.stringify(model));
-						if(model.chncode == 2 || model.chncode == 3) {
-							utils.mOpenWithData("../../html/index/listDetailImg.html", model);
-						} else {
-							utils.mOpenWithData("../../html/index/listDetail.html", model);
-						}
+//						if(model.chncode == 2 || model.chncode == 3) {
+//							utils.mOpenWithData("../../html/index/listDetailImg1.html", model);
+//						} else {
+//							utils.mOpenWithData("../../html/index/listDetail1.html", model);
+//						}
 					}
 				}
 			});

@@ -1,0 +1,442 @@
+<!doctype html>
+<html style="height:100%">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../ui/layui/css/layui.css" rel="stylesheet" />
+		<style type="text/css">
+			body {
+				font-family: STHeiti, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+			}
+			
+			.center {
+				position: relative;
+				top: 50%;
+				/*left: 50%;*/
+				text-align: center;
+				/*background:#393;
+				color:#fff;*/
+				transform: translate(-50%, -50%);
+			}
+			
+			.paragraph {
+				text-indent: 2em;
+				letter-spacing: 3px;
+				font-size: 13px;
+				font-size: 15px;
+				color: white;
+			}
+			
+			::-webkit-scrollbar {
+				width: 0;
+			}
+			
+			.picture {
+				text-align: center;
+			}
+			
+			.topDiv {
+				height: 24%;
+				background: #58B0BA;
+				padding: 22px;
+				border-radius: 10px;
+				margin: 0 1%;
+				background: -webkit-linear-gradient(#0078bd, #08bdeb);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#0078bd, #08bdeb);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#0078bd, #08bdeb);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(#0078bd, #08bdeb);
+				/* 标准的语法 */
+			}
+			
+			.div1 {
+				/*background: red;*/
+				height: 100%;
+				width: 100%;
+				/*display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				border: 1px solid #000;*/
+			}
+			
+			.bottomDiv {
+				height: 75%;
+				width: 100%;
+				float: left;
+			}
+			
+			.div2 {
+				height: 100%;
+				width: 28%;
+				background: #25747d;
+				float: left;
+				padding: 20px;
+				border-radius: 10px;
+				margin: 0 1% 0 1%;
+				background: -webkit-linear-gradient(#08B9EA, #08B9EA);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#08B9EA, #08B9EA);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#08B9EA, #08B9EA);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(#08B9EA, #08B9EA);
+				/* 标准的语法 */
+			}
+			
+			.div3 {
+				height: 100%;
+				width: 68%;
+				/*background: #f2f2f2;*/
+				float: left;
+				padding: 20px;
+				border-radius: 10px;
+				margin: 0 1% 0 1%;
+			}
+			
+			.div4 {
+				/*background: red;*/
+				height: 93%;
+				width: 100%;
+				overflow: auto;
+			}
+			
+			.div5 {
+				/*background: red;*/
+				height: 100%;
+				width: 100%;
+			}
+			
+			.div6 {
+				background: transparent;
+				height: 50px;
+				width: 100%;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 13px;
+				font-size: 25px;
+				text-align: center;
+				margin-bottom: 0px;
+				color: #333333;
+			}
+			
+			.div7 {
+				background: transparent;
+				width: 100%;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 20px;
+				font-size: 20px;
+			}
+			
+			.div1Img {
+				height: 80px;
+				width: 150px;
+				padding-top: 20px;
+			}
+			
+			.pSty {
+				color: white;
+				font-size: 20px;
+				margin-left: 20px;
+				margin-top: 20px;
+			}
+			/*.mui-table-view li:first-child {
+				background: #F0981C;
+			}*/
+			
+			.picture {
+				text-align: center;
+			}
+			
+			.paragraph {
+				color: #333333;
+				text-indent: 2em;
+				letter-spacing: 3px;
+			}
+			
+			::-webkit-scrollbar {
+				width: 0;
+			}
+			
+			.bg1 {
+				background: #fff;
+			}
+			
+			.bg2 {
+				background: #F0981C;
+			}
+			
+			.layui-laypage {
+				width: 100% !important;
+			}
+			
+			.layui-laypage>a:first-child,
+			.layui-laypage>a:first-child em {
+				text-align: center;
+				width: 30%;
+			}
+			
+			.layui-laypage>a:last-child,
+			.layui-laypage>a:last-child em {
+				text-align: center;
+				width: 30%;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body style="background: #fff;height: 100%;width: 100%;">
+		<div class="mui-content" style="height: 100%;" id="classCardMsg">
+			<div style="background: red;height: 12%;width: 100%;">
+				<!--头像、学校、年级、班级信息-->
+				<div class="" style="float:left;height: 100%;width: 50%;background: gold;">
+					<li class="mui-table-view-cell mui-media" style="height: 100%;">
+						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 5%;float: left;">
+						<div v-if="cardMsgList1.chname" class="mui-media-body center" style="left: 13%;float: left;">
+							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
+						</div>
+					</li>
+				</div>
+				<!--时间-->
+				<div class="" style="float:left;height: 100%;width: 50%;background: green;">
+					<li class="mui-table-view-cell mui-media" style="height: 100%;">
+						<div class="mui-media-body center" style="height: 100%;">
+							<p class="mui-pull-right" style="">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
+						</div>
+					</li>
+				</div>
+			</div>
+			<div style="background: grey;height: 85%;width: 100%;">
+				<div class="" style="padding: 20px 20px 20px 20px;background: greenyellow;width: 100%;height: 100%;">
+					<div class="div2">
+					<div class="div4">
+						<ul class="mui-table-view" v-if="cardMsgList1.newslist">
+							<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
+								<a class="mui-navigate-right">
+									{{detailModel.topic}}
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div id="demo1" style="position: relative;bottom: 0;width: 100%;"></div>
+					<div id="demo2" style="text-align: center;margin-top: -40px;color: white;">第{{pageNum}}/{{totalPage}}页</div>
+				</div>
+				<div class="div3">
+					<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
+						<p class="div6">{{currentModel.topic}}</p>
+						<div class="div7" v-html="currentModel.content"></div>
+						<!--<div class="div7" ref="tempFlag2"></div>-->
+					</div>
+				</div>
+				</div>
+				
+			</div>
+			<div style="background: grey;height: 3%;width: 100%;"></div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../ui/layui/layui.js"></script>
+		<script src="../../js/jquery-1.8.3.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<script type="text/javascript" src="http://www.jsons.cn/Down/jquery.json2xml.js"></script>
+		<script type="text/javascript" src="http://www.jsons.cn/Down/jquery.xml2json.js"></script>
+
+		<script src='../../js/utils/vue.min.js'></script>
+		<script src="../../js/storageKeyName.js"></script>
+		<script src="../../js/utils/store.js"></script>
+		<script src="../../js/utils/utils.js"></script>
+		<script src="../../js/utils/events.js"></script>
+		<script src="../../js/lib/vconsole/vconsole.min.js"></script>
+		<script src="../../js/publicProtocol.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			var curPage;
+			var canInit = true;
+			//3分钟后返回上一级页面
+			//			setTimeout(function(){
+			//				window.location.href=document.referrer;
+			//			},3*60*1000);
+
+			window.onload = function() {
+				curPage = utils.getDataFromUrl(window.location.href);
+				console.log('curPage:' + JSON.stringify(curPage));
+				//				classCardMsg.currentModel = curPage;
+				$('.div7').height($('.div3').height() - 70);
+				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				var tempUrl = 'http://wthrcdn.etouch.cn/WeatherApi?city=' + publicPar.cityName;
+				$.ajax({
+					url: tempUrl,
+					data: "",
+					dataType: "xml",
+					success: function(data) {
+						var json_obj = $.xml2json(data);
+						console.log('json_obj:' + JSON.stringify(json_obj));
+						classCardMsg.weatherModel = json_obj;
+					}
+				});
+				setInterval("getTime()", 1000);
+				getlist(2, curPage.chncode, 5, 1);
+			}
+			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
+			//chncode,栏目代码，后台栏目定义的代码
+			//pageSize,每页条数
+			function getlist(flag, chncode, pageSize, tempFlag) {
+				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				var personal = store.get(window.storageKeyName.PERSONALINFO);
+				//握手
+				var enData0 = {};
+				//不需要加密的数据
+				var comData0 = {
+					uuid: publicPar.uuid, //用户设备号
+					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
+					chncode: chncode, //栏目代码，后台栏目定义的代码
+					//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					blandlv: 1, //班牌类型
+					psize: classCardMsg.pageLimit, //每页条数
+					pindex: classCardMsg.pageNum, //页码
+					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
+					utoken: personal.utoken, //用户令牌
+					appid: publicPar.appid //系统所分配的应用ID
+				};
+				//			events.showWaiting();
+				//发送网络请求，data为网络返回值
+				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
+					console.log('2121212tempFlag:' + tempFlag);
+					if(data.RspCode == 0) {
+						if(tempFlag == 1) {
+							var dataL = data.RspData.newslist;
+							if(dataL != null) {
+								for(var i = 0; i < data.RspData.newslist.length; i++) {
+									var tempModel = data.RspData.newslist[i];
+									if(tempModel.newsid == curPage.newsid) {
+										classCardMsg.currentModel = tempModel;
+										break;
+									}
+								}
+								console.log("******************我给VUE赋值了**********************")
+								classCardMsg.totalCount = data.RspData.pg.RowCount;
+								classCardMsg.totalPage = data.RspData.pg.PageCount;
+								classCardMsg.cardMsgList1 = data.RspData;
+								if(canInit) {
+									canInit = false;
+									initLayuiPage()
+								}
+							}
+						}
+					} else {
+
+					}
+				});
+			}
+			var classCardMsg = new Vue({
+				el: "#classCardMsg",
+				data: {
+					cardMsgList1: {},
+					weatherModel: {},
+					timeModel: {},
+					currentModel: {},
+					pageNum: 1, //当前页
+					pageLimit: 10, //每页显示条数
+					totalCount: 0, //总条数
+					totalPage: 1 //总页数
+				},
+				methods: {
+					clickLi: function(model) {
+						classCardMsg.currentModel = model;
+					}
+				}
+			});
+
+			function initLayuiPage() {
+				console.log("******************我初始化了**********************")
+				layui.use(['laypage', 'layer'], function() {
+					var laypage = layui.laypage,
+						layer = layui.layer;
+					laypage.render({
+						elem: 'demo1',
+						count: classCardMsg.totalCount //数据总数
+							,
+						layout: ['prev', 'next'],
+						jump: function(obj, first) {
+							if(!first) {
+								classCardMsg.pageNum = obj.curr;
+								getlist(2, curPage.chncode, 5, 1);
+							}
+						}
+					});
+				});
+			}
+
+			function getDetail() {
+				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				console.log('publicPar:' + JSON.stringify(publicPar));
+				var personal = store.get(window.storageKeyName.PERSONALINFO);
+				console.log('personal0002:' + JSON.stringify(personal));
+				//握手
+				var enData0 = {};
+				//不需要加密的数据
+				var comData0 = {
+					uuid: publicPar.uuid, //用户设备号
+					newsid: 1, //文章种类，0文章列表,1带图片的文章列表
+					utoken: personal.utoken, //用户令牌
+					appid: publicPar.appid //系统所分配的应用ID
+				};
+				//			events.showWaiting();
+				//发送网络请求，data为网络返回值
+				postDataEncry('ClassNews', enData0, comData0, 0, function(data) {
+					console.log('2121212');
+					if(data.RspCode == 0) {} else {
+
+					}
+				});
+			}
+
+			function getTime() {
+				var date = new Date(); //创建对象  
+				var y = date.getFullYear(); //获取年份  
+				var m = date.getMonth() + 1; //获取月份  返回0-11  
+				var d = date.getDate(); // 获取日  
+				var w = date.getDay(); //获取星期几  返回0-6   (0=星期天) 
+				var ww = ' 星期' + '日一二三四五六'.charAt(new Date().getDay()); //星期几
+				var h = date.getHours(); //时
+				var minute = date.getMinutes() //分
+				var s = date.getSeconds(); //秒
+				var sss = date.getMilliseconds(); //毫秒
+				if(m < 10) {
+					m = "0" + m;
+				}
+				if(d < 10) {
+					d = "0" + d;
+				}
+				if(h < 10) {
+					h = "0" + h;
+				}
+				if(minute < 10) {
+					minute = "0" + minute;
+				}
+				if(s < 10) {
+					s = "0" + s;
+				}
+				if(sss < 10) {
+					sss = "00" + sss;
+				} else if(sss < 100) {
+					sss = "0" + sss;
+				}
+				var tmpModel = {
+					yearStr: y + "-" + m + "-" + d + "",
+					weekStr: ww,
+					hoursStr: h + ":" + minute + ":" + s
+				}
+				classCardMsg.timeModel = tmpModel;
+			}
+		</script>
+	</body>
+
+</html>
