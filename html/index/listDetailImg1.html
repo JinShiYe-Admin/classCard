@@ -38,54 +38,20 @@
 				text-align: center;
 			}
 			
-			.topDiv {
-				height: 24%;
-				background: #58B0BA;
-				padding: 22px;
-				border-radius: 10px;
-				margin: 0 1%;
-				background: -webkit-linear-gradient(#0078bd, #08bdeb);
-				/* Safari 5.1 - 6.0 */
-				background: -o-linear-gradient(#0078bd, #08bdeb);
-				/* Opera 11.1 - 12.0 */
-				background: -moz-linear-gradient(#0078bd, #08bdeb);
-				/* Firefox 3.6 - 15 */
-				background: linear-gradient(#0078bd, #08bdeb);
-				/* 标准的语法 */
-			}
-			
-			.div1 {
-				/*background: red;*/
-				height: 100%;
+			p img {
 				width: 100%;
-				/*display: table-cell;
-				vertical-align: middle;
-				text-align: center;
-				border: 1px solid #000;*/
-			}
-			
-			.bottomDiv {
-				height: 75%;
-				width: 100%;
-				float: left;
+				/*display: block;
+				margin: 0 auto;*/
 			}
 			
 			.div2 {
 				height: 100%;
-				width: 28%;
-				background: #25747d;
+				width: 32%;
+				background: #1f8589;
 				float: left;
 				padding: 20px;
 				border-radius: 10px;
 				margin: 0 1% 0 1%;
-				background: -webkit-linear-gradient(#08B9EA, #08B9EA);
-				/* Safari 5.1 - 6.0 */
-				background: -o-linear-gradient(#08B9EA, #08B9EA);
-				/* Opera 11.1 - 12.0 */
-				background: -moz-linear-gradient(#08B9EA, #08B9EA);
-				/* Firefox 3.6 - 15 */
-				background: linear-gradient(#08B9EA, #08B9EA);
-				/* 标准的语法 */
 			}
 			
 			.div3 {
@@ -105,88 +71,6 @@
 				overflow: auto;
 			}
 			
-			.div5 {
-				/*background: red;*/
-				height: 100%;
-				width: 100%;
-			}
-			
-			.div6 {
-				background: transparent;
-				height: 50px;
-				width: 100%;
-				padding-left: 20px;
-				padding-right: 20px;
-				padding-top: 13px;
-				font-size: 25px;
-				text-align: center;
-				margin-bottom: 0px;
-				color: #333333;
-			}
-			
-			.div7 {
-				background: transparent;
-				width: 100%;
-				padding-left: 20px;
-				padding-right: 20px;
-				padding-top: 20px;
-				font-size: 20px;
-			}
-			
-			.div1Img {
-				height: 80px;
-				width: 150px;
-				padding-top: 20px;
-			}
-			
-			.pSty {
-				color: white;
-				font-size: 20px;
-				margin-left: 20px;
-				margin-top: 20px;
-			}
-			/*.mui-table-view li:first-child {
-				background: #F0981C;
-			}*/
-			
-			.picture {
-				text-align: center;
-			}
-			
-			.paragraph {
-				color: #333333;
-				text-indent: 2em;
-				letter-spacing: 3px;
-			}
-			
-			::-webkit-scrollbar {
-				width: 0;
-			}
-			
-			.bg1 {
-				background: #fff;
-			}
-			
-			.bg2 {
-				background: #F0981C;
-			}
-			
-			.layui-laypage {
-				width: 100% !important;
-			}
-			
-			.layui-laypage>a:first-child,
-			.layui-laypage>a:first-child em {
-				text-align: center;
-				width: 30%;
-			}
-			
-			.layui-laypage>a:last-child,
-			.layui-laypage>a:last-child em {
-				text-align: center;
-				width: 30%;
-				float: right;
-			}
 			#moocBox1 {
 				height: 80%;
 				width: 100%;
@@ -194,65 +78,103 @@
 				margin-top: 10px;*/
 				overflow: hidden;
 			}
+			
+			.aligncenter {
+				clear: both;
+				display: block;
+				margin: auto;
+			}
+			
+			.alignleft {
+				display: inline;
+				float: left;
+				margin-top: 3%;
+			}
+			
+			.alignleft1 {
+				display: inline;
+				float: left;
+				margin-top: 6%;
+				margin-left: 20px
+			}
+			
+			.alignright {
+				display: inline;
+				float: right;
+				margin-top: 6%;
+				margin-right: 50px;
+			}
+			
+			.teacherName {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
 		</style>
 	</head>
 
-	<body style="background: #fff;height: 100%;width: 100%;">
-		<div class="mui-content" style="height: 100%;" id="classCardMsg">
-			<div style="background: red;height: 12%;width: 100%;">
+	<body style="background: #1db69b;height: 100%;width: 100%;">
+		<div class="mui-content" style="height: 100%;background: #1db69b;" id="classCardMsg">
+			<div style="background: #1db69b;height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
-				<div class="" style="float:left;height: 100%;width: 50%;background: gold;">
-					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 5%;float: left;">
-						<div v-if="cardMsgList.chname" class="mui-media-body center" style="left: 13%;float: left;">
-							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
-						</div>
-					</li>
+				<div class="" style="float:left;height: 100%;width: 50%;">
+					<img v-if="cardMsgList.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
+					<div v-if="cardMsgList.chname" class="alignleft1" style="float: left;">
+						<p class="mui-pull-left" style="font-size: 25px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
+					</div>
 				</div>
 				<!--时间-->
-				<div class="" style="float:left;height: 100%;width: 50%;background: green;">
-					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<div class="mui-media-body center" style="height: 100%;">
-							<p class="mui-pull-right" style="">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
-						</div>
-					</li>
+				<div class="" style="float:left;height: 100%;width: 50%;">
+					<p class="alignright" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
-			<div style="background: grey;height: 85%;width: 100%;">
-				<div class="" style="padding: 20px 20px 20px 20px;background: greenyellow;width: 100%;height: 100%;">
-					<div class="div2">
-					<div class="div4">
-						<ul class="mui-table-view">
-						    <li class="mui-table-view-cell mui-media">
-						        <a href="javascript:;">
-						            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-						            <div class="mui-media-body">
-						                幸福
-						                <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-						            </div>
-						        </a>
-						    </li>
-						</ul>
-						<div v-if="cardMsgList.newslist" id="moocBox1" style="height: 80%;">
-							<div id="con11">
-								<div @click="clickLi(cardMsgList.newslist[0])" style="padding: 10px;" v-html="cardMsgList.newslist[0].content"></div>
+			<div style="background: #1db69b;height: 85%;width: 100%;">
+				<div class="" style="padding: 20px 20px 20px 20px;background: #1db69b;width: 100%;height: 100%;">
+					<div class="" style="float:left;height: 100%;width: 3%;"></div>
+					<div class="" style="float:left;height: 100%;width: 94%;background: #20d0b0;border-radius: 12px;">
+						<div class="" style="height: 10%;width: 100%;">
+							<div style="text-align: center;height: 8%;width: 100%;">
+								<img src="../../img/page1/biaoti.png" style="margin: -20px 0 0;width: 300px;" />
 							</div>
-							<div id="con21">
+							<div style="height: 8%;text-align: center;width: 100%;color: white;font-size: 25px;">{{cardMsgList.chname}}</div>
+						</div>
+						<div class="" style="height: 88%;width: 100%;">
+							<div class="" style="float:left;height: 100%;width: 2%;"></div>
+							<div class="" style="float:left;height: 100%;width: 35%;background: #1f8589;border-radius: 12px;">
+								<div class="div4" v-if="cardMsgList.newslist&&cardMsgList.newslist.length>0">
+									<div class="" style="height: 20%;width: 100%;">
+										<img class="mui-media-object mui-pull-left" style="width: 80px;height: 80px;border-radius: 50%;object-fit: cover;margin-left: 30px;margin-top: 30px;border-width: 3px;border-style:solid;border-color: white;" :src=cardMsgList.newslist[0].imgurl>
+										<!--<div class="mui-media-body" style="color: white;font-size: 20px;padding-top: 60px;padding-left: 140px;">
+											{{cardMsgList.newslist[0].topic}}
+										</div>-->
+										<div class="mui-media-body teacherName " style="color: white;font-size: 20px;padding-top: 50px;padding-left: 20px;">{{cardMsgList.newslist[0].topic}}</div>
+									</div>
+									<div v-if="cardMsgList.newslist" id="" style="height: 80%;width: 100%;padding: 15px;" v-html="cardMsgList.newslist[0].content">
+									</div>
+								</div>
 							</div>
+							<div class="" style="float:left;height: 100%;width: 2%;"></div>
+							<div class="" style="float:left;height: 100%;width: 59%;">
+								<ul v-if="cardMsgListSum.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: #20d0b0;border: 0px; height: 100%;width: 100%;">
+									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;background: #3bb1c0;border-radius: 6px;width: 23%;margin-left: 2%;height: 40%;" v-for="(cardModel,index) in cardMsgListSum.newslist">
+										<!--<a href="#" style="background: #3bb1c0;">-->
+											<img class="mui-icon" style="width: 90%;height: 80%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
+											<!--<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>-->
+											<!--<div class="mui-media-body teacherName" style="color: #fff;">我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师</div>-->
+											<div class="mui-media-body teacherName" style="color: #fff;text-align: center;margin-top: 10px;height: 40px;">我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师</div>
+										<!--</a>-->
+									</li>
+								</ul>
+							</div>
+							<div class="" style="float:left;height: 100%;width: 2%;"></div>
 						</div>
 					</div>
-					<div id="demo1" style="position: relative;bottom: 0;width: 100%;"></div>
+					<div class="" style="float:left;height: 100%;width: 3%;"></div>
 				</div>
-				<div class="div3">
-					<!--<div class="div5" style="overflow-x: hidden;overflow-y: auto;" v-if="currentModel.content">
-						<p class="div6">{{currentModel.topic}}</p>
-						<div class="div7" v-html="currentModel.content"></div>
-					</div>-->
-				</div>
-				</div>
-				
 			</div>
-			<div style="background: grey;height: 3%;width: 100%;"></div>
+			<div style="background: #1db69b;height: 3%;width: 100%;"></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../ui/layui/layui.js"></script>
@@ -271,7 +193,20 @@
 		<script type="text/javascript">
 			mui.init();
 			var curPage;
+			var myScroll2;
 
+			function scrollUp1() {
+
+				var area = document.getElementById('moocBox1');
+				var con1 = document.getElementById('con11');
+				var con2 = document.getElementById('con21');
+				console.log('1111111:' + area.scrollTop + ',' + con1.scrollHeight);
+				if(area.scrollTop >= con1.scrollHeight) {
+					area.scrollTop = 0;
+				} else {
+					area.scrollTop++; //向上滚动
+				}
+			}
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
 				console.log('curPage:' + JSON.stringify(curPage));
@@ -311,7 +246,17 @@
 					if(data.RspCode == 0) {
 						if(tempFlag == 1) {
 							classCardMsg.cardMsgList = data.RspData;
-						}else if (tempFlag == 2) {
+							//							setTimeout(function() {
+							//								var area = document.getElementById('moocBox1');
+							//								var con1 = document.getElementById('con11');
+							//								var con2 = document.getElementById('con21');
+							//								var speed = 50;
+							//								area.scrollTop = 0;
+							//								con2.innerHTML = con1.innerHTML;
+							//								window.clearInterval(myScroll2);
+							//								myScroll2 = setInterval("scrollUp1()", speed);
+							//							}, 300);
+						} else if(tempFlag == 2) {
 							classCardMsg.cardMsgListSum = data.RspData;
 						}
 					} else {
@@ -328,7 +273,7 @@
 				},
 				methods: {
 					clickLi: function(model) {
-//						classCardMsg.currentModel = model;
+						//						classCardMsg.currentModel = model;
 					}
 				}
 			});

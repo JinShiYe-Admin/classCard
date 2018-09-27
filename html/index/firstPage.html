@@ -145,7 +145,8 @@
 							data1.RspData.uarea = model_area; //用户区域,省代码 市代码|省名称 市名称
 							console.log('data1.RspData:' + JSON.stringify(data1.RspData));
 							store.set(window.storageKeyName.PERSONALINFO, data1.RspData);
-							utils.mOpenWithData("../../html/index/testIndex.html", {});
+//							utils.mOpenWithData("../../html/index/indexPage0.html", {});
+							utils.mOpenWithData("../../html/index/indexPage1.html", {});
 						} else if(data1.RspCode == 5) { //用户名或密码不正确
 							store.set(window.storageKeyName.PERSONALINFO, {});
 							setUUID();

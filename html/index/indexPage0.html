@@ -445,10 +445,10 @@
 					uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
-					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
-					//					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					//					blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+										blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+										blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					psize: pageSize, //每页条数
 					pindex: 1, //页码
 					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)

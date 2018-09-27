@@ -146,37 +146,78 @@
 				align: center;
 				text-align: center；
 			}
+			
+			.aligncenter {
+				clear: both;
+				display: block;
+				margin: auto;
+			}
+			
+			.alignleft {
+				display: inline;
+				float: left;
+				margin-top: 3%;
+			}
+			
+			.alignleft1 {
+				display: inline;
+				float: left;
+				margin-top: 6%;
+				margin-left: 20px
+			}
+			
+			.alignleft2 {
+				display: inline;
+				float: left;
+				margin-top: 10%;
+				margin-left: 20px
+			}
+			
+			.alignleft3 {
+				display: inline;
+				float: left;
+				margin-top: 7%;
+				margin-left: 20px
+			}
+			
+			.alignright {
+				display: inline;
+				float: right;
+				margin-top: 6%;
+				margin-right: 50px;
+			}
+			.twoLineShow {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
 		</style>
 	</head>
 
 	<body style="height:100%;">
 		<div class="mui-content" style="height: 100%;" id="classCardMsg">
-			<div style="background: red;height: 12%;width: 100%;">
+			<div style="background: #1db69b;height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
-				<div class="" style="float:left;height: 100%;width: 50%;background: gold;">
-					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<img class="center mui-media-object mui-pull-left" src="../../img/tianqi1.jpg" style="height: 50px;width: 50px;border-radius: 50%;object-fit: cover;margin-left: 5%;float: left;">
-						<div v-if="cardMsgList1.chname" class="mui-media-body center" style="left: 13%;float: left;">
-							<p class="mui-pull-left" style="font-size: 20px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
-						</div>
-					</li>
+				<div class="" style="float:left;height: 100%;width: 50%;">
+					<img v-if="cardMsgList1.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
+					<div v-if="cardMsgList1.chname" class="alignleft1" style="float: left;">
+						<p class="mui-pull-left" style="font-size: 25px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
+					</div>
 				</div>
 				<!--时间-->
-				<div class="" style="float:left;height: 100%;width: 50%;background: green;">
-					<li class="mui-table-view-cell mui-media" style="height: 100%;">
-						<div class="mui-media-body center" style="height: 100%;">
-							<p class="mui-pull-right" style="">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
-						</div>
-					</li>
+				<div class="" style="float:left;height: 100%;width: 50%;">
+					<p class="alignright" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
-			<div style="background: grey;height: 85%;width: 100%;">
-				<div class="" style="float:left;height: 100%;width: 2%;background: blue;"></div>
-				<!--简介-->
-				<div class="" style="float:left;height: 100%;width: 24%;background: blue;">
-					<div style="background: red;height: 60%;width: 100%;">
-						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList1.chname}}</p>
-						<!--<h3 v-if="cardMsgList1.newslist" style="font-size: 22px;color: white;height: 10%;background: blueviolet;text-align: left;padding-top: 10px;padding-left: 20px;">{{cardMsgList1.chname}}</h3>-->
+			<div style="background: #1db69b;height: 85%;width: 100%;">
+				<div class="" style="float:left;height: 100%;width: 2%;background: #1db69b;"></div>
+
+				<div class="" style="float:left;height: 100%;width: 24%;">
+					<!--简介-->
+					<div style="height: 60%;width: 100%;border-radius: 12px;background: url(../../img/page1/banjijianjie.png);background-attachment: fixed;background-repeat: no-repeat;">
+						<p v-if="cardMsgList1.chname" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #19a4a5;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList1.chname}}</p>
 						<div v-if="cardMsgList1.newslist" id="moocBox1" style="height: 80%;">
 							<div id="con11">
 								<div @click="clickLi(cardMsgList1.newslist[0])" style="padding: 10px;" v-html="cardMsgList1.newslist[0].content"></div>
@@ -185,28 +226,20 @@
 							</div>
 						</div>
 					</div>
-					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
 					<!--班委介绍-->
-					<div style="background: grey;height: 39%;width: 100%;">
-						<p style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
-						<!--<ul class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;height: 80%;">
-							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
-								<a href="#">
-									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
-									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
-								</a>
-							</li>
-						</ul>-->
-						<div id="classCommittee" style="width: 100%;height: 100%;">
-							<ul class="" style="width: 100%;height: 100%;" v-if="cardMsgList3.newslist">
+					<div style="background: #1db69b;height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/banweijieshao.png);">
+						<p v-if="cardMsgList3.chname" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #29cbc7;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
+						<div v-if="cardMsgList3.newslist" id="classCommittee" style="width: 100%;height: 80%;">
+							<ul class="" style="width: 100%;height: 100%;margin-top: 30px;" v-if="cardMsgList3.newslist">
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
-									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
+									<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
+									<div class="mui-media-body twoLineShow" style="color: #fff;text-align: center;margin-top: 20px;">{{cardModel.topic}}</div>
 								</li>
 								<div style="clear: none;"></div>
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
-									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
+									<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
+									<div class="mui-media-body twoLineShow" style="color: #fff;text-align: center;margin-top: 20px;">{{cardModel.topic}}</div>
 								</li>
 								<div style="clear: none;"></div>
 							</ul>
@@ -215,103 +248,94 @@
 						</div>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
-				<div class="" style="float:left;height: 100%;width: 47%;background: gold;">
+				<div class="" style="float:left;height: 100%;width: 0.5%;background: #1db69b;"></div>
+				<div class="" style="float:left;height: 100%;width: 47%;background: #1db69b;">
 					<!--老师风采-->
-					<div style="background: red;height: 39%;width: 100%;">
-						<p v-if="cardMsgList2.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList2.chname}}</p>
-						<!--<ul v-if="cardMsgList2.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
-							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
-								<a href="#">
-									<img class="mui-icon" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl />
-									<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>
-									<div class="mui-media-body" style="color: #fff;">班主任</div>
-								</a>
-							</li>
-						</ul>-->
-						<div id="teacherClass">
-							<ul>
+					<div style="height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/laoshifengcai.png);">
+						<div style="text-align: center;height: 8%;width: 100%;">
+							<img src="../../img/page1/biaoti.png" style="margin: -20px 0 0;width: 300px;" />
+						</div>
+						<div style="height: 8%;text-align: center;width: 100%;color: white;font-size: 25px;margin-top: -15px;">{{cardMsgList2.chname}}</div>
+						<div id="teacherClass" v-if="cardMsgList2.newslist">
+							<ul style="margin-top: 40px;">
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
-									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">班主任</div>
+										<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
+										<div class="mui-media-body" style="color: #fff;text-align: center;margin-top: 10px;">{{cardModel.topic}}</div>
 									</a>
 								</li>
 								<div style="clear: none;"></div>
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
-									<img style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">{{cardModel.topic}}</div>
-									<div class="mui-media-body" style="color: #fff;text-align: center;">班主任</div>
+										<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
+										<div class="mui-media-body twoLineShow" style="color: #fff;text-align: center;margin-top: 10px;">{{cardModel.topic}}</div>
 									</a>
 								</li>
 								<div style="clear: none;"></div>
 							</ul>
 						</div>
 					</div>
-					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
 					<!--荣誉-->
-					<div style="background: grey;height: 60%;width: 100%;">
-						<p v-if="cardMsgList6.chname" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList6.chname}}</p>
-						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: transparent;border: 0px;">
-							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;" v-for="(cardModel,index) in cardMsgList6.newslist">
+					<div class="rongyuSumClass" style="height: 60%;width: 100%;border-radius: 12px;">
+						<p v-if="cardMsgList6.chname" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #f2a322;text-align: left;padding-top: 12px;padding-left: 20px;opacity:0.8;">{{cardMsgList6.chname}}</p>
+						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9 rongyuClass" style="border: 0px;margin-top: -10px;width: 100%;border-radius: 0px 0px 12px 12px;background: url(../../img/page1/rongyu.png);">
+							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;border-radius: 12px;" v-for="(cardModel,index) in cardMsgList6.newslist">
 								<a href="#">
 									<img class="mui-icon" style="width: 100%;height: 100%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
-									<!--<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>-->
 								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 0.5%;background: blue;"></div>
-				<div class="" style="float:left;height: 100%;width: 24%;background: green;">
+				<div class="" style="float:left;height: 100%;width: 0.5%;background: #1db69b;"></div>
+				<div class="" style="float:left;height: 100%;width: 24%;background: #1db69b;">
 					<!--天气情况-->
-					<div style="background: red;height: 20%;width: 100%;">
-						<img v-if="weatherModel.shidu" class="center mui-media-object mui-pull-left" :src=weatherModel.backgroundImg style="height: 80px;width: 80px;border-radius: 50%;object-fit: cover;margin-left: 15%;float: left;">
-						<div v-if="weatherModel.shidu" class="mui-media-body center" style="left: 13%;float: left;">
-							<p style="font-size: 20px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
-							<p style="font-size: 15px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
-							<p style="font-size: 15px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
-							<p style="font-size: 15px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
+					<div style="height: 20%;width: 100%;border-radius: 12px;background: #29cbc7;">
+						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 80px;width: 80px;border-radius: 50%;object-fit: cover;float: left;">
+						<div v-if="weatherModel.shidu" class="alignleft3" style="float: left;">
+							<p style="font-size: 25px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
+							<p style="font-size: 20px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
+							<p style="font-size: 20px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
+							<p style="font-size: 20px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
 						</div>
 					</div>
-					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
 					<!--活动-->
-					<div style="background: grey;height: 39%;width: 100%;">
+					<div style="background: #1db69b;height: 39%;width: 100%;">
 						<div v-if="cardMsgList4.newslist" id="slider1" class="mui-slider" style="height: 100%;">
 							<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
 								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-								<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
+								<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist" style="">
 									<a href="#" style="height: 100%;">
-										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;">
-										<p class="mui-slider-title">{{newModel.topic}}</p>
+										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;border-radius: 12px;">
+										<p class="mui-slider-title" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
-								<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist">
+								<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist" style="">
 									<a href="#" style="height: 100%;">
-										<img style="height: 100%;object-fit: cover;" :src=newModel.imgurl>
-										<p class="mui-slider-title">{{newModel.topic}}</p>
+										<img style="height: 100%;object-fit: cover;border-radius: 12px;" :src=newModel.imgurl>
+										<p class="mui-slider-title" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
 								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-								<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
+								<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist" style="">
 									<a href="#" style="height: 100%;">
-										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;">
-										<p class="mui-slider-title">{{newModel.topic}}</p>
+										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;border-radius: 12px;">
+										<p class="mui-slider-title" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
 							</div>
-							<div class="mui-slider-indicator">
+							<div class="mui-slider-indicator" style="">
 								<div :class="index==0?'mui-indicator mui-active':'mui-indicator'" v-for="(newModel,index) in cardMsgList4.newslist"></div>
 							</div>
 						</div>
 					</div>
-					<div style="background: blue;height: 1%;width: 100%;"></div>
+					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
 					<!--通知通告-->
-					<div style="background: grey;height: 39%;width: 100%;">
-						<p v-if="cardMsgList5.chname" id="moocTitle" style="font-size: 22px;color: white;height: 50px;background: blueviolet;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList5.chname}}</p>
-						<div v-if="cardMsgList5.chname" id="moocBox">
+					<div class="tongzhiClassSum" style="height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/tongzhigonggao.png);">
+						<p v-if="cardMsgList5.chname" id="moocTitle" style="font-size: 22px;color: white;border-radius: 12px 12px 0px 0px;height: 50px;background: #28bfbc;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList5.chname}}</p>
+						<div v-if="cardMsgList5.chname" id="moocBox" class="tongzhiClass">
 							<ul id="con1">
 								<li @click="clickLi(newModel)" v-for="(newModel,index) in cardMsgList5.newslist">
 									<h4 style="">{{newModel.topic}}</h4>
@@ -323,9 +347,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 2%;background: blue;"></div>
+				<div class="" style="float:left;height: 100%;width: 2%;background: #1db69b;"></div>
 			</div>
-			<div style="background: grey;height: 3%;width: 100%;"></div>
+			<div style="background: #1db69b;height: 3%;width: 100%;"></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/jquery-1.8.3.min.js"></script>
@@ -371,9 +395,11 @@
 					area.scrollTop++; //向上滚动
 				}
 			}
-			
+
 			window.onload = function() {
+
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+				console.log('publicPar.cityName:' + publicPar.cityName);
 				var tempUrl = 'http://wthrcdn.etouch.cn/WeatherApi?city=' + publicPar.cityName;
 				$.ajax({
 					url: tempUrl,
@@ -453,6 +479,7 @@
 							classCardMsg.cardMsgList5 = data.RspData;
 							console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
 							setTimeout(function() {
+								$('.tongzhiClass').height($('.tongzhiClassSum').height() - 50 - 20);
 								var area = document.getElementById('moocBox');
 								var con1 = document.getElementById('con1');
 								var con2 = document.getElementById('con2');
@@ -494,7 +521,7 @@
 								var oUl = oDiv.getElementsByTagName('ul')[0];
 								var aLi = oUl.getElementsByTagName('li');
 								var iSpeed = -3;
-//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
+								//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
 								oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
 								function fnMove0() {
 									if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
@@ -517,9 +544,9 @@
 								var oUl = oDiv.getElementsByTagName('ul')[0];
 								var aLi = oUl.getElementsByTagName('li');
 								var iSpeed = -3;
-								console.log('oUl.innerHTML000:'+oUl.innerHTML);
-//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
-//								console.log('oUl.innerHTML:'+oUl.innerHTML);
+								console.log('oUl.innerHTML000:' + oUl.innerHTML);
+								//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
+								//								console.log('oUl.innerHTML:'+oUl.innerHTML);
 								oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
 								function fnMove1() {
 									if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
@@ -536,6 +563,9 @@
 							//							}
 						} else if(tempFlag == 6) {
 							classCardMsg.cardMsgList6 = data.RspData;
+							setTimeout(function() {
+								$('.rongyuClass').height($('.rongyuSumClass').height() - 50);
+							}, 300);
 						}
 					} else {
 
