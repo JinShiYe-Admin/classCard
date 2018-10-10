@@ -198,12 +198,12 @@
 
 	<body style="height:100%;">
 		<div class="mui-content" style="height: 100%;" id="classCardMsg">
-			<div style="background: #1db69b;height: 12%;width: 100%;">
+			<div style="background: #20d2d8;height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
 				<div class="" style="float:left;height: 100%;width: 50%;">
 					<img v-if="cardMsgList1.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
 					<div v-if="cardMsgList1.chname" class="alignleft1" style="float: left;">
-						<p class="mui-pull-left" style="font-size: 25px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
+						<p class="mui-pull-left" style="font-size: 40px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
 					</div>
 				</div>
 				<!--时间-->
@@ -211,8 +211,8 @@
 					<p class="alignright" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
-			<div style="background: #1db69b;height: 85%;width: 100%;">
-				<div class="" style="float:left;height: 100%;width: 2%;background: #1db69b;"></div>
+			<div style="background: #20d2d8;height: 85%;width: 100%;">
+				<div class="" style="float:left;height: 100%;width: 2%;background: #20d2d8;"></div>
 
 				<div class="" style="float:left;height: 100%;width: 24%;">
 					<!--简介-->
@@ -226,9 +226,9 @@
 							</div>
 						</div>
 					</div>
-					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
+					<div style="background: #20d2d8;height: 1%;width: 100%;"></div>
 					<!--班委介绍-->
-					<div style="background: #1db69b;height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/banweijieshao.png);">
+					<div style="background: #20d2d8;height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/banweijieshao.png);">
 						<p v-if="cardMsgList3.chname" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #29cbc7;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
 						<div v-if="cardMsgList3.newslist" id="classCommittee" style="width: 100%;height: 80%;">
 							<ul class="" style="width: 100%;height: 100%;margin-top: 30px;" v-if="cardMsgList3.newslist">
@@ -238,7 +238,7 @@
 								</li>
 								<div style="clear: none;"></div>
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
-									<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
+									<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover!important;" :src=cardModel.imgurl>
 									<div class="mui-media-body twoLineShow" style="color: #fff;text-align: center;margin-top: 20px;">{{cardModel.topic}}</div>
 								</li>
 								<div style="clear: none;"></div>
@@ -248,26 +248,26 @@
 						</div>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 0.5%;background: #1db69b;"></div>
-				<div class="" style="float:left;height: 100%;width: 47%;background: #1db69b;">
+				<div class="" style="float:left;height: 100%;width: 0.5%;background: #20d2d8;"></div>
+				<div class="" style="float:left;height: 100%;width: 47%;background: #20d2d8;">
 					<!--老师风采-->
-					<div style="height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/laoshifengcai.png);">
+					<div style="height: 39%;width: 100%;border-radius: 12px;background-image: url(../../img/page1/laoshifengcai.png);background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
 						<div style="text-align: center;height: 8%;width: 100%;">
-							<img src="../../img/page1/biaoti.png" style="margin: -20px 0 0;width: 300px;" />
+							<img src="../../img/page1/biaoti.png" style="margin: -22px 0 0;width: 300px;" />
 						</div>
 						<div style="height: 8%;text-align: center;width: 100%;color: white;font-size: 25px;margin-top: -15px;">{{cardMsgList2.chname}}</div>
-						<div id="teacherClass" v-if="cardMsgList2.newslist">
-							<ul style="margin-top: 40px;">
+						<div id="teacherClass" style="" v-if="cardMsgList2.newslist">
+							<ul style="margin-top: 20px;">
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
-										<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
+										<img class="aligncenter" style="width: 160px;height: 160px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
 										<div class="mui-media-body" style="color: #fff;text-align: center;margin-top: 10px;">{{cardModel.topic}}</div>
 									</a>
 								</li>
 								<div style="clear: none;"></div>
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
-										<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
+										<img class="aligncenter" style="width: 160px;height: 160px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>
 										<div class="mui-media-body twoLineShow" style="color: #fff;text-align: center;margin-top: 10px;">{{cardModel.topic}}</div>
 									</a>
 								</li>
@@ -275,7 +275,7 @@
 							</ul>
 						</div>
 					</div>
-					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
+					<div style="background: #20d2d8;height: 1%;width: 100%;"></div>
 					<!--荣誉-->
 					<div class="rongyuSumClass" style="height: 60%;width: 100%;border-radius: 12px;">
 						<p v-if="cardMsgList6.chname" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #f2a322;text-align: left;padding-top: 12px;padding-left: 20px;opacity:0.8;">{{cardMsgList6.chname}}</p>
@@ -288,8 +288,8 @@
 						</ul>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 0.5%;background: #1db69b;"></div>
-				<div class="" style="float:left;height: 100%;width: 24%;background: #1db69b;">
+				<div class="" style="float:left;height: 100%;width: 0.5%;background: #20d2d8;"></div>
+				<div class="" style="float:left;height: 100%;width: 24%;background: #20d2d8;">
 					<!--天气情况-->
 					<div style="height: 20%;width: 100%;border-radius: 12px;background: #29cbc7;">
 						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 80px;width: 80px;border-radius: 50%;object-fit: cover;float: left;">
@@ -300,9 +300,9 @@
 							<p style="font-size: 20px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
 						</div>
 					</div>
-					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
+					<div style="background: #20d2d8;height: 1%;width: 100%;"></div>
 					<!--活动-->
-					<div style="background: #1db69b;height: 39%;width: 100%;">
+					<div style="background: #20d2d8;height: 39%;width: 100%;">
 						<div v-if="cardMsgList4.newslist" id="slider1" class="mui-slider" style="height: 100%;">
 							<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
 								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
@@ -331,7 +331,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="background: #1db69b;height: 1%;width: 100%;"></div>
+					<div style="background: #20d2d8;height: 1%;width: 100%;"></div>
 					<!--通知通告-->
 					<div class="tongzhiClassSum" style="height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/tongzhigonggao.png);">
 						<p v-if="cardMsgList5.chname" id="moocTitle" style="font-size: 22px;color: white;border-radius: 12px 12px 0px 0px;height: 50px;background: #28bfbc;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList5.chname}}</p>
@@ -347,9 +347,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="" style="float:left;height: 100%;width: 2%;background: #1db69b;"></div>
+				<div class="" style="float:left;height: 100%;width: 2%;background: #20d2d8;"></div>
 			</div>
-			<div style="background: #1db69b;height: 3%;width: 100%;"></div>
+			<div style="background: #20d2d8;height: 3%;width: 100%;"></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/jquery-1.8.3.min.js"></script>
@@ -520,7 +520,7 @@
 								var oDiv = document.getElementById('teacherClass');
 								var oUl = oDiv.getElementsByTagName('ul')[0];
 								var aLi = oUl.getElementsByTagName('li');
-								var iSpeed = -3;
+								var iSpeed = -1;
 								//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
 								oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
 								function fnMove0() {
@@ -533,7 +533,7 @@
 									//定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
 								}
 								window.clearInterval(myScroll3);
-								myScroll3 = setInterval(fnMove0, 30);
+								myScroll3 = setInterval(fnMove0, 50);
 							}, 300);
 							//							}
 						} else if(tempFlag == 3) {
@@ -543,7 +543,7 @@
 								var oDiv = document.getElementById('classCommittee');
 								var oUl = oDiv.getElementsByTagName('ul')[0];
 								var aLi = oUl.getElementsByTagName('li');
-								var iSpeed = -3;
+								var iSpeed = -1;
 								console.log('oUl.innerHTML000:' + oUl.innerHTML);
 								//								oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
 								//								console.log('oUl.innerHTML:'+oUl.innerHTML);
@@ -558,7 +558,7 @@
 									//定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
 								}
 								window.clearInterval(myScroll4);
-								myScroll4 = setInterval(fnMove1, 30);
+								myScroll4 = setInterval(fnMove1, 50);
 							}, 300);
 							//							}
 						} else if(tempFlag == 6) {
