@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link href="../../ui/layui/css/layui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css"/>
 		<style type="text/css">
 			body {
 				font-family: STHeiti, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
@@ -25,9 +28,9 @@
 			.paragraph {
 				text-indent: 2em;
 				letter-spacing: 3px;
-				font-size: 13px;
-				font-size: 15px;
+				font-size: 19px;
 				color: white;
+				line-height: 25px;
 			}
 			
 			::-webkit-scrollbar {
@@ -36,12 +39,11 @@
 			
 			.picture {
 				text-align: center;
+				width: 100%;
 			}
 			
 			.picture img {
 				max-width: 100%;
-				/*display: block;
-				margin: 0 auto;*/
 			}
 			
 			.div2 {
@@ -88,13 +90,13 @@
 			.alignleft {
 				display: inline;
 				float: left;
-				margin-top: 3%;
+				margin-top: 4%;
 			}
 			
 			.alignleft1 {
 				display: inline;
 				float: left;
-				margin-top: 5%;
+				margin-top: 4%;
 				margin-left: 20px
 			}
 			
@@ -112,33 +114,43 @@
 				-webkit-line-clamp: 2;
 				-webkit-box-orient: vertical;
 			}
+			.fontContent{
+				font-family : iconfont1;
+			}
+			.fontTitle{
+				font-family : iconfont2;
+			}
+			.fontTitle1{
+				font-family : iconfont2;
+				/*font-stretch: condensed;*/
+			}
 		</style>
 	</head>
 
-	<body style="background: #1db69b;height: 100%;width: 100%;">
-		<div class="mui-content" style="height: 100%;background: #1db69b;" id="classCardMsg">
-			<div style="background: #1db69b;height: 12%;width: 100%;">
+	<body style="height: 100%;width: 100%;">
+		<div class="mui-content" style="height: 100%;background: linear-gradient(to bottom, #41bc10, #ffc048);" id="classCardMsg">
+			<div style="height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
 				<div class="" style="float:left;height: 100%;width: 50%;">
 					<img v-if="cardMsgList.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
 					<div v-if="cardMsgList.chname" class="alignleft1" style="float: left;">
-						<p class="mui-pull-left" style="font-size: 40px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
+						<p class="mui-pull-left fontTitle1" style="font-size: 50px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
 					</div>
 				</div>
 				<!--时间-->
 				<div class="" style="float:left;height: 100%;width: 50%;">
-					<p class="alignright" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
+					<p class="alignright fontTitle" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
-			<div style="background: #1db69b;height: 85%;width: 100%;">
-				<div class="" style="padding: 20px 20px 20px 20px;background: #1db69b;width: 100%;height: 100%;">
+			<div style="height: 85%;width: 100%;">
+				<div class="" style="padding: 20px 20px 20px 20px;width: 100%;height: 100%;">
 					<div class="" style="float:left;height: 100%;width: 3%;"></div>
 					<div class="" style="float:left;height: 100%;width: 94%;background: #20d0b0;border-radius: 12px;">
 						<div class="" style="height: 10%;width: 100%;">
 							<div style="text-align: center;height: 8%;width: 100%;">
-								<img src="../../img/page1/biaoti.png" style="margin: -20px 0 0;width: 300px;" />
+								<img src="../../img/page1/biaoti.png" style="margin: -22px 0 0;width: 300px;" />
 							</div>
-							<div style="height: 8%;text-align: center;width: 100%;color: white;font-size: 25px;">{{cardMsgList.chname}}</div>
+							<div class="fontTitle" style="height: 6%;text-align: center;width: 100%;color: white;font-size: 25px;margin-top: -5px;">{{cardMsgList.chname}}</div>
 						</div>
 						<div class="" style="height: 88%;width: 100%;">
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
@@ -149,26 +161,22 @@
 										<!--<div class="mui-media-body" style="color: white;font-size: 20px;padding-top: 60px;padding-left: 140px;">
 											{{cardMsgList.newslist[0].topic}}
 										</div>-->
-										<div class="mui-media-body teacherName " style="color: white;font-size: 20px;padding-top: 50px;padding-left: 20px;">{{cardMsgList.newslist[0].topic}}</div>
+										<div class="mui-media-body teacherName fontTitle" style="color: white;font-size: 20px;padding-top: 50px;padding-left: 20px;">{{cardMsgList.newslist[0].topic}}</div>
 									</div>
-									<div v-if="cardMsgList.newslist" id="" style="height: 80%;width: 100%;padding: 15px;" v-html="cardMsgList.newslist[0].content">
+									<div class="fontContent" v-if="cardMsgList.newslist" id="" style="height: 80%;width: 100%;padding: 15px;" v-html="cardMsgList.newslist[0].content">
 									</div>
 								</div>
 							</div>
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
 							<div class="" style="float:left;height: 100%;width: 59%;">
 								<ul v-if="cardMsgListSum.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: #20d0b0;border: 0px; height: 100%;width: 100%;">
-									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="border: 0px;background: #3bb1c0;border-radius: 6px;width: 23%;margin-left: 2%;height: 40%;" v-for="(cardModel,index) in cardMsgListSum.newslist">
-										<!--<a href="#" style="background: #3bb1c0;">-->
-											<img class="mui-icon" style="width: 90%;height: 80%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
-											<!--<div class="mui-media-body" style="color: #fff;">{{cardModel.topic}}</div>-->
-											<!--<div class="mui-media-body teacherName" style="color: #fff;">我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师</div>-->
-											<div class="mui-media-body teacherName" style="color: #fff;text-align: center;margin-top: 10px;height: 30px;">
-												<span style="text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;-webkit-box-orient: vertical;">
-													我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师我是周老师
+									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 fontTitle" style="border: 0px;background: #3bb1c0;border-radius: 6px;width: 23%;margin-left: 2%;height: 40%;margin-bottom: 20px;" v-for="(cardModel,index) in cardMsgListSum.newslist">
+										<img class="mui-icon" style="width: 90%;height: 80%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
+										<div class="mui-media-body teacherName" style="color: #fff;text-align: center;margin-top: 20px;height: 30px;">
+											<span style="text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;-webkit-box-orient: vertical;">
+													{{cardModel.topic}}
 												</span>
-											</div>
-										<!--</a>-->
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -178,7 +186,7 @@
 					<div class="" style="float:left;height: 100%;width: 3%;"></div>
 				</div>
 			</div>
-			<div style="background: #1db69b;height: 3%;width: 100%;"></div>
+			<div style="height: 3%;width: 100%;"></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../ui/layui/layui.js"></script>
@@ -226,6 +234,14 @@
 			function getlist(flag, chncode, pageSize, tempFlag) {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
+				var newsType;
+				if (publicPar.blandlv == 0) {//0是班级班牌
+					newsType = 0;
+				} else if (publicPar.blandlv == 1) {//1是年级牌
+					newsType = 1;
+				} else if (publicPar.blandlv == 2) {//2是学校牌
+					newsType = 2;
+				}
 				//握手
 				var enData0 = {};
 				//不需要加密的数据
@@ -233,13 +249,13 @@
 					uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
-					//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
-					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					blandlv: 1, //班牌类型
+					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					//					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					//					blandlv: 1, //班牌类型
 					psize: pageSize, //每页条数
 					pindex: 1, //页码
-					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
+					newslv: newsType, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
 					utoken: personal.utoken, //用户令牌
 					appid: publicPar.appid //系统所分配的应用ID
 				};
@@ -261,7 +277,12 @@
 							//								myScroll2 = setInterval("scrollUp1()", speed);
 							//							}, 300);
 						} else if(tempFlag == 2) {
-							classCardMsg.cardMsgListSum = data.RspData;
+							if (data.RspData.newslist.length>0) {
+								console.log('122222222222222');
+								data.RspData.newslist.splice(0, 1);
+//								data.RspData.newslist = data.RspData.newslist.shift();
+								classCardMsg.cardMsgListSum = data.RspData;
+							}
 						}
 					} else {
 

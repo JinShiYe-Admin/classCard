@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link href="../../ui/layui/css/layui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css"/>
 		<style type="text/css">
 			body {
 				font-family: STHeiti, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
@@ -25,7 +28,7 @@
 			.paragraph {
 				text-indent: 2em;
 				letter-spacing: 3px;
-				font-size: 18px;
+				font-size: 19px;
 				color: white;
 				line-height: 25px;
 				width: 100%;
@@ -34,14 +37,14 @@
 			.div5::-webkit-scrollbar {
 				width: 10px;
 				height: 10px;
-				background-color: #00898c;
+				background-color: #146d80;
 			}
 			/*定义滚动条轨道 内阴影+圆角*/
 			
 			.div5::-webkit-scrollbar-track {
 				-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 				border-radius: 10px;
-				background-color: #00898c;
+				background-color: #146d80;
 			}
 			/*定义滑块 内阴影+圆角*/
 			
@@ -57,9 +60,6 @@
 			}
 			
 			.picture img {
-				/*display: block;
-				margin: 0 auto;*/
-				/*width: 100%;*/
 				max-width: 100%;
 			}
 			
@@ -177,7 +177,7 @@
 			.bg1 {
 				padding-top: 12px;
 				color: white;
-				background: rgb(25, 164, 165);
+				background: #0986a0;
 				height: 50px;
 				font-size: 20px;
 				padding-right: 20px;
@@ -186,7 +186,7 @@
 			.bg2 {
 				padding-top: 12px;
 				color: #e0ff00;
-				background: #459d9e;
+				background: #086174;
 				height: 50px;
 				font-size: 20px;
 				padding-right: 20px;
@@ -233,13 +233,13 @@
 			.alignleft {
 				display: inline;
 				float: left;
-				margin-top: 3%;
+				margin-top: 4%;
 			}
 			
 			.alignleft1 {
 				display: inline;
 				float: left;
-				margin-top: 5%;
+				margin-top: 4%;
 				margin-left: 20px
 			}
 			
@@ -249,43 +249,52 @@
 				margin-top: 6%;
 				margin-right: 50px;
 			}
+			.fontContent{
+				font-family : iconfont1;
+			}
+			.fontTitle{
+				font-family : iconfont2;
+			}
+			.fontTitle1{
+				font-family : iconfont2;
+			}
 		</style>
 	</head>
 
 	<body style="height: 100%;width: 100%;">
-		<div class="mui-content" style="height: 100%;" id="classCardMsg">
-			<div style="background: rgb(29,182,155);height: 12%;width: 100%;">
+		<div class="mui-content" style="height: 100%;background: linear-gradient(to bottom, #41bc10, #ffc048);" id="classCardMsg">
+			<div style="height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
 				<div class="" style="float:left;height: 100%;width: 50%;">
 					<img v-if="cardMsgList1.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
 					<div v-if="cardMsgList1.chname" class="alignleft1" style="float: left;">
-						<p class="mui-pull-left" style="font-size: 40px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
+						<p class="mui-pull-left fontTitle1" style="font-size: 50px;color: #fff;">{{cardMsgList1.schname}} {{cardMsgList1.gradename}} {{cardMsgList1.classname}}</p>
 					</div>
 				</div>
 				<!--时间-->
 				<div class="" style="float:left;height: 100%;width: 50%;">
-					<p class="alignright" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
+					<p class="alignright fontTitle" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
-			<div style="background: rgb(29,182,155);height: 85%;width: 100%;">
-				<!--<div class="" style="padding: 20px 20px 20px 20px;background: rgb(29,182,155);width: 100%;height: 100%;">-->
-				<div class="" style="padding: 20px 20px 20px 20px;background: rgb(29,182,155);width: 100%;height: 100%;">
+			<div style="height: 85%;width: 100%;">
+				<!--<div class="" style="padding: 20px 20px 20px 20px;width: 100%;height: 100%;">-->
+				<div class="" style="padding: 20px 20px 20px 20px;width: 100%;height: 100%;">
 					<div class="" style="float:left;height: 100%;width: 3%;"></div>
 					<!--<div class="" style="float:left;height: 100%;width: 94%;background: #20d0b0;border-radius: 12px;">-->
-					<div class="" style="float:left;height: 100%;width: 94%;background: #00898c;border-radius: 12px;">
+					<div class="" style="float:left;height: 100%;width: 94%;background: #146d80;border-radius: 12px;">
 						<div class="" style="height: 10%;width: 100%;">
 							<div style="text-align: center;height: 8%;width: 100%;">
-								<img src="../../img/page1/biaoti.png" style="margin: -20px 0 0;width: 300px;" />
+								<img src="../../img/page1/biaoti.png" style="margin: -22px 0 0;width: 300px;" />
 							</div>
-							<div style="height: 6%;text-align: center;width: 100%;color: white;font-size: 25px;">{{cardMsgList1.chname}}</div>
+							<div class="fontTitle" style="height: 6%;text-align: center;width: 100%;color: white;font-size: 25px;margin-top: -5px;">{{cardMsgList1.chname}}</div>
 						</div>
 						<div class="" style="height: 88%;width: 100%;">
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
-							<div class="" style="float:left;height: 100%;width: 30%;background: rgb(25,164,165);border-radius: 12px;">
-								<!--<div class="" style="float:left;height: 100%;width: 30%;background: rgb(29,182,155);border-radius: 12px;">-->
+							<div class="" style="float:left;height: 100%;width: 30%;background: #0986a0;border-radius: 12px;">
+								<!--<div class="" style="float:left;height: 100%;width: 30%;border-radius: 12px;">-->
 								<div class="div4">
 									<ul class="mui-table-view" v-if="cardMsgList1.newslist">
-										<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell" v-for="(detailModel,index) in cardMsgList1.newslist">
+										<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell fontTitle" v-for="(detailModel,index) in cardMsgList1.newslist">
 											<a class="mui-navigate-right">
 												{{detailModel.topic}}
 											</a>
@@ -299,8 +308,8 @@
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
 							<div class="" style="float:left;height: 100%;width: 64%;">
 								<div class="div5" style="overflow-x: hidden;overflow-y: scroll;" v-if="currentModel.content">
-									<p class="div6">{{currentModel.topic}}</p>
-									<div class="div7" v-html="currentModel.content" style=""></div>
+									<p class="div6 fontTitle">{{currentModel.topic}}</p>
+									<div class="div7 fontContent" v-html="currentModel.content" style=""></div>
 								</div>
 							</div>
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
@@ -309,7 +318,7 @@
 					<div class="" style="float:left;height: 100%;width: 3%;"></div>
 				</div>
 			</div>
-			<div style="background: rgb(29,182,155);height: 3%;width: 100%;"></div>
+			<div style="height: 3%;width: 100%;"></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../ui/layui/layui.js"></script>
@@ -361,6 +370,14 @@
 			function getlist(flag, chncode, pageSize, tempFlag) {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
+				var newsType;
+				if (publicPar.blandlv == 0) {//0是班级班牌
+					newsType = 0;
+				} else if (publicPar.blandlv == 1) {//1是年级牌
+					newsType = 1;
+				} else if (publicPar.blandlv == 2) {//2是学校牌
+					newsType = 2;
+				}
 				//握手
 				var enData0 = {};
 				//不需要加密的数据
@@ -368,13 +385,13 @@
 					uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
-					//					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					//					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
-					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-					blandlv: 1, //班牌类型
+					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					//					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					//					blandlv: 1, //班牌类型
 					psize: classCardMsg.pageLimit, //每页条数
 					pindex: classCardMsg.pageNum, //页码
-					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
+					newslv: newsType, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
 					utoken: personal.utoken, //用户令牌
 					appid: publicPar.appid //系统所分配的应用ID
 				};
