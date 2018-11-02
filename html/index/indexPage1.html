@@ -102,7 +102,8 @@
 				width: 100%;
 				height: 230px;
 				margin: 10px auto 0;
-				overflow: hidden;
+				overflow-x: scroll;
+				overflow-y: hidden;
 			}
 			
 			#classCommittee ul {
@@ -132,7 +133,8 @@
 				width: 100%;
 				height: 280px;
 				margin: 10px auto 0;
-				overflow: hidden;
+				overflow-x: scroll;
+				overflow-y: hidden;
 			}
 			
 			#teacherClass ul {
@@ -177,7 +179,7 @@
 			.alignleft2 {
 				display: inline;
 				float: left;
-				margin-top: 10%;
+				margin-top: 7%;
 				margin-left: 20px
 			}
 			
@@ -299,10 +301,10 @@
 					<!--荣誉-->
 					<div class="rongyuSumClass" style="height: 60%;width: 100%;border-radius: 12px;">
 						<p v-if="cardMsgList6.chname" class="fontTitle" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #f2a322;text-align: left;padding-top: 12px;padding-left: 20px;opacity:0.8;">{{cardMsgList6.chname}}</p>
-						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9 rongyuClass" style="border: 0px;margin-top: -10px;width: 100%;border-radius: 0px 0px 12px 12px;background: url(../../img/page1/rongyu.png);">
-							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;border-radius: 12px;" v-for="(cardModel,index) in cardMsgList6.newslist">
+						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9 rongyuClass" style="border: 0px;margin-top: -10px;width: 100%;height: 100%;border-radius: 0px 0px 12px 12px;background: url(../../img/page1/rongyu.png);">
+							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;border-radius: 12px;height: 50%;" v-for="(cardModel,index) in cardMsgList6.newslist">
 								<a href="#">
-									<img class="mui-icon" style="width: 100%;height: 100%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
+									<img class="mui-icon" style="width: 100%;height: 200px;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
 								</a>
 							</li>
 						</ul>
@@ -312,7 +314,7 @@
 				<div class="" style="float:left;height: 100%;width: 24%;">
 					<!--天气情况-->
 					<div style="height: 20%;width: 100%;border-radius: 12px;background: #1ab4ab;">
-						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 80px;width: 80px;border-radius: 50%;object-fit: cover;float: left;">
+						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 120px;width: 120px;border-radius: 50%;object-fit: cover;float: left;">
 						<div v-if="weatherModel.shidu" class="alignleft3" style="float: left;">
 							<p class="fontTitle" style="font-size: 25px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
 							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
@@ -445,20 +447,44 @@
 						var json_obj = $.xml2json(data);
 						var tempType = json_obj.forecast.weather[0].day.type;
 						json_obj.backgroundImg = '../../img/tianqi1.jpg';
-						if(tempType.indexOf("晴") > -1) {
-							json_obj.backgroundImg = '../../img/tianqi1.jpg';
-						}
-						if(tempType.indexOf("雨") > -1) {
-							json_obj.backgroundImg = '../../img/tianqi2.jpg';
-						}
-						if(tempType.indexOf("雪") > -1) {
-							json_obj.backgroundImg = '../../img/tianqi3.jpg';
-						}
-						if(tempType.indexOf("阴") > -1) {
-							json_obj.backgroundImg = '../../img/tianqi4.jpg';
-						}
-						if(tempType.indexOf("云") > -1) {
-							json_obj.backgroundImg = '../../img/tianqi5.jpg';
+//						if(tempType.indexOf("晴") > -1) {
+//							json_obj.backgroundImg = '../../img/tianqi1.jpg';
+//						}
+//						if(tempType.indexOf("雨") > -1) {
+//							json_obj.backgroundImg = '../../img/tianqi2.jpg';
+//						}
+//						if(tempType.indexOf("雪") > -1) {
+//							json_obj.backgroundImg = '../../img/tianqi3.jpg';
+//						}
+//						if(tempType.indexOf("阴") > -1) {
+//							json_obj.backgroundImg = '../../img/tianqi4.jpg';
+//						}
+//						if(tempType.indexOf("云") > -1) {
+//							json_obj.backgroundImg = '../../img/tianqi5.jpg';
+//						}
+						
+						if(tempType.indexOf("多云") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/多云.png';
+						}else if (tempType.indexOf("大雨") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/大雨.png';
+						}else if (tempType.indexOf("雷阵雨") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/雷阵雨.png';
+						}else if (tempType.indexOf("小雨") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/小雨.png';
+						}else if (tempType.indexOf("雨夹雪") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/雨夹雪.png';
+						}else if (tempType.indexOf("阵雪") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/阵雪.png';
+						}else if (tempType.indexOf("阵雨") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/阵雨.png';
+						}else if (tempType.indexOf("中雨") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/中雨.png';
+						}else if (tempType.indexOf("晴") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/晴天.png';
+						}else if (tempType.indexOf("雪") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/雪.png';
+						}else if (tempType.indexOf("阴") > -1) {
+							json_obj.backgroundImg = '../../img/天气图标/阴.png';
 						}
 						console.log('json_obj:' + JSON.stringify(json_obj));
 						classCardMsg.weatherModel = json_obj;
@@ -470,14 +496,14 @@
 				getlist(1, 3, 6, 3);
 				getlist(1, 4, 5, 4);
 				getlist(2, 5, 5, 5);
-				getlist(1, 6, 5, 6);
+				getlist(1, 6, 6, 6);
 				setInterval(function() {
 					getlist(2, 1, 1, 1);//简介
 					getlist(1, 2, 6, 2);//老师
 					getlist(1, 3, 6, 3);//班委
 					getlist(1, 4, 5, 4);//活动
 					getlist(2, 5, 5, 5);//通知
-					getlist(0, 6, 5, 6);//荣誉
+					getlist(0, 6, 6, 6);//荣誉
 				}, 1000 * 60);
 			}
 			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情

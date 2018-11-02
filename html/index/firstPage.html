@@ -15,7 +15,7 @@
 
 		<div style="background-image:url(../../img/cbd.jpg);background-position: center; background-size: cover;background-repeat: no-repeat;" class="mui-fullscreen" style="width: 100%;height: 100%;"></div>
 	</body>
-	<!--<script type="text/javascript" src="../../js/utils/vconsole.min.js"></script>-->
+	<script src="../../js/lib/vconsole/vconsole.min.js"></script>
 	<script src='../../js/lib/jquery.js'></script>
 	<script src="../../js/storageKeyName.js"></script>
 	<script src="../../js/utils/store.js" type="text/javascript" charset="utf-8"></script>
@@ -30,16 +30,31 @@
 		var loginFlag = 0; //0自动登录，1不自动登录//判断上次有没有登录，如果登录，就不执行登录协议
 		//		mui.plusReady(function() {
 		window.onload = function() {
-			//			store.set(window.storageKeyName.PUBLICPARAMETER, {});
 			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 			console.log('publicPar:' + JSON.stringify(publicPar));
+			var blandid = getUrlParam('blandid');
+			var blandlv = getUrlParam('blandlv');
+			var params = getUrlVars();
+			var cityName = decodeURI(params.cityName);
+			console.log('cityName:' + cityName + ',blandlv:' + blandlv + ',blandid:' + blandid);
+//			if (blandid>=0) {
+//				publicPar.blandlv = blandlv;
+//				publicPar.blandid = blandid;
+//				publicPar.cityName = cityName;
+//			}
+//			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
+//			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+			console.log('publicPar2222222:' + JSON.stringify(publicPar));
 			if(publicPar && publicPar.uuid) {
 				console.log('1111');
 			} else {
 				console.log('1112');
 				var tempModel = {
 					uuid: generateUUID(),
-					appid: 'baipai'
+					appid: 'baipai',
+					blandlv: blandlv,
+					blandid: blandid,
+					cityName: cityName
 				}
 				console.log('publicPar.uuid:' + tempModel.uuid);
 				console.log('publicPar.appid:' + tempModel.appid);
@@ -47,24 +62,6 @@
 			}
 			setUUID();
 			document.addEventListener("netchange", wainshow, false);
-			//
-			var blandid = getUrlParam('blandid');
-			var blandlv = getUrlParam('blandlv');
-			var params = getUrlVars();
-			var cityName = decodeURI(params.cityName);
-			console.log('cityName:' + cityName + ',blandlv:' + blandlv + ',blandid:' + blandid);
-			if (blandid>=0) {
-				publicPar.blandid = blandid;
-			}
-			if (blandlv>=0) {
-				publicPar.blandlv = blandlv;
-			}
-			if (blandid!=null||blandid!=undefined) {
-				publicPar.cityName = cityName;
-			}
-			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
-			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-			console.log('publicPar2222222:' + JSON.stringify(publicPar));
 
 			function wainshow() {
 				if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
@@ -145,7 +142,6 @@
 							data1.RspData.uarea = model_area; //用户区域,省代码 市代码|省名称 市名称
 							console.log('data1.RspData:' + JSON.stringify(data1.RspData));
 							store.set(window.storageKeyName.PERSONALINFO, data1.RspData);
-//							utils.mOpenWithData("../../html/index/indexPage0.html", {});
 							utils.mOpenWithData("../../html/index/indexPage1.html", {});
 						} else if(data1.RspCode == 5) { //用户名或密码不正确
 							store.set(window.storageKeyName.PERSONALINFO, {});
