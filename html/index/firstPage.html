@@ -45,7 +45,7 @@
 //			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
 //			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 			console.log('publicPar2222222:' + JSON.stringify(publicPar));
-			if(publicPar && publicPar.uuid) {
+			if(publicPar && publicPar.uuid&&publicPar.blandlv) {
 				console.log('1111');
 			} else {
 				console.log('1112');
@@ -151,7 +151,7 @@
 						}
 					});
 				} else {
-					setUUID();
+//					setUUID();
 					mui.toast(data.RspTxt);
 				}
 			});

@@ -2,10 +2,10 @@
 
 var storageKeyName = (function(mod) {
 
-	mod.key = 0; //0,开发;1,部署外网
+	mod.key = 1; //0,开发;1,部署外网
 	var exLog = console.log;
 	console.log = function(hint, object) {
-		if(mod.key === 0) {
+		if(mod.key === 1) {
 			var argus = hint;
 			if(typeof(object) !== 'undefined') {
 				argus = hint + JSON.stringify(object);
@@ -15,14 +15,14 @@ var storageKeyName = (function(mod) {
 	}
 	switch(mod.key) {
 		case 0: //开发
-			mod.SCHOOLID = 100005; //学校ID
+			mod.SCHOOLID = 0; //学校ID
 			mod.USERTYPE = 0; //用户类型，0老师,1家长,2学生
 			mod.INTERFACEGU = 'https://jsypay.jiaobaowang.net/useradminwebapi/api/data/'; //顾工接口
 			break;
 		case 1: //部署外网
-			mod.SCHOOLID = 100005; //学校ID
+			mod.SCHOOLID = 100000; //学校ID
 			mod.USERTYPE = 0; //用户类型，0老师,1家长,2学生
-			mod.INTERFACEGU = 'https://zhxy.jiaobaowang.net:8515/schadminwebapi/api/data/'; //顾工接口
+			mod.INTERFACEGU = 'https://boss.zhuxue101.net:444/api/Data/'; //顾工接口
 			break;
 		default:
 			break;
