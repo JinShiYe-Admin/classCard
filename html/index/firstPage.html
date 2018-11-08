@@ -45,9 +45,9 @@
 //			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
 //			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 			console.log('publicPar2222222:' + JSON.stringify(publicPar));
-			if(publicPar && publicPar.uuid&&publicPar.blandlv) {
-				console.log('1111');
-			} else {
+//			if(publicPar && publicPar.uuid&&publicPar.blandlv) {
+//				console.log('1111');
+//			} else {
 				console.log('1112');
 				var tempModel = {
 					uuid: generateUUID(),
@@ -59,7 +59,7 @@
 				console.log('publicPar.uuid:' + tempModel.uuid);
 				console.log('publicPar.appid:' + tempModel.appid);
 				store.set(window.storageKeyName.PUBLICPARAMETER, tempModel);
-			}
+//			}
 			setUUID();
 			document.addEventListener("netchange", wainshow, false);
 
