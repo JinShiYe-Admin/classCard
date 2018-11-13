@@ -171,7 +171,7 @@
 							</div>
 							<div class="" style="float:left;height: 100%;width: 2%;"></div>
 							<div class="" style="float:left;height: 100%;width: 59%;">
-								<ul v-if="cardMsgListSum.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: #20d0b0;border: 0px; height: 100%;width: 100%;">
+								<ul v-if="cardMsgListSum.chname" class="mui-table-view mui-grid-view mui-grid-9" style="background: #20d0b0;border: 0px; height: 100%;width: 100%;overflow: scroll;">
 									<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 fontTitle" style="border: 0px;background: #3bb1c0;border-radius: 6px;width: 23%;margin-left: 2%;height: 40%;margin-bottom: 20px;" v-for="(cardModel,index) in cardMsgListSum.newslist">
 										<img class="mui-icon" style="width: 90%;height: 80%;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
 										<div class="mui-media-body teacherName" style="color: #fff;text-align: center;margin-top: 20px;height: 30px;">
