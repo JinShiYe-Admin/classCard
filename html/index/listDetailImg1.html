@@ -266,6 +266,12 @@
 				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
 					console.log('2121212tempFlag:' + tempFlag);
 					if(data.RspCode == 0) {
+						for (var i = 0; i < data.RspData.newslist.length; i++) {
+							var tep = data.RspData.newslist[i];
+							if (tep.imgurl == null) {
+								tep.imgurl = '../../img/body.png';
+							}
+						}
 						if(tempFlag == 1) {
 							classCardMsg.cardMsgList = data.RspData;
 							//							setTimeout(function() {
