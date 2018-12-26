@@ -148,7 +148,7 @@
 				width: 200px;
 				float: left;
 				padding: 10px;
-				height: 280px;
+				height: 100px;
 			}
 			
 			#teacherClass ul li img {
@@ -199,6 +199,8 @@
 			
 			.twoLineShow {
 				overflow: hidden;
+				/*overflow-x: scroll;
+				overflow-y: hidden;*/
 				text-overflow: ellipsis;
 				display: -webkit-box;
 				-webkit-line-clamp: 2;
@@ -253,7 +255,7 @@
 					<div style="height: 39%;width: 100%;border-radius: 12px;background: url(../../img/page1/banweijieshao.png);">
 						<p v-if="cardMsgList3.chname" class="fontTitle" style="font-size: 22px;color: white;height: 50px;border-radius: 12px 12px 0px 0px;background: #29cbc7;text-align: left;padding-top: 12px;padding-left: 20px;">{{cardMsgList3.chname}}</p>
 						<div v-if="cardMsgList3.newslist" id="classCommittee" style="width: 100%;height: 80%;">
-							<ul class="" style="width: 100%;height: 100%;margin-top: 30px;" v-if="cardMsgList3.newslist">
+							<ul class="" style="width: 100%;height: 70%;margin-top: 30px;overflow-x: scroll;overflow-y: hidden;" v-if="cardMsgList3.newslist">
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList3.newslist">
 									<img class="aligncenter" style="width: 120px;height: 120px;border-radius: 50%;object-fit: cover;" :src=cardModel.imgurl>
 									<div class="mui-media-body twoLineShow fontContent" style="color: #fff;text-align: center;margin-top: 20px;">{{cardModel.topic}}</div>
@@ -279,7 +281,7 @@
 						</div>
 						<div class="fontTitle" style="height: 8%;text-align: center;width: 100%;color: white;font-size: 25px;margin-top: -18px;">{{cardMsgList2.chname}}</div>
 						<div id="teacherClass" style="" v-if="cardMsgList2.newslist">
-							<ul style="margin-top: 20px;">
+							<ul style="margin-top: 20px;" style="overflow-x: scroll;overflow-y: hidden;">
 								<li @click="clickLi(cardModel)" class="" style="border: 0px;" v-for="(cardModel,index) in cardMsgList2.newslist">
 									<a href="#">
 										<img class="aligncenter" style="width: 160px;height: 160px;border-radius: 50%;object-fit: cover;text-align:center;" :src=cardModel.imgurl>

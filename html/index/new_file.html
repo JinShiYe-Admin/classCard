@@ -2,105 +2,144 @@
 <html>
 
 	<head>
-		<title>无缝滚动</title>
-	</head>
-	<style type="text/css">
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		
-		#div1 {
-			position: relative;
-			border: 1px solid #0ff;
-			width: 100%;
-			height: 280px;
-			margin: 10px auto 0;
-			overflow: hidden;
-		}
-		
-		#div1 ul {
-			position: absolute;
-			left: 0;
-		}
-		
-		#div1 ul li {
-			list-style: none;
-			width: 120px;
-			float: left;
-			padding: 10px;
-			height: 160px;
-		}
-		
-		#div1 ul li img {
-			width: 100%;
-		}
-	</style>
-	<script type="text/javascript">
-		window.onload = function() {
-			var oDiv = document.getElementById('div1');
-			var oUl = oDiv.getElementsByTagName('ul')[0];
-			var aLi = oUl.getElementsByTagName('li');
-			//			var aA = document.getElementsByTagName('a'); //获取向右向左的箭头
-			var timer = null;
-			var iSpeed = -5;
-			oUl.innerHTML += oUl.innerHTML; //定义图片可以循环播放
-			oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px'; //定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
-			function fnMove() {
-				if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
-					oUl.style.left = 0;
-				} else if(oUl.offsetLeft > 0) {
-					oUl.style.left = -oUl.offsetWidth / 2 + 'px';
-				} //定义到边界的时候，实现无缝衔接
-				oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
-				//定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>原生js侧滑显示删除按钮</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
 			}
-			timer = setInterval(fnMove, 30);
-			//			aA[0].onclick = function() {
-			//				iSpeed = -5;
-			//				//按下左箭头，定义向左运动
-			//			}
-			//			aA[1].onclick = function() {
-			//				iSpeed = 5;
-			//				//按下右箭头，定义向右运动
-			//			}
-			//			oDiv.onmouseover = function() {
-			//				clearInterval(timer);
-			//				//鼠标移动到图片上，清除定时器，停止运动
-			//			}
-			//			oDiv.onmouseout = function() {
-			//				timer = setInterval(fnMove, 30);
-			//				//鼠标移出，重新开启定时器，重新运动
-			//			}
-		};
-	</script>
+			
+			body {
+				font-size: .14rem;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			i {
+				font-style: normal;
+			}
+			
+			a {
+				color: #393939;
+				text-decoration: none;
+			}
+			
+			.list {
+				overflow: hidden;
+				margin-top: .2rem;
+				padding-left: .3rem;
+				border-top: 1px solid #ddd;
+			}
+			
+			.list li {
+				overflow: hidden;
+				width: 120%;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			.list li a {
+				display: block;
+				height: .88rem;
+				line-height: .88rem;
+				-webkit-transition: all 0.3s;
+				transition: all 0.3s;
+			}
+			
+			.list li i {
+				float: right;
+				width: 15%;
+				text-align: center;
+				background: #E2421B;
+				color: #fff;
+			}
+			
+			.swipeleft {
+				transform: translateX(-15%);
+				-webkit-transform: translateX(-15%);
+			}
+		</style>
+		<script>
+			function resizeRoot() {
+				var deviceWidth = document.documentElement.clientWidth, //计算根节点HTML的字体大小
+					num = 750,
+					num1 = num / 100;
+				if(deviceWidth > num) {
+					deviceWidth = num;
+				}
+				document.documentElement.style.fontSize = deviceWidth / num1 + "px";
+			}
+			resizeRoot(); //根节点HTML的字体大小初始化
+			window.onresize = function() {
+				resizeRoot();
+			};
+		</script>
+	</head>
 
 	<body>
-		<!--<a href="javascript:;">←</a>
-		<a href="javascript:;">→</a>-->
-		<div id="div1">
+		<div class="list" id="app">
 			<ul>
-				<li><img src="../../img/tianqi1.jpg">
-					<div class="mui-media-body" style="color: gray;text-align: center;">111</div>
+				<li v-for="(item,index) in list">
+					<a href="#">{{item.content}}
+						<i @click="del(item.content,index)">删除</i>
+					</a>
 				</li>
-				<li><img src="../../img/tianqi2.jpg">
-					<div class="mui-media-body" style="color:gray;text-align: center;">222</div>
-				</li>
-				<li><img src="../../img/tianqi3.jpg">
-					<div class="mui-media-body" style="color: gray;text-align: center;">333</div>
-				</li>
-				<li><img src="../../img/tianqi4.jpg">
-					<div class="mui-media-body" style="color: gray;text-align: center;">444</div>
-				</li>
-				<li><img src="../../img/tianqi5.jpg">
-					<div class="mui-media-body" style="color: gray;text-align: center;">555</div>
-				</li>
-				<div style="clear: none;"></div>
 			</ul>
 		</div>
-		<li style="border: 0px none;"><img src="https://qn-cspb.jiaobaowang.net/wechat/wechat/153691200512246.jpg?imageView2/3/w/100/h/100/q/100/format/png" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;"> <div class="mui-media-body" style="color: rgb(255, 255, 255); text-align: center;">王同学</div></li><li style="border: 0px none;"><img src="https://qn-cspb.jiaobaowang.net/wechat/wechat/1536912017407908.jpg?imageView2/3/w/100/h/100/q/100/format/png" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;"> <div class="mui-media-body" style="color: rgb(255, 255, 255); text-align: center;">赵同学</div></li> <div style="clear: none;"></div>
-		
-		<li style="border: 0px none;"><img src="https://qn-cspb.jiaobaowang.net/wechat/wechat/153691200512246.jpg?imageView2/3/w/100/h/100/q/100/format/png" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;"> <div class="mui-media-body" style="color: rgb(255, 255, 255); text-align: center;">王同学</div></li><li style="border: 0px none;"><img src="https://qn-cspb.jiaobaowang.net/wechat/wechat/1536912017407908.jpg?imageView2/3/w/100/h/100/q/100/format/png" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;"> <div class="mui-media-body" style="color: rgb(255, 255, 255); text-align: center;">赵同学</div></li> <div style="clear: none;"></div>
 	</body>
+	<script src="../../js/utils/vue.min.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: [{
+						"content": "第一条数据"
+					},
+					{
+						"content": "第二条数据"
+					},
+					{
+						"content": "第三条数据"
+					},
+				],
+				expansion: null, //是否存在展开的list
+			},
+			mounted: function() {
+				var $this = this; //将$this保存 区分以下触发事件的this
+				var container = document.querySelectorAll('.list li a');
+				for(var i = 0; i < container.length; i++) { //为每个特定DOM元素绑定touchstart touchmove时间监听 判断滑动方向
+					var x, X;
+					container[i].addEventListener('touchstart', function(event) { //记录初始触控点横坐标
+						x = event.changedTouches[0].pageX;
+					});
+					container[i].addEventListener('touchmove', function(event) {
+						X = event.changedTouches[0].pageX; //记录当前触控点横坐标
+						if($this.expansion) { //判断是否展开，如果展开则收起
+							$this.expansion.className = "";
+						}
+						if(X - x > 10) { //右滑
+							this.className = ""; //右滑收起
+						}
+						if(x - X > 10) { //左滑
+							this.className = "swipeleft"; //左滑展开
+							$this.expansion = this;
+						}
+					});
+				}
+			},
+			methods: {
+				del: function(name, idx) {
+					alert("确认删除" + name);
+					this.list.splice(idx, 1); //删除List这条数据 DOM随之更新渲染
+					var container = document.querySelector('.swipeleft'); //将展开的DOM归位 除掉样式类
+					container.className = "";
+					this.expansion = null;
+				}
+			}
+		});
+	</script>
 
 </html>
