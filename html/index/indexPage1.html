@@ -6,9 +6,9 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css"/>
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css"/>
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css" />
 		<style type="text/css">
 			/*.text1111 {
 				font-family: "宋体";
@@ -35,7 +35,7 @@
 				letter-spacing: 3px;
 				font-size: 19px;
 				color: white;
-				font-family : iconfont1;
+				font-family: iconfont1;
 				line-height: 25px;
 			}
 			
@@ -207,15 +207,18 @@
 				-webkit-box-orient: vertical;
 				font-size: 20px;
 			}
-			.fontContent{
-				font-family : iconfont1;
+			
+			.fontContent {
+				font-family: iconfont1;
 			}
-			.fontTitle{
-				font-family : iconfont3;
+			
+			.fontTitle {
+				font-family: iconfont3;
 				font-weight: 900;
 			}
-			.fontTitle1{
-				font-family : iconfont3;
+			
+			.fontTitle1 {
+				font-family: iconfont3;
 			}
 		</style>
 	</head>
@@ -449,43 +452,43 @@
 						var json_obj = $.xml2json(data);
 						var tempType = json_obj.forecast.weather[0].day.type;
 						json_obj.backgroundImg = '../../img/tianqi1.jpg';
-//						if(tempType.indexOf("晴") > -1) {
-//							json_obj.backgroundImg = '../../img/tianqi1.jpg';
-//						}
-//						if(tempType.indexOf("雨") > -1) {
-//							json_obj.backgroundImg = '../../img/tianqi2.jpg';
-//						}
-//						if(tempType.indexOf("雪") > -1) {
-//							json_obj.backgroundImg = '../../img/tianqi3.jpg';
-//						}
-//						if(tempType.indexOf("阴") > -1) {
-//							json_obj.backgroundImg = '../../img/tianqi4.jpg';
-//						}
-//						if(tempType.indexOf("云") > -1) {
-//							json_obj.backgroundImg = '../../img/tianqi5.jpg';
-//						}
-						
+						//						if(tempType.indexOf("晴") > -1) {
+						//							json_obj.backgroundImg = '../../img/tianqi1.jpg';
+						//						}
+						//						if(tempType.indexOf("雨") > -1) {
+						//							json_obj.backgroundImg = '../../img/tianqi2.jpg';
+						//						}
+						//						if(tempType.indexOf("雪") > -1) {
+						//							json_obj.backgroundImg = '../../img/tianqi3.jpg';
+						//						}
+						//						if(tempType.indexOf("阴") > -1) {
+						//							json_obj.backgroundImg = '../../img/tianqi4.jpg';
+						//						}
+						//						if(tempType.indexOf("云") > -1) {
+						//							json_obj.backgroundImg = '../../img/tianqi5.jpg';
+						//						}
+
 						if(tempType.indexOf("多云") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/多云.png';
-						}else if (tempType.indexOf("大雨") > -1) {
+						} else if(tempType.indexOf("大雨") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/大雨.png';
-						}else if (tempType.indexOf("雷阵雨") > -1) {
+						} else if(tempType.indexOf("雷阵雨") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/雷阵雨.png';
-						}else if (tempType.indexOf("小雨") > -1) {
+						} else if(tempType.indexOf("小雨") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/小雨.png';
-						}else if (tempType.indexOf("雨夹雪") > -1) {
+						} else if(tempType.indexOf("雨夹雪") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/雨夹雪.png';
-						}else if (tempType.indexOf("阵雪") > -1) {
+						} else if(tempType.indexOf("阵雪") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/阵雪.png';
-						}else if (tempType.indexOf("阵雨") > -1) {
+						} else if(tempType.indexOf("阵雨") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/阵雨.png';
-						}else if (tempType.indexOf("中雨") > -1) {
+						} else if(tempType.indexOf("中雨") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/中雨.png';
-						}else if (tempType.indexOf("晴") > -1) {
+						} else if(tempType.indexOf("晴") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/晴天.png';
-						}else if (tempType.indexOf("雪") > -1) {
+						} else if(tempType.indexOf("雪") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/雪.png';
-						}else if (tempType.indexOf("阴") > -1) {
+						} else if(tempType.indexOf("阴") > -1) {
 							json_obj.backgroundImg = '../../img/天气图标/阴.png';
 						}
 						console.log('json_obj:' + JSON.stringify(json_obj));
@@ -493,19 +496,19 @@
 					}
 				});
 				setInterval("getTime()", 1000);
-				getlist(2, 1, 1, 1);//
+				getlist(2, 1, 1, 1); //
 				getlist(1, 2, 6, 2);
 				getlist(1, 3, 6, 3);
 				getlist(1, 4, 5, 4);
 				getlist(2, 5, 5, 5);
 				getlist(1, 6, 6, 6);
 				setInterval(function() {
-					getlist(2, 1, 1, 1);//简介
-					getlist(1, 2, 6, 2);//老师
-					getlist(1, 3, 6, 3);//班委
-					getlist(1, 4, 5, 4);//活动
-					getlist(2, 5, 5, 5);//通知
-					getlist(0, 6, 6, 6);//荣誉
+					getlist(2, 1, 1, 1); //简介
+					getlist(1, 2, 6, 2); //老师
+					getlist(1, 3, 6, 3); //班委
+					getlist(1, 4, 5, 4); //活动
+					getlist(2, 5, 5, 5); //通知
+					getlist(0, 6, 6, 6); //荣誉
 				}, 1000 * 60);
 			}
 			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
@@ -517,22 +520,22 @@
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
 				console.log('personal0002:' + JSON.stringify(personal));
 				var newsType;
-				if (publicPar.blandlv == 0) {//0是班级班牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				if(publicPar.blandlv == 0) { //0是班级班牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 0;
-					} else{
+					} else {
 						newsType = 2;
 					}
-				} else if (publicPar.blandlv == 1) {//1是年级牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				} else if(publicPar.blandlv == 1) { //1是年级牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 1;
-					} else{
+					} else {
 						newsType = 2;
 					}
-				} else if (publicPar.blandlv == 2) {//2是学校牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				} else if(publicPar.blandlv == 2) { //2是学校牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 2;
-					} else{
+					} else {
 						newsType = 2;
 					}
 				}
@@ -564,7 +567,7 @@
 
 							} else {
 								classCardMsg.cardMsgList5 = data.RspData;
-								console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
+								//								console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
 								setTimeout(function() {
 									$('.tongzhiClass').height($('.tongzhiClassSum').height() - 50 - 20);
 									var area = document.getElementById('moocBox');
@@ -580,11 +583,13 @@
 							for(var i = 0; i < data.RspData.newslist.length; i++) {
 								var tempModel = data.RspData.newslist[i];
 								tempModel.imgurl = tempModel.imgurl.split('?')[0];
+								tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/300/h/300/q/300/format/png';
 							}
 							if(JSON.stringify(classCardMsg.cardMsgList4) == JSON.stringify(data.RspData)) {
 
 							} else {
 								classCardMsg.cardMsgList4 = data.RspData;
+								console.log('classCardMsg.cardMsgList4:' + JSON.stringify(classCardMsg.cardMsgList4));
 								setTimeout(function() {
 									var slider1 = mui("#slider1");
 									slider1.slider({
@@ -612,6 +617,11 @@
 							if(JSON.stringify(classCardMsg.cardMsgList2) == JSON.stringify(data.RspData)) {
 
 							} else {
+								for(var i = 0; i < data.RspData.newslist.length; i++) {
+									var tempModel = data.RspData.newslist[i];
+									tempModel.imgurl = tempModel.imgurl.split('?')[0];
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+								}
 								classCardMsg.cardMsgList2 = data.RspData;
 								setTimeout(function() {
 									var oDiv = document.getElementById('teacherClass');
@@ -637,6 +647,11 @@
 							if(JSON.stringify(classCardMsg.cardMsgList3) == JSON.stringify(data.RspData)) {
 
 							} else {
+								for(var i = 0; i < data.RspData.newslist.length; i++) {
+									var tempModel = data.RspData.newslist[i];
+									tempModel.imgurl = tempModel.imgurl.split('?')[0];
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+								}
 								classCardMsg.cardMsgList3 = data.RspData;
 								setTimeout(function() {
 									var oDiv = document.getElementById('classCommittee');
@@ -664,6 +679,11 @@
 							if(JSON.stringify(classCardMsg.cardMsgList6) == JSON.stringify(data.RspData)) {
 
 							} else {
+								for(var i = 0; i < data.RspData.newslist.length; i++) {
+									var tempModel = data.RspData.newslist[i];
+									tempModel.imgurl = tempModel.imgurl.split('?')[0];
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+								}
 								classCardMsg.cardMsgList6 = data.RspData;
 								setTimeout(function() {
 									$('.rongyuClass').height($('.rongyuSumClass').height() - 50);
