@@ -118,7 +118,7 @@
 			
 			#classCommittee ul li {
 				list-style: none;
-				width: 200px;
+				width: 245px;
 				float: left;
 				padding: 10px;
 				height: 160px;
@@ -149,7 +149,7 @@
 			
 			#teacherClass ul li {
 				list-style: none;
-				width: 200px;
+				width: 245px;
 				float: left;
 				padding: 10px;
 				height: 100px;
@@ -313,7 +313,7 @@
 						<ul v-if="cardMsgList6.chname" class="mui-table-view mui-grid-view mui-grid-9 rongyuClass" style="border: 0px;margin-top: -10px;width: 100%;height: 100%;border-radius: 0px 0px 12px 12px;background: url(../../img/page1/rongyu.png);">
 							<li @click="clickLi(cardModel)" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;border-radius: 12px;height: 50%;" v-for="(cardModel,index) in cardMsgList6.newslist">
 								<a href="#">
-									<img class="mui-icon" style="width: 100%;height: 200px;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
+									<img class="mui-icon" style="width: 100%;height: 245px;border-radius: 5px;object-fit: cover;" :src=cardModel.imgurl />
 								</a>
 							</li>
 						</ul>
@@ -322,7 +322,7 @@
 				<div class="" style="float:left;height: 100%;width: 0.5%;"></div>
 				<div class="" style="float:left;height: 100%;width: 24%;">
 					<!--天气情况-->
-					<div style="height: 20%;width: 100%;border-radius: 12px;background: #1ab4ab;">
+					<div style="float:left;height: 20%;width: 69%;border-radius: 12px;background: #1ab4ab;">
 						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 120px;width: 120px;border-radius: 50%;object-fit: cover;float: left;">
 						<div v-if="weatherModel.shidu" class="alignleft3" style="float: left;">
 							<p class="fontTitle" style="font-size: 25px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
@@ -330,6 +330,10 @@
 							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
 							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
 						</div>
+					</div>
+					<div style="float:left;height: 20%;width: 2%;"></div>
+					<div style="float:left;height: 20%;width: 29%;border-radius: 12px;background: #1ab4ab;">
+						<p style="text-align: center;font-size: 30px;width: 40px;top: 50%;left:50%;">课程表</p>
 					</div>
 					<div style="height: 1%;width: 100%;"></div>
 					<!--活动-->
@@ -624,7 +628,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
 								}
 								classCardMsg.cardMsgList2 = data.RspData;
 								setTimeout(function() {
@@ -654,7 +658,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
 								}
 								classCardMsg.cardMsgList3 = data.RspData;
 								setTimeout(function() {
@@ -686,7 +690,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/200/h/200/q/200/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
 								}
 								classCardMsg.cardMsgList6 = data.RspData;
 								setTimeout(function() {

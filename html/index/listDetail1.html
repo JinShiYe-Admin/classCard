@@ -7,13 +7,14 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link href="../../ui/layui/css/layui.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css"/>
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css"/>
-		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css"/>
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont1.css" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont2.css" />
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont3.css" />
 		<style type="text/css">
 			[v-cloak] {
 				display: none;
 			}
+			
 			body {
 				font-family: STHeiti, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
 			}
@@ -252,16 +253,26 @@
 				margin-top: 6%;
 				margin-right: 50px;
 			}
-			.fontContent{
-				font-family : iconfont1;
+			
+			.fontContent {
+				font-family: iconfont1;
 			}
-			.fontTitle{
-				font-family : iconfont3;
+			
+			.fontTitle {
+				font-family: iconfont3;
 				font-weight: 900;
 			}
-			.fontTitle1{
-				font-family : iconfont3;
+			
+			.fontTitle1 {
+				font-family: iconfont3;
 				font-weight: 900;
+			}
+			
+			.outer {
+				width: 60%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 		</style>
 	</head>
@@ -300,9 +311,13 @@
 								<div class="div4">
 									<ul class="mui-table-view" v-if="cardMsgList1.newslist">
 										<li :class="(currentModel.newsid==detailModel.newsid)?'bg2':'bg1'" @click="clickLi(detailModel)" class="mui-table-view-cell fontTitle" v-for="(detailModel,index) in cardMsgList1.newslist">
-											<a class="mui-navigate-right">
-												{{detailModel.topic}}
-											</a>
+											<!--<a class="mui-navigate-right">
+												{{detailModel.topic}}({{detailModel.rectime}})
+											</a>-->
+											<div class="mui-navigate-right">
+												<div class="outer" style="float:left;width: 60%;">{{detailModel.topic}}</div>
+												<div style="float:right;padding-right: 10px;font-size: 20px;">({{detailModel.rectime}})</div>
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -376,22 +391,22 @@
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
 				var newsType;
-				if (publicPar.blandlv == 0) {//0是班级班牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				if(publicPar.blandlv == 0) { //0是班级班牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 0;
-					} else{
+					} else {
 						newsType = 2;
 					}
-				} else if (publicPar.blandlv == 1) {//1是年级牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				} else if(publicPar.blandlv == 1) { //1是年级牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 1;
-					} else{
+					} else {
 						newsType = 2;
 					}
-				} else if (publicPar.blandlv == 2) {//2是学校牌
-					if (tempFlag == 1||tempFlag == 2||tempFlag == 3||tempFlag == 6) {
+				} else if(publicPar.blandlv == 2) { //2是学校牌
+					if(tempFlag == 1 || tempFlag == 2 || tempFlag == 3 || tempFlag == 6) {
 						newsType = 2;
-					} else{
+					} else {
 						newsType = 2;
 					}
 				}
@@ -417,26 +432,26 @@
 				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
 					console.log('2121212tempFlag:' + tempFlag);
 					if(data.RspCode == 0) {
-//						if(tempFlag == 1) {
-							var dataL = data.RspData.newslist;
-							if(dataL != null) {
-								for(var i = 0; i < data.RspData.newslist.length; i++) {
-									var tempModel = data.RspData.newslist[i];
-									if(tempModel.newsid == curPage.newsid) {
-										classCardMsg.currentModel = tempModel;
-										break;
-									}
-								}
-								console.log("******************我给VUE赋值了**********************")
-								classCardMsg.totalCount = data.RspData.pg.RowCount;
-								classCardMsg.totalPage = data.RspData.pg.PageCount;
-								classCardMsg.cardMsgList1 = data.RspData;
-								if(canInit) {
-									canInit = false;
-									initLayuiPage()
+						//						if(tempFlag == 1) {
+						var dataL = data.RspData.newslist;
+						if(dataL != null) {
+							for(var i = 0; i < data.RspData.newslist.length; i++) {
+								var tempModel = data.RspData.newslist[i];
+								if(tempModel.newsid == curPage.newsid) {
+									classCardMsg.currentModel = tempModel;
+									break;
 								}
 							}
-//						}
+							console.log("******************我给VUE赋值了**********************")
+							classCardMsg.totalCount = data.RspData.pg.RowCount;
+							classCardMsg.totalPage = data.RspData.pg.PageCount;
+							classCardMsg.cardMsgList1 = data.RspData;
+							if(canInit) {
+								canInit = false;
+								initLayuiPage()
+							}
+						}
+						//						}
 					} else {
 
 					}
