@@ -322,18 +322,20 @@
 				<div class="" style="float:left;height: 100%;width: 0.5%;"></div>
 				<div class="" style="float:left;height: 100%;width: 24%;">
 					<!--天气情况-->
-					<div style="float:left;height: 20%;width: 69%;border-radius: 12px;background: #1ab4ab;">
-						<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 120px;width: 120px;border-radius: 50%;object-fit: cover;float: left;">
-						<div v-if="weatherModel.shidu" class="alignleft3" style="float: left;">
-							<p class="fontTitle" style="font-size: 25px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
-							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
-							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
-							<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
+					<div style="height: 20%;width: 100%;">
+						<div style="float:left;height: 100%;width: 79%;border-radius: 12px;background: #1ab4ab;">
+							<img v-if="weatherModel.shidu" class="alignleft2" :src=weatherModel.backgroundImg style="height: 120px;width: 120px;border-radius: 50%;object-fit: cover;float: left;">
+							<div v-if="weatherModel.shidu" class="alignleft3" style="float: left;">
+								<p class="fontTitle" style="font-size: 25px;color: #fff;text-align: left;">{{weatherModel.city}}</p>
+								<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">温度：{{weatherModel.forecast.weather[0].low.slice(3)}}~{{weatherModel.forecast.weather[0].high.slice(3)}}</p>
+								<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">天气：{{weatherModel.forecast.weather[0].day.type}}</p>
+								<p class="fontTitle" style="font-size: 20px;color: #fff;text-align: left;">湿度：{{weatherModel.shidu}}</p>
+							</div>
 						</div>
-					</div>
-					<div style="float:left;height: 20%;width: 2%;"></div>
-					<div style="float:left;height: 20%;width: 29%;border-radius: 12px;background: #1ab4ab;">
-						<p style="text-align: center;font-size: 30px;width: 40px;top: 50%;left:50%;">课程表</p>
+						<div style="float:left;height: 100%;width: 2%;"></div>
+						<div @click="schoolTimetable()" style="float:left;height: 100%;width: 19%;border-radius: 12px;background: #1ab4ab;text-align: center;display: flex;vertical-align: middle;">
+							<p style="text-align: center;font-size: 30px;width: 40px;top: 50%;left:50%;margin: auto;line-height: 1.1;color: white;">课程表</p>
+						</div>
 					</div>
 					<div style="height: 1%;width: 100%;"></div>
 					<!--活动-->
@@ -341,27 +343,27 @@
 						<div v-if="cardMsgList4.newslist" id="slider1" class="mui-slider" style="height: 100%;">
 							<div class="mui-slider-group mui-slider-loop" style="height: 100%;">
 								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-								<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist" style="">
+								<div v-if="index==cardMsgList4.newslist.length-1" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 									<a href="#" style="height: 100%;">
 										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;border-radius: 12px;">
 										<p class="mui-slider-title fontTitle" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
-								<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist" style="">
+								<div @click="clickLi(newModel)" class="mui-slider-item" style="height: 100%;" v-for="(newModel,index) in cardMsgList4.newslist">
 									<a href="#" style="height: 100%;">
-										<img style="height: 100%;object-fit: cover;border-radius: 12px;" :src=newModel.imgurl>
+										<img style="height: 100%;object-fit: cover;border-radius: 12px;-moz-box-shadow: 200px 200px 10px green;-webkit-box-shadow: 200px 200px 10px green;box-shadow:200px 200px 10px green;" :src=newModel.imgurl>
 										<p class="mui-slider-title fontTitle" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
 								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-								<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist" style="">
+								<div v-if="index==0" class="mui-slider-item mui-slider-item-duplicate" v-for="(newModel,index) in cardMsgList4.newslist">
 									<a href="#" style="height: 100%;">
 										<img :src=newModel.imgurl style="height: 100%;object-fit: cover;border-radius: 12px;">
 										<p class="mui-slider-title fontTitle" style="border-radius: 0px 0px 12px 12px;">{{newModel.topic}}</p>
 									</a>
 								</div>
 							</div>
-							<div class="mui-slider-indicator" style="">
+							<div class="mui-slider-indicator">
 								<div :class="index==0?'mui-indicator mui-active':'mui-indicator'" v-for="(newModel,index) in cardMsgList4.newslist"></div>
 							</div>
 						</div>
@@ -590,6 +592,13 @@
 						} else if(tempFlag == 4) {
 							for(var i = 0; i < data.RspData.newslist.length; i++) {
 								var tempModel = data.RspData.newslist[i];
+								//判断是否为视频连接
+								if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
+									tempModel.imgFlag = 1;
+								} else {
+									tempModel.imgFlag = 0;
+								}
+								//修改照片尺寸
 								tempModel.imgurl = tempModel.imgurl.split('?')[0];
 								tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/300/h/300/q/300/format/png';
 							}
@@ -725,6 +734,16 @@
 						} else {
 							utils.mOpenWithData("../../html/index/listDetail1.html", model);
 						}
+					},
+					schoolTimetable: function() {
+						var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+						var tmpM = {
+							chncode: 7,
+							chnid: publicPar.blandid,
+							newsid: -1,
+							lv: publicPar.blandlv
+						}
+						utils.mOpenWithData("../../html/index/listDetail1.html", tmpM);
 					}
 				}
 			});

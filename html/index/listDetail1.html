@@ -67,6 +67,15 @@
 				max-width: 100%;
 			}
 			
+			.videothumb {
+				text-align: center;
+				width: 100%;
+			}
+			
+			.videothumb video {
+				max-width: 100%;
+			}
+			
 			.topDiv {
 				height: 24%;
 				background: #58B0BA;
@@ -438,6 +447,10 @@
 							for(var i = 0; i < data.RspData.newslist.length; i++) {
 								var tempModel = data.RspData.newslist[i];
 								if(tempModel.newsid == curPage.newsid) {
+									classCardMsg.currentModel = tempModel;
+									break;
+								}
+								if (curPage.newsid == -1) {
 									classCardMsg.currentModel = tempModel;
 									break;
 								}
