@@ -595,12 +595,14 @@
 								//判断是否为视频连接
 								if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
 									tempModel.imgFlag = 1;
+									//修改照片尺寸
+									tempModel.imgurl = tempModel.imgurl + '/w/300/h/300/q/300/format/png';
 								} else {
 									tempModel.imgFlag = 0;
+									//修改照片尺寸
+									tempModel.imgurl = tempModel.imgurl.split('?')[0];
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/300/h/300/q/300/format/png';
 								}
-								//修改照片尺寸
-								tempModel.imgurl = tempModel.imgurl.split('?')[0];
-								tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/300/h/300/q/300/format/png';
 							}
 							if(JSON.stringify(classCardMsg.cardMsgList4) == JSON.stringify(data.RspData)) {
 
