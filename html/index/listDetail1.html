@@ -450,7 +450,7 @@
 									classCardMsg.currentModel = tempModel;
 									break;
 								}
-								if (curPage.newsid == -1) {
+								if(curPage.newsid == -1) {
 									classCardMsg.currentModel = tempModel;
 									break;
 								}
@@ -486,6 +486,15 @@
 					clickLi: function(model) {
 						classCardMsg.currentModel = model;
 					}
+				},
+				watch: {
+					currentModel: function(newVal, oldVal) {
+						//alert('监视到了firstname的变化'+JSON.stringify(newVal)+JSON.stringify(oldVal));
+
+						setTimeout(function() {
+							test();
+						}, 1 * 1000);
+					}
 				}
 			});
 
@@ -508,6 +517,27 @@
 					});
 				});
 			}
+
+			var videos;
+
+			function test() {
+				videos = document.getElementsByTagName('video');
+				//alert(videos.length);
+				for(var i = videos.length - 1; i >= 0; i--) {
+					(function() {
+						var p = i;
+						videos[p].addEventListener('play', function() {
+							pauseAll(p);
+						})
+					})()
+				}
+			}
+
+			function pauseAll(index) {
+				for(var j = videos.length - 1; j >= 0; j--) {
+					if(j != index) videos[j].pause();
+				}
+			};
 
 			function getDetail() {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
