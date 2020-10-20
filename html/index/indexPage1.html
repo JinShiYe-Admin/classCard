@@ -523,7 +523,7 @@
 					getlist(1, 4, 5, 4); //活动
 					getlist(2, 5, 5, 5); //通知
 					getlist(1, 6, 6, 6); //荣誉
-				}, 1000 * 60);
+				}, 1000 * 60*60);
 			}
 			//flag,文章种类，0文章列表,1带图片的文章列表,2带详情
 			//chncode,栏目代码，后台栏目定义的代码
@@ -600,12 +600,12 @@
 								if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
 									tempModel.imgFlag = 1;
 									//修改照片尺寸
-									tempModel.imgurl = tempModel.imgurl + '/w/300/h/300/q/300/format/png';
+									tempModel.imgurl = tempModel.imgurl + '/w/150/h/150/q/75/format/png';
 								} else {
 									tempModel.imgFlag = 0;
 									//修改照片尺寸
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/300/h/300/q/300/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
 								}
 							}
 							if(JSON.stringify(classCardMsg.cardMsgList4) == JSON.stringify(data.RspData)) {
@@ -643,7 +643,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
 								}
 								classCardMsg.cardMsgList2 = data.RspData;
 								setTimeout(function() {
@@ -673,7 +673,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
 								}
 								classCardMsg.cardMsgList3 = data.RspData;
 								setTimeout(function() {
@@ -705,7 +705,7 @@
 								for(var i = 0; i < data.RspData.newslist.length; i++) {
 									var tempModel = data.RspData.newslist[i];
 									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/245/h/245/q/245/format/png';
+									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
 								}
 								classCardMsg.cardMsgList6 = data.RspData;
 								setTimeout(function() {
