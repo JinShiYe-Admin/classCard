@@ -110,7 +110,7 @@
 			.alignright {
 				display: inline;
 				float: right;
-				margin-top: 6%;
+				margin-top: 8%;
 				margin-right: 50px;
 			}
 			
@@ -155,17 +155,17 @@
 
 	<body style="height: 100%;width: 100%;">
 		<div class="mui-content" v-cloak style="height: 100%;background: linear-gradient(to bottom, #41bc10, #ffc048);" id="classCardMsg">
-			<div style="height: 12%;width: 100%;">
+			<div v-cloak style="height: 12%;width: 100%;">
 				<!--头像、学校、年级、班级信息-->
-				<div class="" style="float:left;height: 100%;width: 50%;">
-					<img v-if="cardMsgList.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 10%;float: left;">
+				<div class="" style="float:left;height: 100%;width: 60%;">
+					<img v-if="cardMsgList.chname" class="alignleft" src="../../img/tianqi1.jpg" style="height: 70px;width: 70px;border-radius: 50%;object-fit: cover;margin-left: 7%;float: left;">
 					<div v-if="cardMsgList.chname" class="alignleft1" style="float: left;">
-						<p class="mui-pull-left fontTitle1" style="font-size: 50px;color: #fff;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
+						<p class="mui-pull-left fontTitle1" style="font-size: 50px;color: #fff;font-weight: 900;">{{cardMsgList.schname}} {{cardMsgList.gradename}} {{cardMsgList.classname}}</p>
 					</div>
 				</div>
 				<!--时间-->
-				<div class="" style="float:left;height: 100%;width: 50%;">
-					<p class="alignright fontTitle" style="font-size: 24px;color: #fff;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
+				<div class="" style="float:left;height: 100%;width: 40%;">
+					<p class="alignright fontTitle" style="font-size: 24px;color: #fff;height: 100%;">{{timeModel.yearStr}} {{timeModel.weekStr}} {{timeModel.hoursStr}}</p>
 				</div>
 			</div>
 			<div style="height: 85%;width: 100%;">
@@ -238,7 +238,7 @@
 				var area = document.getElementById('moocBox1');
 				var con1 = document.getElementById('con11');
 				var con2 = document.getElementById('con21');
-				console.log('1111111:' + area.scrollTop + ',' + con1.scrollHeight);
+				// console.log('1111111:' + area.scrollTop + ',' + con1.scrollHeight);
 				if(area.scrollTop >= con1.scrollHeight) {
 					area.scrollTop = 0;
 				} else {
@@ -247,7 +247,7 @@
 			}
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
-				console.log('curPage:' + JSON.stringify(curPage));
+				// console.log('curPage:' + JSON.stringify(curPage));
 				setInterval("getTime()", 1000);
 				// 班主任
 //				getlist(2, curPage.chncode, 1, 1);
@@ -272,7 +272,7 @@
 				var enData0 = {};
 				//不需要加密的数据
 				var comData0 = {
-					uuid: publicPar.uuid, //用户设备号
+					// uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
 					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
@@ -282,22 +282,22 @@
 					psize: pageSize, //每页条数
 					pindex: 1, //页码
 					newslv: newsType, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
-					utoken: personal.utoken, //用户令牌
-					appid: publicPar.appid //系统所分配的应用ID
+					// utoken: personal.utoken, //用户令牌
+					// appid: publicPar.appid //系统所分配的应用ID
 				};
 				//			events.showWaiting();
 				//发送网络请求，data为网络返回值
-				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
-					console.log('2121212tempFlag:' + tempFlag);
-					if(data.RspCode == 0) {
-						for (var i = 0; i < data.RspData.newslist.length; i++) {
-							var tep = data.RspData.newslist[i];
+				postDataEncry(window.storageKeyName.INTERFACE_BANPAI+'api/webSchNews/ClassNewsList', enData0, comData0, 1, function(data) {
+					console.log('2121212tempFlag:' + JSON.stringify(data));
+					if(data.code == 0) {
+						for (var i = 0; i < data.data.newslist.length; i++) {
+							var tep = data.data.newslist[i];
 							if (tep.imgurl == null) {
 								tep.imgurl = '../../img/body.png';
 							}
 						}
 						if(tempFlag == 1) {
-							classCardMsg.cardMsgList = data.RspData;
+							classCardMsg.cardMsgList = data.data;
 							//							setTimeout(function() {
 							//								var area = document.getElementById('moocBox1');
 							//								var con1 = document.getElementById('con11');
@@ -309,13 +309,13 @@
 							//								myScroll2 = setInterval("scrollUp1()", speed);
 							//							}, 300);
 						} else if(tempFlag == 2) {
-							if (data.RspData.newslist.length>0) {
-								console.log('122222222222222');
-								classCardMsg.cardMsgList = data.RspData;
-								classCardMsg.currentModel = data.RspData.newslist[0];
-//								data.RspData.newslist.splice(0, 1);
-//								data.RspData.newslist = data.RspData.newslist.shift();
-								classCardMsg.cardMsgListSum = data.RspData;
+							if (data.data.newslist.length>0) {
+								// console.log('122222222222222');
+								classCardMsg.cardMsgList = data.data;
+								classCardMsg.currentModel = data.data.newslist[0];
+//								data.data.newslist.splice(0, 1);
+//								data.data.newslist = data.data.newslist.shift();
+								classCardMsg.cardMsgListSum = data.data;
 							}
 						}
 					} else {
@@ -340,9 +340,9 @@
 
 			function getDetail() {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-				console.log('publicPar:' + JSON.stringify(publicPar));
+				// console.log('publicPar:' + JSON.stringify(publicPar));
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
-				console.log('personal0002:' + JSON.stringify(personal));
+				// console.log('personal0002:' + JSON.stringify(personal));
 				//握手
 				var enData0 = {};
 				//不需要加密的数据
@@ -355,8 +355,8 @@
 				//			events.showWaiting();
 				//发送网络请求，data为网络返回值
 				postDataEncry('ClassNews', enData0, comData0, 0, function(data) {
-					console.log('2121212');
-					if(data.RspCode == 0) {} else {
+					// console.log('2121212');
+					if(data.code == 0) {} else {
 
 					}
 				});

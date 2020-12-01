@@ -47,8 +47,8 @@ var appUpdate = (function(mod) {
 //		var wd_0 = events.showWaiting();
 //		postDataPro_PostVerInfo(comData9, function(data) {
 //			console.log('获取APP版本号0:', data);
-//			if(data.RspCode == 0) {
-//				mod.getAppVersion(JSON.parse(data.RspData));
+//			if(data.code == 0) {
+//				mod.getAppVersion(JSON.parse(data.data));
 //				console.log('获取APP版本号:', data);
 //			} else {
 //				mui.toast(data.RspTxt);

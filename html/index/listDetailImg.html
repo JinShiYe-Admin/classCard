@@ -247,7 +247,7 @@
 
 			window.onload = function() {
 				curPage = utils.getDataFromUrl(window.location.href);
-				console.log('curPage:' + JSON.stringify(curPage));
+				// console.log('curPage:' + JSON.stringify(curPage));
 				//				classCardMsg.currentModel = curPage;
 				$('.div7').height($('.div3').height() - 70);
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
@@ -258,7 +258,7 @@
 					dataType: "xml",
 					success: function(data) {
 						var json_obj = $.xml2json(data);
-						console.log('json_obj:' + JSON.stringify(json_obj));
+						// console.log('json_obj:' + JSON.stringify(json_obj));
 						classCardMsg.weatherModel = json_obj;
 					}
 				});
@@ -275,7 +275,7 @@
 				var enData0 = {};
 				//不需要加密的数据
 				var comData0 = {
-					uuid: publicPar.uuid, //用户设备号
+					// uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
 					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
@@ -283,23 +283,23 @@
 					psize: pageSize, //每页条数
 					pindex: 1, //页码
 					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
-					utoken: personal.utoken, //用户令牌
-					appid: publicPar.appid //系统所分配的应用ID
+					// utoken: personal.utoken, //用户令牌
+					// appid: publicPar.appid //系统所分配的应用ID
 				};
 				//			events.showWaiting();
 				//发送网络请求，data为网络返回值
-				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
-					console.log('2121212tempFlag:' + tempFlag);
-					if(data.RspCode == 0) {
+				postDataEncry(window.storageKeyName.INTERFACE_BANPAI+'api/webSchNews/ClassNewsList', enData0, comData0, 1, function(data) {
+					// console.log('2121212tempFlag:' + tempFlag);
+					if(data.code == 0) {
 						if(tempFlag == 1) {
-							for(var i = 0; i < data.RspData.newslist.length; i++) {
-								var tempModel = data.RspData.newslist[i];
+							for(var i = 0; i < data.data.newslist.length; i++) {
+								var tempModel = data.data.newslist[i];
 								if(tempModel.newsid == curPage.newsid) {
 									classCardMsg.currentModel = tempModel;
 									break;
 								}
 							}
-							classCardMsg.cardMsgList1 = data.RspData;
+							classCardMsg.cardMsgList1 = data.data;
 						}
 					} else {
 
@@ -329,9 +329,9 @@
 
 			function getDetail() {
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-				console.log('publicPar:' + JSON.stringify(publicPar));
+				// console.log('publicPar:' + JSON.stringify(publicPar));
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
-				console.log('personal0002:' + JSON.stringify(personal));
+				// console.log('personal0002:' + JSON.stringify(personal));
 				//握手
 				var enData0 = {};
 				//不需要加密的数据
@@ -344,8 +344,8 @@
 				//			events.showWaiting();
 				//发送网络请求，data为网络返回值
 				postDataEncry('ClassNews', enData0, comData0, 0, function(data) {
-					console.log('2121212');
-					if(data.RspCode == 0) {} else {
+					// console.log('2121212');
+					if(data.code == 0) {} else {
 
 					}
 				});

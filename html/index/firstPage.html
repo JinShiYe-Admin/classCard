@@ -31,12 +31,15 @@
 		//		mui.plusReady(function() {
 		window.onload = function() {
 			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-			console.log('publicPar:' + JSON.stringify(publicPar));
+			// console.log('publicPar:' + JSON.stringify(publicPar));
 			var blandid = getUrlParam('blandid');
 			var blandlv = getUrlParam('blandlv');
 			var params = getUrlVars();
 			var cityName = decodeURI(params.cityName);
-			console.log('cityName:' + cityName + ',blandlv:' + blandlv + ',blandid:' + blandid);
+			// var blandid = 70;
+			// var blandlv = 0;
+			// var cityName = '济南';
+			// console.log('cityName:' + cityName + ',blandlv:' + blandlv + ',blandid:' + blandid);
 //			if (blandid>=0) {
 //				publicPar.blandlv = blandlv;
 //				publicPar.blandid = blandid;
@@ -44,11 +47,11 @@
 //			}
 //			store.set(window.storageKeyName.PUBLICPARAMETER, publicPar);
 //			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
-			console.log('publicPar2222222:' + JSON.stringify(publicPar));
+			// console.log('publicPar2222222:' + JSON.stringify(publicPar));
 //			if(publicPar && publicPar.uuid&&publicPar.blandlv) {
 //				console.log('1111');
 //			} else {
-				console.log('1112');
+				// console.log('1112');
 				var tempModel = {
 					uuid: generateUUID(),
 					appid: 'baipai',
@@ -56,8 +59,8 @@
 					blandid: blandid,
 					cityName: cityName
 				}
-				console.log('publicPar.uuid:' + tempModel.uuid);
-				console.log('publicPar.appid:' + tempModel.appid);
+				// console.log('publicPar.uuid:' + tempModel.uuid);
+				// console.log('publicPar.appid:' + tempModel.appid);
 				store.set(window.storageKeyName.PUBLICPARAMETER, tempModel);
 //			}
 			setUUID();
@@ -79,59 +82,81 @@
 
 		//login登录
 		var loginPro = function(tempName, tempPW) {
-			console.log('tempName000:' + tempName + ',tempPW:' + tempPW);
+			// console.log('tempName000:' + tempName + ',tempPW:' + tempPW);
 			var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 			//握手
-			var enData0 = {};
+			// var enData0 = {};
 			//不需要加密的数据
-			var comData0 = {
-				uuid: publicPar.uuid, //用户设备号
-				shaketype: 'login', //注册(reg),登录(login),修改密码(repw)
-				appid: publicPar.appid //系统所分配的应用ID
-			};
+			// var comData0 = {
+			// 	uuid: publicPar.uuid, //用户设备号
+			// 	shaketype: 'login', //注册(reg),登录(login),修改密码(repw)
+			// 	appid: publicPar.appid //系统所分配的应用ID
+			// };
+			// var comData0 = {
+			// 	platform_code: window.storageKeyName.PLATFORMCODE, //平台代码
+			// 	app_code: window.storageKeyName.APPCODE, //应用系统代码
+			// 	unit_code: '-1', //单位代码，如应用系统需限制本单位用户才允许登录，则传入单位代码，否则传“-1”
+			// 	uuid: publicPar.uuid, //设备唯一识别码,防同一应用在不同机器上登录互串,验证码校检用
+			// 	webid: 'publicPar.webid', //浏览器识别码,防不同浏览器登录同一应用互串,验证码校检用（web用浏览器类型加版本，app用操作系统+版本））
+			// 	shaketype: '1', //
+			// }
 			//			events.showWaiting();
 			//发送网络请求，data为网络返回值
-			postDataEncry('ShakeHand', enData0, comData0, 0, function(data) {
-				console.log('2121212');
-				if(data.RspCode == 0) {
-					store.set(window.storageKeyName.SHAKEHAND, data.RspData);
-					var enData1 = {
-						uid: tempName, //用户账号
-						pw: tempPW //用户密码
-					}
+			// postDataEncry('login/getEncryptKey', enData0, comData0, 0, function(data) {
+			// 	console.log('2121212');
+			// 	if(data.code == 0) {
+					// store.set(window.storageKeyName.SHAKEHAND, data.data);
+					// var enData1 = {
+					// 	uid: tempName, //用户账号
+					// 	pw: tempPW //用户密码
+					// }
+					// //不需要加密的数据
+					// var comData1 = {
+					// 	uuid: publicPar.uuid, //用户设备号
+					// 	shaketype: 'login', //注册(reg),登录(login),修改密码(repw)
+					// 	appid: publicPar.appid, //系统所分配的应用ID
+					// 	schid: storageKeyName.SCHOOLID, //学校ID
+					// 	utp: storageKeyName.USERTYPE //用户类型，0老师,1家长,2学生
+					// }
+					var enData1 = {};
 					//不需要加密的数据
 					var comData1 = {
-						uuid: publicPar.uuid, //用户设备号
-						shaketype: 'login', //注册(reg),登录(login),修改密码(repw)
-						appid: publicPar.appid, //系统所分配的应用ID
-						schid: storageKeyName.SCHOOLID, //学校ID
-						utp: storageKeyName.USERTYPE //用户类型，0老师,1家长,2学生
-					}
-					console.log('comData1:' + JSON.stringify(comData1));
+						uuid: publicPar.uuid, //设备唯一识别码,防同一应用在不同机器上登录互串,验证码校检用
+						webid: 'publicPar.webid', //浏览器识别码,防不同浏览器登录同一应用互串,验证码校检用（web用浏览器类型加版本，app用操作系统+版本））
+						shaketype: '1', //
+						login_name: tempName, //登录名
+						password: '', //
+						device_type: '0', //登录设备类型，0：WEB、1：APP、2：客户端
+						platform_code: window.storageKeyName.PLATFORMCODE, //平台代码
+						app_code: window.storageKeyName.APPCODE, //应用系统代码
+						unit_code: publicPar.blandid, //单位代码，如应用系统需限制本单位用户才允许登录，则传入单位代码，否则传“-1”
+						verify_code: ''
+					};
+					// console.log('comData1:' + JSON.stringify(comData1));
 					//登录
-					postDataEncry('Login', enData1, comData1, 0, function(data1) {
+					postDataEncry(window.storageKeyName.INTERFACE_SSO_SKIN + 'login', enData1, comData1, 0, function(data1) {
 						//						events.closeWaiting();
-						if(data1.RspCode == 0) {
+						if(data1.code == 0) {
 							loginFlag = 1;
-							if(data1.RspData.dpts == null) {
-								data1.RspData.dpts = [];
+							if(data1.data.dpts == null) {
+								data1.data.dpts = [];
 							}
-							if(data1.RspData.grds == null) {
-								data1.RspData.grds = [];
+							if(data1.data.grds == null) {
+								data1.data.grds = [];
 							}
-							if(data1.RspData.clss == null) {
-								data1.RspData.clss = [];
+							if(data1.data.clss == null) {
+								data1.data.clss = [];
 							}
-							if(data1.RspData.subs == null) {
-								data1.RspData.subs = [];
+							if(data1.data.subs == null) {
+								data1.data.subs = [];
 							}
-							if(data1.RspData.urolestr == null) {
-								data1.RspData.urolestr = '00000000000000000000000000000';
+							if(data1.data.urolestr == null) {
+								data1.data.urolestr = '00000000000000000000000000000';
 							}
-							data1.RspData.userName0 = tempName;
-							data1.RspData.password0 = tempPW;
-							data1.RspData.isBdCount = 0; //套餐是否绑定学生
-							data1.RspData.packageCount = 0; //套餐是否绑定
+							data1.data.userName0 = tempName;
+							data1.data.password0 = tempPW;
+							data1.data.isBdCount = 0; //套餐是否绑定学生
+							data1.data.packageCount = 0; //套餐是否绑定
 							var model_area = {
 								procode: '00', //省份code，自己添加的参数
 								proname: '全国', //省份名称，自己添加的参数
@@ -139,22 +164,22 @@
 								aname: '全国', //节点名称--城市名称
 								atype: '' //节点类型,0省1城市2区县
 							}
-							data1.RspData.uarea = model_area; //用户区域,省代码 市代码|省名称 市名称
-							console.log('data1.RspData:' + JSON.stringify(data1.RspData));
-							store.set(window.storageKeyName.PERSONALINFO, data1.RspData);
+							data1.data.uarea = model_area; //用户区域,省代码 市代码|省名称 市名称
+							// console.log('data1.data:' + JSON.stringify(data1.data));
+							store.set(window.storageKeyName.PERSONALINFO, data1.data);
 							utils.mOpenWithData("../../html/index/indexPage1.html", {});
-						} else if(data1.RspCode == 5) { //用户名或密码不正确
+						} else if(data1.code == 5) { //用户名或密码不正确
 							store.set(window.storageKeyName.PERSONALINFO, {});
 							setUUID();
 						} else {
 							mui.toast(data1.RspTxt);
 						}
 					});
-				} else {
-//					setUUID();
-					mui.toast(data.RspTxt);
-				}
-			});
+// 				} else {
+// //					setUUID();
+// 					mui.toast(data.RspTxt);
+// 				}
+			// });
 
 		}
 
@@ -182,7 +207,7 @@
 		var setUUID = function() {
 			//判断上次是否登录过，自动登录
 			var personal = store.get(window.storageKeyName.PERSONALINFO);
-			console.log('setUUIDpersonal000:' + JSON.stringify(personal));
+			// console.log('setUUIDpersonal000:' + JSON.stringify(personal));
 			if(personal) {
 				if(personal.utid == 'undefined' || personal.utid == null || personal.userName0 == null) {
 					//login登录

@@ -9,7 +9,7 @@ var request = (function(mod) {
 	mod.postData = function(url, data, callback, type) {
 		jQuery.post(url, data, function(response) {
 			console.log("请求返回的值：" + JSON.stringify(response))
-			if(response.RspCode == 13) {
+			if(response.code == 13) {
 				if(type) {
 					layer.alert("当前用户没有登录或登录已超时，请关闭当前页面，重新从企业管理端登录")
 				}
@@ -24,8 +24,8 @@ var request = (function(mod) {
 			type: 'findpage'
 		}), function(response) {
 			console.log("获取的部门列表值：" + JSON.stringify(response));
-			if(response.RspCode == 0) {
-				callback(JSON.parse(response.RspData));
+			if(response.code == 0) {
+				callback(JSON.parse(response.data));
 			} else {
 				layer.alert(response.RspTxt);
 			}
@@ -48,8 +48,8 @@ var request = (function(mod) {
 			callcol: callcol
 		}), function(response) {
 			console.log("获取的部门人员列表列表值：" + JSON.stringify(response));
-			if(response.RspCode == 0) {
-				callback(response.RspData);
+			if(response.code == 0) {
+				callback(response.data);
 			} else {
 				callback([]);
 				layer.alert(response.RspTxt);
@@ -199,7 +199,7 @@ var processRequest = (function(mod) {
 		console.log("JQP:data:", url, data);
 		jQuery.post(url, data, function(data) {
 			console.log("JQP:callback:", url, data);
-			if(data.RspCode == 13) {
+			if(data.code == 13) {
 				alert("用户没有登录或已超时，关闭当前页面，从新从企业管理端登录")
 			} else {
 				callback(data);
@@ -207,8 +207,8 @@ var processRequest = (function(mod) {
 		}).fail(function(e) {
 			console.log("JQP:onerror:", e);
 			callback({
-				RspCode: 404,
-				RspData: null,
+				code: 404,
+				data: null,
 				RspTxt: "网络连接失败,请重新尝试一下"
 			});
 		});

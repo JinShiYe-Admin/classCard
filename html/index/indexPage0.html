@@ -409,7 +409,7 @@
 						if(tempType.indexOf("云") > -1) {
 							json_obj.backgroundImg = '../../img/tianqi5.jpg';
 						}
-						console.log('json_obj:' + JSON.stringify(json_obj));
+						// console.log('json_obj:' + JSON.stringify(json_obj));
 						classCardMsg.weatherModel = json_obj;
 					}
 				});
@@ -442,28 +442,29 @@
 				var enData0 = {};
 				//不需要加密的数据
 				var comData0 = {
-					uuid: publicPar.uuid, //用户设备号
+					// uuid: publicPar.uuid, //用户设备号
 					newstype: flag, //文章种类，0文章列表,1带图片的文章列表,2带详情
 					chncode: chncode, //栏目代码，后台栏目定义的代码
 //					blandid: publicPar.blandid, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
 //					blandlv: publicPar.blandlv, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
-										blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
-										blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
+					blandid: 20, //班牌对应ID，根据班牌类型填写,学校的填写学校ID,年级牌,填写年级ID,班级牌填写班级ID
+					blandlv: 1, //班牌类型，0是班级班牌,1是年级牌,2是学校牌,控制blandid的值指向
 					psize: pageSize, //每页条数
 					pindex: 1, //页码
 					newslv: 2, //文章层级，文章层级,0获取blandlv对应的本层级的文章,1获取向上级别的文章(如年级牌只获取该年级的及学校级别的文章),2获取关联范围的所有文章(如年级,则获取该年级下所有班级及学校级别的及本年级的)
-					utoken: personal.utoken, //用户令牌
-					appid: publicPar.appid //系统所分配的应用ID
+					// utoken: personal.utoken, //用户令牌
+					// appid: publicPar.appid //系统所分配的应用ID
+					// newstype:1,chncode:1,blandid:"100005",blandlv:2,psize:6,pindex:1,newslv:0,platform_code:"PT0002",app_code:"schapp#",unit_code:"100005",index_code:"index",
 				};
 				//			events.showWaiting();
 				//发送网络请求，data为网络返回值
-				postDataEncry('ClassNewsList', enData0, comData0, 0, function(data) {
-					console.log('2121212tempFlag:' + tempFlag);
-					if(data.RspCode == 0) {
+				postDataEncry(window.storageKeyName.INTERFACE_BANPAI+'api/webSchNews/ClassNewsList', enData0, comData0, 1, function(data) {
+					// console.log('2121212tempFlag:' + tempFlag);
+					if(data.code == 0) {
 						if(tempFlag == 5) {
-							console.log('1111111111111111111');
-							classCardMsg.cardMsgList5 = data.RspData;
-							console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
+							// console.log('1111111111111111111');
+							classCardMsg.cardMsgList5 = data.data;
+							// console.log('classCardMsg.cardMsgList5:' + JSON.stringify(classCardMsg.cardMsgList5));
 							setTimeout(function() {
 								var area = document.getElementById('moocBox');
 								var con1 = document.getElementById('con1');
@@ -475,11 +476,11 @@
 								myScroll1 = setInterval("scrollUp()", speed);
 							}, 300);
 						} else if(tempFlag == 4) {
-							for(var i = 0; i < data.RspData.newslist.length; i++) {
-								var tempModel = data.RspData.newslist[i];
+							for(var i = 0; i < data.data.newslist.length; i++) {
+								var tempModel = data.data.newslist[i];
 								tempModel.imgurl = tempModel.imgurl.split('?')[0];
 							}
-							classCardMsg.cardMsgList4 = data.RspData;
+							classCardMsg.cardMsgList4 = data.data;
 							setTimeout(function() {
 								var slider1 = mui("#slider1");
 								slider1.slider({
@@ -487,7 +488,7 @@
 								});
 							}, 300);
 						} else if(tempFlag == 1) {
-							classCardMsg.cardMsgList1 = data.RspData;
+							classCardMsg.cardMsgList1 = data.data;
 							setTimeout(function() {
 								var area = document.getElementById('moocBox1');
 								var con1 = document.getElementById('con11');
@@ -499,11 +500,12 @@
 								myScroll2 = setInterval("scrollUp1()", speed);
 							}, 300);
 						} else if(tempFlag == 2) {
-							classCardMsg.cardMsgList2 = data.RspData;
+							console.log('classCardMsg.cardMsgList2:'+JSON.stringify(classCardMsg.cardMsgList2))
+							classCardMsg.cardMsgList2 = data.data;
 						} else if(tempFlag == 3) {
-							classCardMsg.cardMsgList3 = data.RspData;
+							classCardMsg.cardMsgList3 = data.data;
 						} else if(tempFlag == 6) {
-							classCardMsg.cardMsgList6 = data.RspData;
+							classCardMsg.cardMsgList6 = data.data;
 						}
 					} else {
 
@@ -525,7 +527,7 @@
 				methods: {
 					clickLi: function(model) {
 						model.content = '';
-						console.log('model:' + JSON.stringify(model));
+						// console.log('model:' + JSON.stringify(model));
 						if(model.chncode == 2 || model.chncode == 3) {
 							utils.mOpenWithData("../../html/index/listDetailImg.html", model);
 						} else {

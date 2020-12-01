@@ -308,8 +308,8 @@ var UploadHeadImage = (function($, mod) {
 		//			back: 'none'
 		//		});
 		postDataPro_PostReGinfo(comData2, wd, function(data) {
-			//console.log('8_PostReGinfo:RspCode:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-			if(data.RspCode == 0) {
+			//console.log('8_PostReGinfo:code:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+			if(data.code == 0) {
 				//成功的回调
 				successCallBack(imgeURL);
 			} else {
@@ -348,7 +348,7 @@ var UploadHeadImage = (function($, mod) {
 		postDataEncry('UpUserInfo', enData0, comData0, 0, function(data) {
 			console.log('UpUserInfo:' + JSON.stringify(data));
 			events.closeWaiting();
-			if(data.RspCode == 0) {
+			if(data.code == 0) {
 				//成功的回调
 				successCallBack(imgeURL);
 			} else {
@@ -380,8 +380,8 @@ var UploadHeadImage = (function($, mod) {
 			urel: '' //关系,更新与家长关系必填,其他留空
 		};
 		postDataPro_PostReStu(comData, wd, function(data) {
-			//console.log('23_PostReStu:RspCode:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-			if(data.RspCode == 0) {
+			//console.log('23_PostReStu:code:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+			if(data.code == 0) {
 				//成功的回调
 				successCallBack(stuImgePath);
 			} else {

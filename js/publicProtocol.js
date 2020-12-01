@@ -38,18 +38,30 @@ function setImg(imgURL) {
 var postDataEncry = function(url, encryData, commonData, flag, callback) {
 //	if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
 //		callback({
-//			RspCode: 404,
-//			RspData: null,
+//			code: 404,
+//			data: null,
 //			RspTxt: "网络连接失败,请重新尝试一下"
 //		});
 //		return;
 //	}
-	var tempUrl = window.storageKeyName.INTERFACEGU;
-	url = tempUrl + url;
-	console.log('url:', url);
+	if (flag == 0) {
+		// url = window.storageKeyName.INTERFACE_SSO_SKIN + url;
+	} else if(flag == 1){
+		var personal = store.get(window.storageKeyName.PERSONALINFO);
+		var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
+		// console.log('personalpersonalpersonal:' + JSON.stringify(personal));
+		commonData.platform_code = personal.user.platform_code;
+		commonData.app_code = personal.user.app_code;
+		commonData.unit_code = personal.user.unit_code;
+		commonData.index_code = 'index';
+		commonData.access_token = personal.access_token;
+		// url = window.storageKeyName.INTERFACE_BANPAI + url;
+	}
+	
+	// console.log('url:', url);
 	//拼接登录需要的签名
 	var signTemp = postDataEncry1(encryData, commonData, flag);
-	console.log('signTemp000:' + signTemp);
+	// console.log('signTemp000:' + signTemp);
 	//生成签名，返回值sign则为签名
 	signHmacSHA1.sign(signTemp, 'jsy309', function(sign) {
 		//组装发送握手协议需要的data
@@ -59,9 +71,9 @@ var postDataEncry = function(url, encryData, commonData, flag, callback) {
 		tempData.sign = sign;
 		// 等待的对话框
 		var urlArr = url.split('/');
-		console.log('传递的参数' + urlArr[urlArr.length - 1] + ':', JSON.stringify(tempData));
+		// console.log('传递的参数' + url + ':', JSON.stringify(tempData));
 		var tempStr = JSON.stringify(tempData).replace(/\\/g, "");
-		console.log('tempStr:' + tempStr);
+		// console.log('tempStr:' + tempStr);
 		jQAjaxPost(url, tempStr, callback);
 //		jQAjaxPost(url, JSON.stringify(tempData), callback);
 	});
@@ -121,17 +133,17 @@ var arrayToStr = function(array) {
 var xhrPost = function(url, commonData, callback) {
 //	if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
 //		callback({
-//			RspCode: 404,
-//			RspData: null,
+//			code: 404,
+//			data: null,
 //			RspTxt: "网络连接失败,请重新尝试一下"
 //		});
 //		return;
 //	}
-	console.log('XHRP-Url:', url);
+	// console.log('XHRP-Url:', url);
 	//	console.log('XHRP-Data:', commonData);
 	//拼接登录需要的签名
 	var signTemp = postDataEncry1({}, commonData, 0);
-	console.log('signTemp000:' + signTemp);
+	// console.log('signTemp000:' + signTemp);
 	//生成签名，返回值sign则为签名
 	signHmacSHA1.sign(signTemp, 'jsy309', function(sign) {
 		//组装发送握手协议需要的data
@@ -141,40 +153,49 @@ var xhrPost = function(url, commonData, callback) {
 		tempData.sign = sign;
 		// 等待的对话框
 		var urlArr = url.split('/');
-		console.log('传递的参数' + urlArr[urlArr.length - 1] + ':', tempData);
+		// console.log('传递的参数' + urlArr[urlArr.length - 1] + ':', tempData);
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("post", url, true);
 		xhr.timeout = 10000; //10秒超时
 		xhr.contentType = 'application/json;';
 		xhr.onload = function(e) {
-			console.log("XHRP:onload:", JSON.stringify(e));
-			console.log('this.readyState:', this.readyState);
-			console.log('this.status', this.status);
+			// console.log("XHRP:onload:", JSON.stringify(e));
+			// console.log('this.readyState:', this.readyState);
+			// console.log('this.status', this.status);
 			if(this.readyState === 4 && this.status === 200) {
 				var urlArr = url.split('/');
 				var success_data = JSON.parse(this.responseText);
-				console.log('XHRP-Success:', JSON.stringify(success_data));
-				if(success_data.RspCode == 10) { //令牌过期
+				// console.log('XHRP-Success:', JSON.stringify(success_data));
+				if(success_data.code == 10) { //令牌过期
 					var personal = store.get(window.storageKeyName.PERSONALINFO);
 					var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 					//需要参数
 					var comData = {
-						uuid: publicPar.uuid,
-						utid: personal.utid,
-						utoken: personal.utoken,
-						appid: publicPar.appid,
-						schid: personal.schid,
-						utp: personal.utp,
-						utname: personal.utname
+						user_code: personal.user.user_code,
+						// appid: publicPar.appid,
+						// schid: personal.schid,
+						// utp: personal.utp,
+						// utname: personal.utname,
+						
+						uuid: publicPar.uuid, //设备唯一识别码,防同一应用在不同机器上登录互串,验证码校检用
+						webid: 'publicPar.webid', //浏览器识别码,防不同浏览器登录同一应用互串,验证码校检用（web用浏览器类型加版本，app用操作系统+版本））
+						// shaketype: '1', //
+						// login_name: tempName, //登录名
+						// password: '', //
+						device_type: '0', //登录设备类型，0：WEB、1：APP、2：客户端
+						// platform_code: window.storageKeyName.PLATFORMCODE, //平台代码
+						// app_code: window.storageKeyName.APPCODE, //应用系统代码
+						// unit_code: '-1', //单位代码，如应用系统需限制本单位用户才允许登录，则传入单位代码，否则传“-1”
+						// verify_code: ''
 					};
 					//令牌续订
-					postDataEncry('TokenReset', {}, comData, 0, function(data1) {
-						if(data1.RspCode == 0) {
+					postDataEncry(window.storageKeyName.INTERFACE_SSO_SKIN+'token/refresh', {}, comData, 1, function(data1) {
+						if(data1.code == 0) {
 							var tempInfo00 = store.get(window.storageKeyName.PERSONALINFO);
-							tempInfo00.utoken = data1.RspData;
+							tempInfo00.utoken = data1.data;
 							store.set(window.storageKeyName.PERSONALINFO, tempInfo00);
-							commonData.token = data1.RspData;
+							commonData.token = data1.data;
 							delete commonData.sign;
 							xhrPost(url, commonData, function(data2) {
 								callback(data2);
@@ -186,25 +207,25 @@ var xhrPost = function(url, commonData, callback) {
 				}
 			} else {
 				callback({
-					RspCode: 404,
-					RspData: null,
+					code: 404,
+					data: null,
 					RspTxt: "网络连接失败,请重新尝试一下"
 				});
 			}
 		}
 		xhr.ontimeout = function(e) {
-			console.log("XHRP:ontimeout222:", e);
+			// console.log("XHRP:ontimeout222:", e);
 			callback({
-				RspCode: 404,
-				RspData: null,
+				code: 404,
+				data: null,
 				RspTxt: "网络连接超时,请重新尝试一下"
 			});
 		};
 		xhr.onerror = function(e) {
-			console.log("XHRP:onerror111:", e);
+			// console.log("XHRP:onerror111:", e);
 			callback({
-				RspCode: 404,
-				RspData: null,
+				code: 404,
+				data: null,
 				RspTxt: "网络连接失败,请重新尝试一下"
 			});
 		};
@@ -215,14 +236,14 @@ var xhrPost = function(url, commonData, callback) {
 var jQAjaxPost = function(url, data, callback) {
 //	if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
 //		callback({
-//			RspCode: 404,
-//			RspData: null,
+//			code: 404,
+//			data: null,
 //			RspTxt: "网络连接失败,请重新尝试一下"
 //		});
 //		return;
 //	}
-	console.log('jQAP-Url:', url);
-	console.log('jQAP-Data111:', data);
+	// console.log('jQAP-Url:', url);
+	// console.log('jQAP-Data111:', data);
 	jQuery.ajax({
 		url: url,
 		type: "POST",
@@ -232,29 +253,26 @@ var jQAjaxPost = function(url, data, callback) {
 		contentType: "application/json",
 		async: true,
 		success: function(success_data) { //请求成功的回调
-			console.log('jQAP-Success:', success_data);
-			if(success_data.RspCode == 6) { //令牌过期
+			// console.log('jQAP-Success:', success_data);
+			if(success_data.code == 6||success_data.code == 'sup_0006') { //令牌过期
 				var personal = store.get(window.storageKeyName.PERSONALINFO);
 				var publicPar = store.get(window.storageKeyName.PUBLICPARAMETER);
 				//需要参数
 				var comData = {
-					uuid: publicPar.uuid,
-					utid: personal.utid,
-					utoken: personal.utoken,
-					appid: publicPar.appid,
-					schid: personal.schid,
-					utp: personal.utp,
-					utname: personal.utname
+					user_code: personal.user.user_code,
+					uuid: publicPar.uuid, //设备唯一识别码,防同一应用在不同机器上登录互串,验证码校检用
+					webid: 'publicPar.webid', //浏览器识别码,防不同浏览器登录同一应用互串,验证码校检用（web用浏览器类型加版本，app用操作系统+版本））
+					device_type: '0', //登录设备类型，0：WEB、1：APP、2：客户端
 				};
 				//令牌续订
-				postDataEncry('TokenReset', {}, comData, 0, function(data1) {
-					if(data1.RspCode == 0) {
+				postDataEncry(window.storageKeyName.INTERFACE_SSO_SKIN+'token/refresh', {}, comData, 1, function(data1) {
+					if(data1.code == 0) {
 						var tempInfo00 = store.get(window.storageKeyName.PERSONALINFO);
-						tempInfo00.utoken = data1.RspData;
+						tempInfo00.utoken = data1.data;
 						store.set(window.storageKeyName.PERSONALINFO, tempInfo00);
 						var urlArr = url.split('/');
 						var tempData = JSON.parse(data);
-						tempData.utoken = data1.RspData;
+						tempData.utoken = data1.data;
 						delete tempData.sign;
 						postDataEncry(urlArr[urlArr.length - 1], {}, tempData, 0, function(data2) {
 							callback(data2);
@@ -266,10 +284,10 @@ var jQAjaxPost = function(url, data, callback) {
 			}
 		},
 		error: function(xhr, type, errorThrown) {
-			console.log('jQAP-Error777:', xhr, type);
+			// console.log('jQAP-Error777:', xhr, type);
 			callback({
-				RspCode: 404,
-				RspData: null,
+				code: 404,
+				data: null,
 				RspTxt: "网络连接失败,请重新尝试一下"
 			});
 		}

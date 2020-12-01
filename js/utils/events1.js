@@ -1064,11 +1064,11 @@ var events = (function(mod) {
 			//token续订
 			postDataPro_PostTokenRenew(comData, wd, function(data0) {
 
-				//console.log('token续订success:RspCode:' + data0.RspCode + ',RspData:' + JSON.stringify(data0.RspData) + ',RspTxt:' + data0.RspTxt);
+				//console.log('token续订success:code:' + data0.code + ',data:' + JSON.stringify(data0.data) + ',RspTxt:' + data0.RspTxt);
 				var tempInfo00 = window.myStorage.getItem(window.storageKeyName.PERSONALINFO);
-				tempInfo00.token = data0.RspData;
+				tempInfo00.token = data0.data;
 				window.myStorage.setItem(window.storageKeyName.PERSONALINFO, tempInfo00);
-				if(data0.RspCode == 0) {
+				if(data0.code == 0) {
 					//获取个人信息
 					var comData1 = {
 						vvl: personal.utid, //用户id，查询的值,p传个人ID,g传ID串
@@ -1077,12 +1077,12 @@ var events = (function(mod) {
 					//21.通过用户ID获取用户资料
 					postDataPro_PostUinf(comData1, wd, function(data) {
 						wd.close();
-						//console.log('获取个人信息000:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-						if(data.RspCode == 0) {
-							var tepI0000 = data.RspData[0];
+						//console.log('获取个人信息000:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+						if(data.code == 0) {
+							var tepI0000 = data.data[0];
 							//存储个人信息
 							var tempInfo = window.myStorage.getItem(window.storageKeyName.PERSONALINFO);
-							tempInfo.token = data0.RspData;
+							tempInfo.token = data0.data;
 							tempInfo.uname = tepI0000.uname;
 							tempInfo.unick = tepI0000.unick;
 							tempInfo.usex = tepI0000.usex;
@@ -1160,10 +1160,10 @@ var events = (function(mod) {
 		var wd = events.showWaiting();
 		//发送网络请求，data为网络返回值
 		//		postDataEncry(storageKeyName.MAINURL + 'PostShakeHand', enData0, comData0, 0, wd, function(data) {
-		//			//console.log('PostShakeHand:RspCode:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-		//			if(data.RspCode == 0) {
+		//			//console.log('PostShakeHand:code:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+		//			if(data.code == 0) {
 		//存储到手机本地
-		//		window.myStorage.setItem(window.storageKeyName.SHAKEHAND, data.RspData);
+		//		window.myStorage.setItem(window.storageKeyName.SHAKEHAND, data.data);
 		//账号密码登录协议
 		//需要加密的数据
 		var enData = {
@@ -1183,8 +1183,8 @@ var events = (function(mod) {
 		postDataEncry(storageKeyName.MAINURL + 'PostLogin', enData, comData, 0, wd, function(data) {
 			wd.close();
 			wd.close();
-			//console.log('账号密码登录s1111111e:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-			if(data.RspCode != 0000) {
+			//console.log('账号密码登录s1111111e:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+			if(data.code != 0000) {
 				var tempValue = {
 					flag: 0, //游客登录
 					value: 0 //登录失败
@@ -1195,16 +1195,16 @@ var events = (function(mod) {
 			} else {
 				//				mui.toast('登录成功')
 				//存储到手机本地
-				data.RspData.ispw = '1';
-				if(!data.RspData.uimg) {
-					data.RspData.uimg = '../../image/utils/default_personalimage.png';
+				data.data.ispw = '1';
+				if(!data.data.uimg) {
+					data.data.uimg = '../../image/utils/default_personalimage.png';
 				}
-				if(data.RspData.unick == '' || data.RspData.unick == undefined) {
-					data.RspData.unick = '新用户';
+				if(data.data.unick == '' || data.data.unick == undefined) {
+					data.data.unick = '新用户';
 				}
 				//解析省市代码
-				if(data.RspData.uarea.length > 0) {
-					var tempArray = data.RspData.uarea.split('|');
+				if(data.data.uarea.length > 0) {
+					var tempArray = data.data.uarea.split('|');
 					//					if(tempArray.length > 0) {
 					//						var temp0 = tempArray[0].split(' ');
 					//						var temp1 = tempArray[1].split(' ');
@@ -1215,11 +1215,11 @@ var events = (function(mod) {
 						aname: '全国', //节点名称--城市名称
 						atype: '' //节点类型,0省1城市2区县
 					}
-					data.RspData.uarea = model_area;
+					data.data.uarea = model_area;
 					//					}
 				}
-				window.myStorage.setItem(window.storageKeyName.PERSONALINFO, data.RspData);
-				//console.log('登录保存的个人信息：' + JSON.stringify(data.RspData));
+				window.myStorage.setItem(window.storageKeyName.PERSONALINFO, data.data);
+				//console.log('登录保存的个人信息：' + JSON.stringify(data.data));
 				//
 				//退出登录
 				events.logOff();
@@ -1301,13 +1301,13 @@ var events = (function(mod) {
 			//5.获取某个问题的详情
 			postDataQZPro_getAskById(comData, wd, function(data) {
 				wd.close();
-				//console.log('5.获取某个问题的详情:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-				if(data.RspCode == 1016) {
+				//console.log('5.获取某个问题的详情:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+				if(data.code == 1016) {
 					//console.log('wenti 不存在');
 					mui.toast('该提问已不存在');
 					callback(false);
 				}
-				if(data.RspCode == 404) {
+				if(data.code == 404) {
 					mui.toast('网络连接失败，请重新尝试一下');
 					callback(false);
 				} else {
@@ -1327,12 +1327,12 @@ var events = (function(mod) {
 			//8.获取某个回答的详情
 			postDataQZPro_getAnswerById(comData, wd, function(data) {
 				wd.close();
-				//console.log('8.获取某个回答的详情:' + data.RspCode + ',RspData:' + JSON.stringify(data.RspData) + ',RspTxt:' + data.RspTxt);
-				if(data.RspCode == 1017) {
+				//console.log('8.获取某个回答的详情:' + data.code + ',data:' + JSON.stringify(data.data) + ',RspTxt:' + data.RspTxt);
+				if(data.code == 1017) {
 					mui.toast('该回答已不存在');
 					callback(false);
 				}
-				if(data.RspCode == 404) {
+				if(data.code == 404) {
 					mui.toast('网络连接失败，请重新尝试一下');
 					callback(false);
 				} else {
