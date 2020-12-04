@@ -630,8 +630,16 @@
 							} else {
 								for(var i = 0; i < data.data.newslist.length; i++) {
 									var tempModel = data.data.newslist[i];
-									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
+										tempModel.imgFlag = 1;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl + '/w/150/h/150/q/75/format/png';
+									} else {
+										tempModel.imgFlag = 0;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl.split('?')[0];
+										tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									}
 								}
 								classCardMsg.cardMsgList2 = data.data;
 								setTimeout(function() {
@@ -660,8 +668,16 @@
 							} else {
 								for(var i = 0; i < data.data.newslist.length; i++) {
 									var tempModel = data.data.newslist[i];
-									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
+										tempModel.imgFlag = 1;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl + '/w/150/h/150/q/75/format/png';
+									} else {
+										tempModel.imgFlag = 0;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl.split('?')[0];
+										tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									}
 								}
 								classCardMsg.cardMsgList3 = data.data;
 								if(data.data.newslist.length>0){
@@ -691,8 +707,16 @@
 							} else {
 								for(var i = 0; i < data.data.newslist.length; i++) {
 									var tempModel = data.data.newslist[i];
-									tempModel.imgurl = tempModel.imgurl.split('?')[0];
-									tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									if(tempModel.imgurl.indexOf('vframe/jpg/offset') != -1) {
+										tempModel.imgFlag = 1;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl + '/w/150/h/150/q/75/format/png';
+									} else {
+										tempModel.imgFlag = 0;
+										//修改照片尺寸
+										tempModel.imgurl = tempModel.imgurl.split('?')[0];
+										tempModel.imgurl = tempModel.imgurl + '?imageView2/3/w/150/h/150/q/75/format/png';
+									}
 								}
 								classCardMsg.cardMsgList6 = data.data;
 								setTimeout(function() {
