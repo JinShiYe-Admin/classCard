@@ -2,7 +2,7 @@
 
 var storageKeyName = (function(mod) {
 
-	mod.key = 2; //0,开发;1,部署外网
+	mod.key = 3; //0,开发;1,部署外网
 	// var exLog = console.log;
 	// console.log = function(hint, object) {
 	// 	if(mod.key === 1) {
@@ -26,11 +26,17 @@ var storageKeyName = (function(mod) {
 			mod.INTERFACE_SSO_SKIN = 'http://develop309.jiaobaowang.net/ssotoskin/api/skin/'; //顾工接口
 			mod.INTERFACE_BANPAI = 'http://develop309.jiaobaowang.net:8081/bullboard/sub/'; //孔
 			break;
-		case 2: //测试
+		case 2: //联测
 			mod.PLATFORMCODE = 'PT0001'; //平台代码
 			mod.APPCODE = 'schapp#'; //应用系统代码
 			mod.INTERFACE_SSO_SKIN = 'http://nwifapp.jiaobaowang.net/ssotoskin/api/skin/'; //顾工接口
 			mod.INTERFACE_BANPAI = 'http://develop309.jiaobaowang.net:8080/bullboard/sub/'; //孔
+			break;
+		case 3: //云测
+			mod.PLATFORMCODE = 'PT0002'; //平台代码
+			mod.APPCODE = 'schapp#'; //应用系统代码
+			mod.INTERFACE_SSO_SKIN = 'http://nwifapp.jiaobaowang.net/ssotoskin/api/skin/'; //顾工接口
+			mod.INTERFACE_BANPAI = 'http://nwifapp.jiaobaowang.net/bullboard/sub/'; //孔
 			break;
 		default:
 			break;
